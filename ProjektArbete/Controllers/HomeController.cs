@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ProjektArbete.Models;
 
 namespace ProjektArbete.Controllers
 {
@@ -15,7 +16,7 @@ namespace ProjektArbete.Controllers
 
         public IActionResult Person()
         {
-            return View();
+            return View(TestData.listOfPerson);
         }
 
         public IActionResult Party()
