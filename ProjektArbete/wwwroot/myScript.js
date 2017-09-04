@@ -1,4 +1,10 @@
-﻿$(document).ready(function () {
+﻿var app = angular.module("myApp", []);
+app.controller("testController", function ($scope) {
+    $scope.testValue = 'Hej yada';
+});
+
+
+$(document).ready(function () {
     $.ajax({
         url: "/Data/Party",
         type: 'GET',
