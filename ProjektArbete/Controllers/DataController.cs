@@ -17,7 +17,7 @@ namespace ProjektArbete.Controllers
             return Json(null);
         }
 
-        [HttpPost]
+        //[HttpPost]
         public IActionResult Party()
         {
             return Json(DataManager.GetAllPartyPercentage());

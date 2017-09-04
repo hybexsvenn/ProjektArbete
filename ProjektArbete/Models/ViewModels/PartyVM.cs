@@ -7,7 +7,7 @@ namespace ProjektArbete.Models.ViewModels
 {
     public class PartyVM
     {
-        public Party Party { get; set; }
+        public string Party { get; set; }
         public float PercentageAbsence { get; set; }
     }
 }
