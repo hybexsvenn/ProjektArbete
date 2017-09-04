@@ -4,28 +4,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace ProjektArbete.Controllers
 {
-    public class HomeController : Controller
+    public class DataController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+        [HttpPost]
         public IActionResult Person()
         {
-            return View();
+            return Json(null);
         }
 
+        [HttpPost]
         public IActionResult Party()
         {
-            return View();
+            return Json(null);
         }
 
+        [HttpPost]
         public IActionResult Constituency()
         {
-            return View();
+            return Json(null);
         }
     }
 }
