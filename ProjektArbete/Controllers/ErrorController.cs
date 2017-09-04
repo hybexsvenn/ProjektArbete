@@ -6,11 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ProjektArbete.Controllers
 {
-    public class HomeController : Controller
+    public class ErrorController : Controller
     {
-        public IActionResult Index()
+        public IActionResult ErrorPage()
         {
             return View();
+        }
+
+        public IActionResult HttpError(int id)
+        {
+            return View(id);
         }
     }
 }
