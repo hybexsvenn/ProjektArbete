@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjektArbete.Models;
+using ProjektArbete.Models.ViewModels;
 
 namespace ProjektArbete.Controllers
 {
@@ -19,14 +20,24 @@ namespace ProjektArbete.Controllers
             return View(TestData.GetPersons());
         }
 
-        public IActionResult Party()
+        public PersonVM[] Party()
         {
-            return View();
+            var temp = TestData.GetPersons();
+
+            return temp;
         }
 
         public IActionResult Constituency()
         {
             return View();
         }
+
+        //public IActionResult GetPartialView(int id)
+        //{
+        //    //var model = DataManager.GetCustomerbyId(id);
+
+
+        //    return PartialView("_DataBox", model);
+        //}
     }
 }
