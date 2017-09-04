@@ -47,9 +47,10 @@
             </div>
         </nav>
         <div ng-controller="testController">
-            <div ng-bind="testValue">
+            <div ng-bind="testValue" ng-show="foo">
                 {{testValue}}
             </div>
+            <input value="Click me" type="button" ng-click="onClickValuekk()" />
         </div>
 
         <div class="container body-content">
