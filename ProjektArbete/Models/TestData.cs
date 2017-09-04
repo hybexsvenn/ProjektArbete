@@ -24,6 +24,6 @@ namespace ProjektArbete.Models
         public static List<PartyVM> listOfParty = new List<PartyVM>
         {
             new PartyVM { Party = Party.S }
-        }
+        };
     }
 }
