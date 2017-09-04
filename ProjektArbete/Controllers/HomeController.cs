@@ -16,7 +16,7 @@ namespace ProjektArbete.Controllers
 
         public IActionResult Person()
         {
-            return View(TestData.listOfPerson);
+            return View(TestData.GetPersons());
         }
 
         public IActionResult Party()

@@ -1,5 +1,4 @@
-﻿@model Valkrets[]
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -33,9 +32,9 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         @*<li class="active"><a href="#">Home</a></li>*@
-                        <li><a asp-controller="Parti" asp-action="Index">Parti</a></li>
-                        <li><a asp-controller="Person" asp-action="Index">Person</a></li>
-                        <li><a asp-controller="Valkrets" asp-action="Index">Valkrets</a></li>
+                        <li><a asp-controller="Home" asp-action="Party">Parti</a></li>
+                        <li><a asp-controller="Home" asp-action="Person">Person</a></li>
+                        <li><a asp-controller="Home" asp-action="Constituency">Valkrets</a></li>
                     </ul>
                     <form class="navbar-form navbar-right">
                         <div class="input-group">
