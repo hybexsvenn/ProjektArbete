@@ -5,6 +5,19 @@ using System.Threading.Tasks;
 
 namespace ProjektArbete.Models.ViewModels
 {
+    public enum Party
+    {
+        V,
+        S,
+        MP,
+        L,
+        M,
+        SD,
+        KD,
+        C,
+        FP
+    }
+
     public enum Vote
     {
         Ja,
@@ -18,7 +31,7 @@ namespace ProjektArbete.Models.ViewModels
         public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Party { get; set; }
+        public Party Party { get; set; }
         public string Constituency { get; set; }
         public string ConstituencyNumber { get; set; }
         public Vote[] Vote { get; set; }
