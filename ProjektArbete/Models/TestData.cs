@@ -15,15 +15,23 @@ namespace ProjektArbete.Models
             new PersonVM { Id = "3", FirstName = "Pontus", LastName = "Lind", Constituency = "Göteborg", ConstituencyNumber = "1", ParliamentaryYear = "2016/2017", Party = Party.S, Status = "Upptagen", Vote = new Vote[] { Vote.Nej, Vote.Frånvarande, Vote.Avstår, Vote.Avstår, Vote.Avstår } }
         };
 
-
         internal static PersonVM[] GetPersons()
         {
             return listOfPerson.ToArray();
         }
 
-        public static List<PartyVM> listOfParty = new List<PartyVM>
+        public static List<PartyVM> listOfPartyPercentage = new List<PartyVM>
         {
-            new PartyVM { Party = Party.S }
+            new PartyVM { Party = Party.S, PercentageAbsence = 8.5f},
+            new PartyVM { Party = Party.V, PercentageAbsence = 12.3f},
+            new PartyVM { Party = Party.MP, PercentageAbsence = 7.6f},
+            new PartyVM { Party = Party.SD, PercentageAbsence = 22.6f},
+            new PartyVM { Party = Party.M, PercentageAbsence = 7.6f},
+            new PartyVM { Party = Party.C, PercentageAbsence = 4.6f},
+            new PartyVM { Party = Party.KD, PercentageAbsence = 9.6f},
+            new PartyVM { Party = Party.L, PercentageAbsence = 8.6f},
         };
+
+
     }
 }

@@ -20,11 +20,9 @@ namespace ProjektArbete.Controllers
             return View(TestData.GetPersons());
         }
 
-        public PersonVM[] Party()
+        public IActionResult Party()
         {
-            var temp = TestData.GetPersons();
-
-            return temp;
+            return View(DataManager.GetAllPartyPercentage());
         }
 
         public IActionResult Constituency()
