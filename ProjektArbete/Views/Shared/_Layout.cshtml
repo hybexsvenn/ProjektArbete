@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@ViewBag.Title</title>
+    <title>Närvarokollen - @ViewBag.Title</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="~/myStyleSheet.css" rel="stylesheet" />
@@ -28,7 +28,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        @*<li class="active"><a href="#">Home</a></li>*@
+                        <li class="active"><a asp-controller="Home" asp-action="Index">Hem</a></li> @*TODO: Flytta aktiv till den aktiva sidan*@
                         <li><a asp-controller="Home" asp-action="Party">Parti</a></li>
                         <li><a asp-controller="Home" asp-action="Person">Person</a></li>
                         <li><a asp-controller="Home" asp-action="Constituency">Valkrets</a></li>
@@ -51,14 +51,14 @@
                 {{testValue}}
             </div>
             <input value="Click me" type="button" ng-click="onClickValuekk()" />
-        </div>
 
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; 2017 - Team Göteborg</p>
-            </footer>
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; 2017 - Team Göteborg</p>
+                </footer>
+            </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

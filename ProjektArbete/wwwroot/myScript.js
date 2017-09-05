@@ -1,12 +1,34 @@
 ﻿var app = angular.module("myApp", []);
+
+
 app.controller("testController", function ($scope) {
     $scope.testValue = 'Hej yada';
     $scope.foo = true;
+    $scope.hover = false;
     $scope.onClickValuekk = function () {
         $scope.foo = !$scope.foo;
     };
+    $scope.mouseoverImage = function ($thisImg) {
+        $scope.logos = { "opacity": "0.3" };
+        $scope.hover = true;
+    };
+    $scope.mouseoverOut = function () {
+        $scope.logos = { "opacity": "1" };
+        $scope.hover = false;
+    };
 });
 
+
+
+
+
+
+
+
+
+
+
+// Index graf
 
 $(document).ready(function () {
     $.ajax({
