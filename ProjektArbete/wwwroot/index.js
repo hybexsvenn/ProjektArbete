@@ -1,15 +1,13 @@
-﻿$(document).ready(main); 
-
-function main() {
+﻿$(document).ready(function main() {
     $('.partyLogo').hover(function () {
         $('.partyLogo').not(this).toggleClass('opacityLogos');
     });
-};
+});
 
 
 $(document).ready(function () {
     $.ajax({
-        url: "/Data/Index",
+        url: "/Api/Index",
         type: 'GET',
         dataType: 'json',
         success: function (r) {

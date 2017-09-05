@@ -4,21 +4,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjektArbete.Models;
+using ProjektArbete.Models.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ProjektArbete.Controllers
 {
-    public class DataController : Controller
+    public class ApiController : Controller
     {
-        public IActionResult Index()
+        public PartyVM[] Index()
         {
-            return Json(DataManager.GetAllPartyPercentage());
+            return DataManager.GetAllPartyPercentage();
         }
 
-        public IActionResult Person()
+        public PersonVM[] Person()
         {
-            return Json(DataManager.GetAllPersons());
+            return DataManager.GetAllPersons();
         }
 
         public IActionResult Party()

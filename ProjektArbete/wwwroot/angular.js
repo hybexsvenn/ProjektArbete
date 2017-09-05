@@ -32,7 +32,7 @@ app.controller("testController", function ($scope) {
 
 var kalle = function () {
     $.ajax({
-        url: "/Data/Person",
+        url: "/Api/Person",
         type: 'GET',
         dataType: 'json',
         success: function (r) {

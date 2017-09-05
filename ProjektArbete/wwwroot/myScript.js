@@ -3,6 +3,7 @@
 // Range slider
 
 $(function () {
+
     $("#slider-range").slider({
         range: true,
         min: 2003,
@@ -23,6 +24,7 @@ $(function () {
 });
 
 $(document).ready(function () {
+    $("#date").val("2014 - 2017");
     var temp = false;
     $("#slider-range").mousedown(function () {
         temp = true;
