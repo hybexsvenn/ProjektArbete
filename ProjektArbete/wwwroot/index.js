@@ -4,7 +4,6 @@
     });
 });
 
-
 $(document).ready(function () {
     $.ajax({
         url: "/Api/Index",
