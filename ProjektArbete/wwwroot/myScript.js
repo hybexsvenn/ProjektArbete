@@ -1,6 +1,7 @@
 ﻿var app = angular.module("myApp", []);
 
 
+
 app.controller("testController", function ($scope) {
     $scope.testValue = 'Hej yada';
     $scope.foo = true;
@@ -8,10 +9,13 @@ app.controller("testController", function ($scope) {
     $scope.onClickValuekk = function () {
         $scope.foo = !$scope.foo;
     };
-    $scope.mouseoverImage = function ($thisImg) {
+    $scope.mouseoverImage = function () {
         $scope.logos = { "opacity": "0.3" };
+    };
+    $scope.mouseoverThisImage = function () {
         $scope.hover = true;
     };
+
     $scope.mouseoverOut = function () {
         $scope.logos = { "opacity": "1" };
         $scope.hover = false;

@@ -1,9 +1,8 @@
 ﻿@{
     ViewBag.Title = "Parti";
 }
-
-<div class="logos" ng-style="logos">
-    <div ng-style="imgV" ng-mouseover="mouseoverImage(imgV)" ng-mouseleave="mouseoverOut()"><img src="~/Images/Logos/Vansterpartiet_logo_sRGB.jpg" /></div>
+<div class="logos" ng-style="logos" ng-mouseover="mouseoverImage()" ng-mouseleave="mouseoverOut()">
+    <img src="~/Images/Logos/Vansterpartiet_logo_sRGB.jpg" />
     <img src="~/Images/Logos/Socialdemokraterna_logo_liggande.png" />
     <img src="~/Images/Logos/Miljopartiet_logo_original_gron.png" />
     <img src="~/Images/Logos/Centerpartiet_Logo_Narodlad_Liggande_RGB.jpg" />
@@ -12,6 +11,6 @@
     <img src="~/Images/Logos/Kristdemokraterna_logo_CMYK.jpg" />
     <img src="~/Images/Logos/Moderaterna_logo_utan_text.png" />
     <img src="~/Images/Logos/Sverigedemokraterna_logo_RGB.jpg" />
-    <br/>
+    <br />
 </div>
 <p>{{hover}}</p>
