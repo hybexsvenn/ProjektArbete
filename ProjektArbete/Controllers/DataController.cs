@@ -18,7 +18,7 @@ namespace ProjektArbete.Controllers
 
         public IActionResult Person()
         {
-            return Json(null);
+            return Json(DataManager.GetAllPersons());
         }
 
         public IActionResult Party()
