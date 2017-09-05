@@ -17,6 +17,11 @@ namespace ProjektArbete.Controllers
             return DataManager.GetAllPartyPercentage();
         }
 
+        public IndexVM[] IndexTemp(string id)
+        {
+            return DataManager.GetAllPartyPercentageTemp();
+        }
+
         public PersonVM[] Person()
         {
             return DataManager.GetAllPersons();
