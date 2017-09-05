@@ -7,6 +7,10 @@
     margin: 10px;
 }
 
+.opacityLogos {
+    opacity: 0.3;
+}
+
 @media (min-width: 1200px) {
     #wrapper {
         max-width: 1200px;
