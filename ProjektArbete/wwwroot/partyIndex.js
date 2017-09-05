@@ -1,36 +1,4 @@
-﻿var app = angular.module("myApp", []);
-
-
-
-app.controller("testController", function ($scope) {
-    $scope.testValue = 'Hej yada';
-    $scope.foo = true;
-    $scope.showPartyBarChart = false;
-    $scope.hover = false;
-    $scope.onClickValuekk = function () {
-        $scope.foo = !$scope.foo;
-    };
-    //$scope.mouseoverImage = function () {
-    //    $scope.logos = true;
-    //    $scope.testClass = { "opacity": "0.3" };
-    //};
-    //$scope.mouseoverThisImage = function () {
-    //    $scope.hover = true;
-    //};
-
-    //$scope.mouseoverOut = function () {
-    //    $scope.logos = { "opacity": "1" };
-    //    $scope.hover = false;
-    //};
-
-    $scope.loadPartyData = function () {
-        $scope.showPartyBarChart = true;
-        $scope.value = kalle();
-    };
-});
-
-
-var kalle = function () {
+﻿$(document).ready(function () {
     $.ajax({
         url: "/Data/Index",
         type: 'GET',
@@ -79,5 +47,4 @@ var kalle = function () {
             });
         }
     });
-};
-
+});
