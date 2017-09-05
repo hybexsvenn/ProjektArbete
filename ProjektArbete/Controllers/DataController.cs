@@ -11,19 +11,21 @@ namespace ProjektArbete.Controllers
 {
     public class DataController : Controller
     {
-        [HttpPost]
+        public IActionResult Index()
+        {
+            return Json(DataManager.GetAllPartyPercentage());
+        }
+
         public IActionResult Person()
         {
             return Json(null);
         }
 
-        //[HttpPost]
         public IActionResult Party()
         {
-            return Json(DataManager.GetAllPartyPercentage());
+            return Json(null);
         }
 
-        [HttpPost]
         public IActionResult Constituency()
         {
             return Json(null);

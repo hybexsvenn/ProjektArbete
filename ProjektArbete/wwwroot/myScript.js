@@ -10,7 +10,7 @@ app.controller("testController", function ($scope) {
 
 $(document).ready(function () {
     $.ajax({
-        url: "/Data/Party",
+        url: "/Data/Index",
         type: 'GET',
         dataType: 'json',
         success: function (r) {
