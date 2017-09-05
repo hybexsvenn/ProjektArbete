@@ -15,7 +15,8 @@ namespace ProjektArbete.Models
 
         internal static PersonVM[] GetAllPersons()
         {
-            return TestData.GetPersons();
+            return TestData.listOfPerson.ToArray();
+            //return TestData.GetPersons();
         }
     }
 }
