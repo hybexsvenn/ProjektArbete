@@ -19,14 +19,6 @@ namespace ProjektArbete.Models.ViewModels
         FP
     }
 
-    public enum Vote
-    {
-        Ja,
-        Nej, 
-        Avstår,
-        Frånvarande
-    }
-
     public class PersonVM
     {
         public string Id { get; set; }

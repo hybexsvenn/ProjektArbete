@@ -1,4 +1,8 @@
-﻿
+﻿$(document).ready(function main() {
+    $('.partyLogo').hover(function () {
+        $('.partyLogo').not(this).toggleClass('opacityLogos');
+    });
+});
 
 // Range slider
 

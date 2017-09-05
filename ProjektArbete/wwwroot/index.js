@@ -1,8 +1,4 @@
-﻿$(document).ready(function main() {
-    $('.partyLogo').hover(function () {
-        $('.partyLogo').not(this).toggleClass('opacityLogos');
-    });
-});
+﻿
 
 $(document).ready(function () {
     $.ajax({
