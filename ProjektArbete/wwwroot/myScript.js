@@ -9,16 +9,21 @@ app.controller("testController", function ($scope) {
     $scope.onClickValuekk = function () {
         $scope.foo = !$scope.foo;
     };
-    $scope.mouseoverImage = function () {
-        $scope.logos = { "opacity": "0.3" };
-    };
-    $scope.mouseoverThisImage = function () {
-        $scope.hover = true;
-    };
+    //$scope.mouseoverImage = function () {
+    //    $scope.logos = { "opacity": "0.3" };
+    //};
+    //$scope.mouseoverThisImage = function () {
+    //    $scope.hover = true;
+    //};
 
-    $scope.mouseoverOut = function () {
-        $scope.logos = { "opacity": "1" };
-        $scope.hover = false;
+    //$scope.mouseoverOut = function () {
+    //    $scope.logos = { "opacity": "1" };
+    //    $scope.hover = false;
+    //};
+
+    $scope.loadPartyData = function () {
+        $scope.showPartyBarChart = true;
+        $scope.value = kalle();
     };
 });
 
@@ -47,9 +52,7 @@ $(function () {
 
 
 
-// Index graf
-
-$(document).ready(function () {
+var kalle = function () {
     $.ajax({
         url: "/Data/Index",
         type: 'GET',
@@ -98,4 +101,4 @@ $(document).ready(function () {
             });
         }
     });
-});
+};
