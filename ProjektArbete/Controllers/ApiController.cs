@@ -12,7 +12,7 @@ namespace ProjektArbete.Controllers
 {
     public class ApiController : Controller
     {
-        public PartyVM[] Index()
+        public IndexVM[] Index()
         {
             return DataManager.GetAllPartyPercentage();
         }
@@ -22,9 +22,9 @@ namespace ProjektArbete.Controllers
             return DataManager.GetAllPersons();
         }
 
-        public IActionResult Party()
+        public PartyVM Party(string id)
         {
-            return Json(null);
+            return DataManager.GetPartyPercentage(id);
         }
 
         public IActionResult Constituency()

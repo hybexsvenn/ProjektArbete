@@ -8,9 +8,16 @@ namespace ProjektArbete.Models
 {
     public class DataManager
     {
-        public static PartyVM[] GetAllPartyPercentage()
+        public static IndexVM[] GetAllPartyPercentage()
         {
             return TestData.listOfPartyPercentage.ToArray();
+        }
+
+        public static PartyVM GetPartyPercentage(string id)
+        {
+
+            return TestData.listOfPartyData
+                .SingleOrDefault(p => p.Party == id);
         }
 
         internal static PersonVM[] GetAllPersons()

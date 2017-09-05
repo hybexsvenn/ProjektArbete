@@ -10,9 +10,9 @@ namespace ProjektArbete.Models
     {
         public static List<PersonVM> listOfPerson = new List<PersonVM>
         {
-            new PersonVM { Id = "1", FirstName = "Mikael", LastName = "Svenn", Constituency = "Trollhättan", ConstituencyNumber = "2", ParliamentaryYear = "2016/2017", Party = "V", Status = "Upptagen", Vote = new Vote[] { Vote.Nej, Vote.Nej, Vote.Nej, Vote.Frånvarande, Vote.Avstår } },
-            new PersonVM { Id = "2", FirstName = "Veronica", LastName = "Röös", Constituency = "Göteborg", ConstituencyNumber = "1", ParliamentaryYear = "2016/2017", Party = "KD", Status = "Tjänstledig", Vote = new Vote[] { Vote.Ja, Vote.Frånvarande, Vote.Frånvarande, Vote.Frånvarande, Vote.Avstår } },
-            new PersonVM { Id = "3", FirstName = "Pontus", LastName = "Lind", Constituency = "Göteborg", ConstituencyNumber = "1", ParliamentaryYear = "2016/2017", Party = "S", Status = "Upptagen", Vote = new Vote[] { Vote.Nej, Vote.Frånvarande, Vote.Avstår, Vote.Avstår, Vote.Avstår } }
+            new PersonVM { Id = "1", FirstName = "Mikael", LastName = "Svenn", Constituency = "Trollhättan", ConstituencyNumber = "2", ParliamentaryYear = "2016/2017", Party = "V", Status = "Upptagen"},
+            new PersonVM { Id = "2", FirstName = "Veronica", LastName = "Röös", Constituency = "Göteborg", ConstituencyNumber = "1", ParliamentaryYear = "2016/2017", Party = "KD", Status = "Tjänstledig"},
+            new PersonVM { Id = "3", FirstName = "Pontus", LastName = "Lind", Constituency = "Göteborg", ConstituencyNumber = "1", ParliamentaryYear = "2016/2017", Party = "S", Status = "Upptagen"}
         };
 
         internal static PersonVM[] GetPersons()
@@ -20,18 +20,28 @@ namespace ProjektArbete.Models
             return listOfPerson.ToArray();
         }
 
-        public static List<PartyVM> listOfPartyPercentage = new List<PartyVM>
+        public static List<IndexVM> listOfPartyPercentage = new List<IndexVM>
         {
-            new PartyVM { Party = "V", PercentageAbsence = 12.3f},
-            new PartyVM { Party = "S", PercentageAbsence = 8.5f},
-            new PartyVM { Party = "MP", PercentageAbsence = 7.6f},
-            new PartyVM { Party = "C", PercentageAbsence = 4.6f},
-            new PartyVM { Party = "L", PercentageAbsence = 8.6f},
-            new PartyVM { Party = "KD", PercentageAbsence = 9.6f},
-            new PartyVM { Party = "M", PercentageAbsence = 7.6f},
-            new PartyVM { Party = "SD", PercentageAbsence = 22.6f},
+            new IndexVM { Party = "V", PercentageAbsence = 12.3f},
+            new IndexVM { Party = "S", PercentageAbsence = 8.5f},
+            new IndexVM { Party = "MP", PercentageAbsence = 7.6f},
+            new IndexVM { Party = "C", PercentageAbsence = 4.6f},
+            new IndexVM { Party = "L", PercentageAbsence = 8.6f},
+            new IndexVM { Party = "KD", PercentageAbsence = 9.6f},
+            new IndexVM { Party = "M", PercentageAbsence = 7.6f},
+            new IndexVM { Party = "SD", PercentageAbsence = 22.6f},
         };
 
-
+        public static List<PartyVM> listOfPartyData = new List<PartyVM>
+        {
+            new PartyVM {Party = "V", Vote = new Vote {Yes = 50, No = 3, Abscense = 4, Refrain = 4 } },
+            new PartyVM {Party = "S", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+            new PartyVM {Party = "MP", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+            new PartyVM {Party = "C", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+            new PartyVM {Party = "L", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+            new PartyVM {Party = "KD", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+            new PartyVM {Party = "M", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+            new PartyVM {Party = "SD", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+        };
     }
 }

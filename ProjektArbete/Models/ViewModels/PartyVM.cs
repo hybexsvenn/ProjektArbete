@@ -9,6 +9,13 @@ namespace ProjektArbete.Models.ViewModels
     public class PartyVM
     {
         public string Party { get; set; }
-        public float PercentageAbsence { get; set; }
+        public Vote Vote { get; set; }
+    }
+    public class Vote
+    {
+        public int Yes { get; set; }
+        public int No { get; set; }
+        public int Refrain { get; set; }
+        public int Abscense { get; set; }
     }
 }
