@@ -3,16 +3,17 @@
 }
 <div class="logos">
     <div ng-show="showPartyBarChart">
-    <canvas ng-bind="value" id="myChart" width="400" height="200"></canvas>
+        <canvas ng-bind="value" id="myChart" width="400" height="200"></canvas>
     </div>
-    <div ng-click="loadPartyData()"><img src="~/Images/Logos/Vansterpartiet_logo_sRGB.jpg" /></div>
-    <div><img src="~/Images/Logos/Socialdemokraterna_logo_liggande.png" /></div>
-    <div><img src="~/Images/Logos/Miljopartiet_logo_original_gron.png" /></div>
-    <div><img src="~/Images/Logos/Centerpartiet_Logo_Narodlad_Liggande_RGB.jpg" /></div>
-    <br />
-    <div><img src="~/Images/Logos/Liberalerna_logo_liggande.png" /></div>
-    <div><img src="~/Images/Logos/Kristdemokraterna_logo_CMYK.jpg" /></div>
-    <div><img src="~/Images/Logos/Moderaterna_logo_utan_text.png" /></div>
-    <div><img src="~/Images/Logos/Sverigedemokraterna_logo_RGB.jpg" /></div>
+    <div class="logos">
+        <div class="partyLogo" ng-click="loadPartyData()"><img src="~/Images/Logos/Vansterpartiet_logo_sRGB.jpg" /></div>
+        <div class="partyLogo"><img src="~/Images/Logos/Socialdemokraterna_logo_liggande.png" /></div>
+        <div class="partyLogo"><img src="~/Images/Logos/Miljopartiet_logo_original_gron.png" /></div>
+        <div class="partyLogo"><img src="~/Images/Logos/Centerpartiet_Logo_Narodlad_Liggande_RGB.jpg" /></div>
+        <div class="partyLogo"><img src="~/Images/Logos/Liberalerna_logo_liggande.png" /></div>
+        <div class="partyLogo"><img src="~/Images/Logos/Kristdemokraterna_logo_CMYK.jpg" /></div>
+        <div class="partyLogo"><img src="~/Images/Logos/Moderaterna_logo_utan_text.png" /></div>
+        <div class="partyLogo"><img src="~/Images/Logos/Sverigedemokraterna_logo_RGB.jpg" /></div>
+    </div>
     <br />
 </div>

@@ -1,4 +1,13 @@
-﻿$(document).ready(function () {
+﻿$(document).ready(main); 
+
+function main() {
+    $('.partyLogo').hover(function () {
+        $('.partyLogo').not(this).toggleClass('opacityLogos');
+    });
+};
+
+
+$(document).ready(function () {
     $.ajax({
         url: "/Data/Index",
         type: 'GET',
