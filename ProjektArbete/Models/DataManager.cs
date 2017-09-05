@@ -13,5 +13,9 @@ namespace ProjektArbete.Models
             return TestData.listOfPartyPercentage.ToArray();
         }
 
+        internal static PersonVM[] GetAllPersons()
+        {
+            return TestData.GetPersons();
+        }
     }
 }
