@@ -2,8 +2,8 @@
     ViewBag.Title = "Parti";
 }
 <div class="logos">
-    <div ng-show="showPartyBarChart">
-        <canvas ng-bind="value" id="pieChart" width="400" height="200"></canvas>
+    <div id="divCanvas" ng-show="showPartyBarChart">
+        <canvas id="pieChart" width="400" height="200"></canvas>
     </div>
     <div class="logos">
         <div class="partyLogo" ng-click="loadPartyData('V')"><img src="~/Images/Logos/Vansterpartiet_logo_sRGB.jpg" /></div>

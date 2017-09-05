@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $.ajax({
-        url: "/Data/Person",
+        url: "/Api/Person",
         type: 'GET',
         dataType: 'json',
         success: function (p) {
@@ -11,7 +11,7 @@
                     labels: [p[0].firstName],
                     datasets: [{
                         label: 'Närvaro',
-                        data: [p[0].vote.length],
+                        data: [p[0].abscense],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
