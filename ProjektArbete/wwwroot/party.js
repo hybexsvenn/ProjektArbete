@@ -23,7 +23,7 @@
                 options: {
                     title: {
                         display: true,
-                        text: thisParty.party + ' Predicted world population (millions) in 2050'
+                        text: thisParty.party + 's röstning'
                     }
                 }
             });
