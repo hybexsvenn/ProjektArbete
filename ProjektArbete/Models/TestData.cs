@@ -22,26 +22,26 @@ namespace ProjektArbete.Models
 
         public static List<IndexVM> listOfPartyPercentage = new List<IndexVM>
         {
-            new IndexVM { Party = "V", PercentageAbsence = 12.3f},
-            new IndexVM { Party = "S", PercentageAbsence = 8.5f},
-            new IndexVM { Party = "MP", PercentageAbsence = 7.6f},
-            new IndexVM { Party = "C", PercentageAbsence = 4.6f},
-            new IndexVM { Party = "L", PercentageAbsence = 8.6f},
-            new IndexVM { Party = "KD", PercentageAbsence = 9.6f},
-            new IndexVM { Party = "M", PercentageAbsence = 7.6f},
-            new IndexVM { Party = "SD", PercentageAbsence = 22.6f},
+            new IndexVM { Party = "V", PercentageAbsence = 12.3m},
+            new IndexVM { Party = "S", PercentageAbsence = 8.5m},
+            new IndexVM { Party = "MP", PercentageAbsence = 7.6m},
+            new IndexVM { Party = "C", PercentageAbsence = 4.6m},
+            new IndexVM { Party = "L", PercentageAbsence = 8.6m},
+            new IndexVM { Party = "KD", PercentageAbsence = 9.6m},
+            new IndexVM { Party = "M", PercentageAbsence = 7.6m},
+            new IndexVM { Party = "SD", PercentageAbsence = 22.6m},
         };
 
         public static List<IndexVM> listOfPartyPercentageTemp = new List<IndexVM>
         {
-            new IndexVM { Party = "V", PercentageAbsence = 50f},
-            new IndexVM { Party = "S", PercentageAbsence = 8.5f},
-            new IndexVM { Party = "MP", PercentageAbsence = 7.6f},
-            new IndexVM { Party = "C", PercentageAbsence = 4.6f},
-            new IndexVM { Party = "L", PercentageAbsence = 8.6f},
-            new IndexVM { Party = "KD", PercentageAbsence = 9.6f},
-            new IndexVM { Party = "M", PercentageAbsence = 7.6f},
-            new IndexVM { Party = "SD", PercentageAbsence = 22.6f},
+            new IndexVM { Party = "V", PercentageAbsence = 50m},
+            new IndexVM { Party = "S", PercentageAbsence = 8.5m},
+            new IndexVM { Party = "MP", PercentageAbsence = 7.6m},
+            new IndexVM { Party = "C", PercentageAbsence = 4.6m},
+            new IndexVM { Party = "L", PercentageAbsence = 8.6m},
+            new IndexVM { Party = "KD", PercentageAbsence = 9.6m},
+            new IndexVM { Party = "M", PercentageAbsence = 7.6m},
+            new IndexVM { Party = "SD", PercentageAbsence = 22.6m},
         };
 
         public static List<PartyVM> listOfPartyData = new List<PartyVM>

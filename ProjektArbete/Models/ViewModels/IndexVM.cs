@@ -9,6 +9,6 @@ namespace ProjektArbete.Models.ViewModels
     public class IndexVM
     {
         public string Party { get; set; }
-        public float PercentageAbsence { get; set; }
+        public decimal PercentageAbsence { get; set; }
     }
 }
