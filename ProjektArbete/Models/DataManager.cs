@@ -1,4 +1,5 @@
-﻿using ProjektArbete.Models.ViewModels;
+﻿using Microsoft.Extensions.Configuration;
+using ProjektArbete.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,16 +10,22 @@ using System.Threading.Tasks;
 namespace ProjektArbete.Models
 {
 
-    public static class DataManager
+    public class DataManager
     {
-        static string conString = @"Data Source=ACADEMY-7115T1S;Initial Catalog=ProjectFreedom;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        static SqlConnection sqlConnection = new SqlConnection(conString);
+        SqlConnection sqlConnection;
 
-        public static IndexVM[] GetAllPartyPercentage(string id)
+        public DataManager(IConfiguration configuration)
+        {
+            sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
+        }
+
+        // string conString = @"Data Source=ACADEMY-7115T1S;Initial Catalog=ProjectFreedom;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+        public IndexVM[] GetAllPartyPercentage(string id)
         {
             var fi = id.Split(";");
-            
-            
+
+
 
             List<IndexVM> listOfIndexVm = new List<IndexVM>();
             try
@@ -46,7 +53,7 @@ namespace ProjektArbete.Models
             return listOfIndexVm.ToArray();
         }
 
-        private static void InParam(SqlCommand sqlCommand, string paramName, object value, int size, SqlDbType sqlDbType)
+        private void InParam(SqlCommand sqlCommand, string paramName, object value, int size, SqlDbType sqlDbType)
         {
             SqlParameter startDateParam = new SqlParameter();
             startDateParam.ParameterName = paramName;
@@ -57,20 +64,20 @@ namespace ProjektArbete.Models
             sqlCommand.Parameters.Add(startDateParam);
         }
 
-        public static PartyVM GetPartyPercentage(string id)
+        public PartyVM GetPartyPercentage(string id)
         {
 
             return TestData.listOfPartyData
                 .SingleOrDefault(p => p.Party == id);
         }
 
-        internal static PersonVM[] GetAllPersons()
+        internal PersonVM[] GetAllPersons()
         {
             return TestData.listOfPerson.ToArray();
             //return TestData.GetPersons();
         }
 
-        internal static IndexVM[] GetAllPartyPercentageTemp()
+        internal IndexVM[] GetAllPartyPercentageTemp()
         {
             return TestData.listOfPartyPercentageTemp.ToArray();
         }

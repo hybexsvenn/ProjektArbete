@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using ProjektArbete.Models;
 
 namespace ProjektArbete
 {
@@ -23,7 +24,7 @@ namespace ProjektArbete
         {
             //var connStri = configuration["ConnectionStrings"];
             //Dependecyinjection
-
+            services.AddScoped<DataManager>();
             services.AddSession();
             services.AddMvc();
 

@@ -12,25 +12,32 @@ namespace ProjektArbete.Controllers
 {
     public class ApiController : Controller
     {
+        DataManager dataManager;
+
+        public ApiController(DataManager dataManager)
+        {
+            this.dataManager = dataManager;
+        }
+
         public IndexVM[] Index(string id)
         {
-            return DataManager.GetAllPartyPercentage(id);
+            return dataManager.GetAllPartyPercentage(id);
         }
 
 
         public IndexVM[] IndexTemp(string id)
         {
-            return DataManager.GetAllPartyPercentage(id);
+            return dataManager.GetAllPartyPercentage(id);
         }
 
         public PersonVM[] Person()
         {
-            return DataManager.GetAllPersons();
+            return dataManager.GetAllPersons();
         }
 
         public PartyVM Party(string id)
         {
-            return DataManager.GetPartyPercentage(id);
+            return dataManager.GetPartyPercentage(id);
         }
 
         public IActionResult Constituency()
