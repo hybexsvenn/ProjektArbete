@@ -1,17 +1,102 @@
-﻿@model PersonVM[]
+﻿
+<div class="input-group">
+    <input ng-model="search" type="text" class="form-control" placeholder="Sök politiker...">
+    <div class="input-group-btn" onload="Foo()">
+        <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+        </button>
+    </div>
+</div>
 
-@foreach (var person in Model)
-{
-    <h1>@person.FirstName @person.LastName</h1>
 
-}
 
-<canvas id="personChart" width="400" height="200"></canvas>
+<br /><br />
+<ul>
+    <li ng-repeat="item in listOftodo | filter: search"><a asp-controller="Home" asp-action="Person">{{item}}</a></li>
+</ul>
+
+
+
+
+
+
 
 
 @section Scripts
     {
     <script src="~/person.js"></script>
+}
 
+
+
+
+
+
+
+
+
+
+
+
+<!-- Initialize a new AngularJS app and associate it with a module named "instantSearch"-->
+@*<body ng-app="instantSearch" ng-controller="InstantSearchController">*@
+
+    @*<div>*@
+        <!-- Create a binding between the searchString model and the text field -->
+        @*<input type="text" ng-model="searchString" placeholder="Enter your search terms" />
+    </div>
+
+    <ul>*@
+        <!-- Render a li element for every entry in the items array. Notice
+             the custom search filter "searchFor". It takes the value of the
+             searchString model as an argument.
+         -->
+        @*<li ng-repeat="i in items | searchFor:searchString">
+            <a href="{{i.url}}"><img ng-src="{{i.image}}" /></a>
+            <p>{{i.title}}</p>
+        </li>
+    </ul>*@
+
+    <!-- Include AngularJS from Google's CDN -->
+    @*<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>*@
+    @*<script src="script.js"></script>*@
+@*</body>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@model PersonVM[]
+
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
+    <div class="input-group-btn">
+        <button class="btn btn-default" type="submit" ng-click="showPerson()">
+            <i class="glyphicon glyphicon-search"></i>
+        </button>
+    </div>*@
+@*<div ng-init="friends">*@
+
+@*@foreach (var person in Model)
+{
+    <a asp-controller="Home" asp-action="Person" ng-show="showPer" >@person.FirstName @person.LastName</a><br />
 
 }
+</div>*@
+@*</div>*@  
+
+
+@*<canvas id="personChart" width="400" height="200"></canvas>*@
+
+
+
