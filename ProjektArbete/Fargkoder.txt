@@ -11,10 +11,13 @@ Centerpartiet grön
 RGB 1, 106, 58
 
 Liberalerna blå
-0, 106, 179 
+RGB 0, 106, 179 
 
 Kristdemokraterna
+RGB 0, 93, 160 (???)
 
-Moderaterna
+Moderaterna blå
+RGB 13, 157, 219
 
 Sverigedemokraterna
+RGB 37, 34, 85 (???)

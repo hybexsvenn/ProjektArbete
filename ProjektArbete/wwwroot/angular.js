@@ -11,8 +11,6 @@ app.controller("testController", function ($scope) {
     $scope.loadPartyData = function (id) {
         $scope.showPartyBarChart = true;
         $scope.value = chartChoosenParty(id);
-
-
     };
 
     $scope.showPer = false;

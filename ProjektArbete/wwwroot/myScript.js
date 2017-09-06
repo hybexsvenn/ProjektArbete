@@ -89,16 +89,10 @@ $(document).ready(function () {
                         });
                     }
                 });
-            
-
-
-
-
 
             temp = false;
             }
         });
-    
 });
         
 

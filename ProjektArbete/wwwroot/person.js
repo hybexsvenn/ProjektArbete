@@ -19,19 +19,17 @@ function foo() {
             }
 
             //console.log(getName);
-
             //getName.split(" ");
 
             myArr = getName;
-
             console.log(getName);
-
         }
-
     });
 }
+
 //foo();
 //});
+
 app.controller("testController", function ($scope) {
 
     //console.log(myArr);
@@ -41,7 +39,6 @@ app.controller("testController", function ($scope) {
             console.log(myArr);
             foo();
             //$scope.listOftodo = myArr;
-
         }
         else {
 
@@ -51,13 +48,10 @@ app.controller("testController", function ($scope) {
         }
     //}
     $scope.listOftodo = myArr;
-
     $scope.search = "";
     $scope.showPer = !$scope.showPer;
 
 });
-
-
 
 //$(document).ready(function () {
 //    $.ajax({
