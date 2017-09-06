@@ -39,7 +39,7 @@ $(document).ready(function () {
         $("body").mouseup(function () {
             if (temp === true) {
                 $.ajax({
-                    url: "/Api/IndexTemp/" + dataForIndex,
+                    url: "/Api/Index/" + dataForIndex,
                     type: 'GET',
                     dataType: 'json',
                     success: function (r) {

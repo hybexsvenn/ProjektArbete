@@ -14,8 +14,12 @@ namespace ProjektArbete.Models
         static string conString = @"Data Source=ACADEMY-7115T1S;Initial Catalog=ProjectFreedom;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         static SqlConnection sqlConnection = new SqlConnection(conString);
 
-        public static IndexVM[] GetAllPartyPercentage()
+        public static IndexVM[] GetAllPartyPercentage(string id)
         {
+            var fi = id.Split(";");
+            
+            
+
             List<IndexVM> listOfIndexVm = new List<IndexVM>();
             try
             {
@@ -24,8 +28,8 @@ namespace ProjektArbete.Models
                 sqlCommand.CommandText = "getPartyByYear";
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlCommand.Connection = sqlConnection;
-                InParam(sqlCommand, "@startDate", "2016", 12, SqlDbType.VarChar);
-                InParam(sqlCommand, "@endDate", "2017", 12, SqlDbType.VarChar);
+                InParam(sqlCommand, "@startDate", fi[0], 12, SqlDbType.VarChar);
+                InParam(sqlCommand, "@endDate", fi[1], 12, SqlDbType.VarChar);
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                 while (sqlDataReader.Read())
                 {

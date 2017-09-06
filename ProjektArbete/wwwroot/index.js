@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
     $.ajax({
-        url: "/Api/Index",
+        url: "/Api/Index/2014;2017",
         type: 'GET',
         dataType: 'json',
         success: function (r) {

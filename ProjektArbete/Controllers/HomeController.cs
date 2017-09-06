@@ -22,7 +22,7 @@ namespace ProjektArbete.Controllers
 
         public IActionResult Party()
         {
-            return View(DataManager.GetAllPartyPercentage());
+            return View(/*DataManager.GetAllPartyPercentage()*/);
         }
 
         public IActionResult Constituency()

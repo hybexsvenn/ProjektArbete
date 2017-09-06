@@ -12,14 +12,15 @@ namespace ProjektArbete.Controllers
 {
     public class ApiController : Controller
     {
-        public IndexVM[] Index()
+        public IndexVM[] Index(string id)
         {
-            return DataManager.GetAllPartyPercentage();
+            return DataManager.GetAllPartyPercentage(id);
         }
+
 
         public IndexVM[] IndexTemp(string id)
         {
-            return DataManager.GetAllPartyPercentageTemp();
+            return DataManager.GetAllPartyPercentage(id);
         }
 
         public PersonVM[] Person()
