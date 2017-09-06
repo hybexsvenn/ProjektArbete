@@ -1,4 +1,5 @@
 ﻿var app = angular.module("myApp", []);
+//var navApp = angular.module("myApp", []);
 
 app.controller("testController", function ($scope) {
     $scope.testValue = 'Hej yada';
@@ -13,8 +14,18 @@ app.controller("testController", function ($scope) {
 
 
     };
+
+    $scope.showPer = false;
+
+    $scope.showPerson = function () {
+        $scope.showPer = !$scope.showPer;
+    };
 });
 
+//navApp.controller("navController", function ($scope) {
+
+
+//});
 
 
 

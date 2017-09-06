@@ -1,0 +1,20 @@
+Vänsterpartiet röd
+RGB 237, 28, 36
+
+Socialdemokraterna röd
+RGB 237, 27, 52
+
+Miljöpartiet grön
+RGB 83, 160, 69
+
+Centerpartiet grön
+RGB 1, 106, 58
+
+Liberalerna blå
+0, 106, 179 
+
+Kristdemokraterna
+
+Moderaterna
+
+Sverigedemokraterna
