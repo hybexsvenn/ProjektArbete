@@ -1,10 +1,37 @@
-﻿$(document).ready(function () {
+﻿
+
+
+$(document).ready(function () {
     $.ajax({
         url: "/Api/Index",
         type: 'GET',
         dataType: 'json',
         success: function (r) {
             console.log(r);
+            var V = [];
+            for (var i = 0; i < r.length; i++) {
+                if (r[i].party === "-") {
+
+                } else if (r[i].party === "V") {
+                    V.push(r[i].percentageAbsence);
+                }
+            }
+            var VP = 0;
+            for (var i = 0; i < V.length; i++) {
+                VP += V[i];
+            }
+            var VPP = VP / V.length;
+
+            console.log(V.length);
+            console.log(VP);
+            console.log(VPP);
+            
+
+
+
+
+
+
             var ctx = document.getElementById("myChart").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'bar',
