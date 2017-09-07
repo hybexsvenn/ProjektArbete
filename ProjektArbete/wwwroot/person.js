@@ -41,13 +41,12 @@ app.controller("testController", function ($scope) {
             //$scope.listOftodo = myArr;
         }
         else {
-
-            $scope.listOftodo = myArr;
+            $scope.listOfSearch = myArr;
             $scope.search = "";
             $scope.showPer = !$scope.showPer;
         }
     //}
-    $scope.listOftodo = myArr;
+        $scope.listOfSearch = myArr;
     $scope.search = "";
     $scope.showPer = !$scope.showPer;
 
