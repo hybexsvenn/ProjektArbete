@@ -1,5 +1,26 @@
 ﻿body {
-    background-color:#ffffff;
+    background-color: #ffffff;
+}
+
+.navbar {
+}
+
+/*Hover over text i menyn:*/
+.navbar-nav a:hover{
+    background-color: hotpink;
+    }
+
+    /*.navbar-nav > li > a:hover {
+        background-color: red;
+    }*/
+
+.navbar-nav a:active {
+    background-color: green;
+    font-size: 150%;
+}
+
+.navbar-nav a:visited {
+    background-color: white;
 }
 
 .logos li {
@@ -24,13 +45,13 @@
     font-size: 18px;
 }
 
-.dropDownContent li {
-    display: block;
-}
+    .dropDownContent li {
+        display: block;
+    }
 
-.dropDownContent li:hover {
-    background-color: lightgrey;
-}
+        .dropDownContent li:hover {
+            background-color: lightgrey;
+        }
 
 /*.show {
     display: block;
@@ -41,5 +62,3 @@
         max-width: 1200px;
     }
 }
-
-
