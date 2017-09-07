@@ -19,16 +19,16 @@ namespace ProjektArbete.Controllers
             this.dataManager = dataManager;
         }
 
-        public IndexVM[] Index(string id)
+        public IndexVM[] Index()
         {
-            return dataManager.GetAllPartyPercentage(id);
+            return dataManager.GetAllPartyPercentage();
         }
 
 
-        public IndexVM[] IndexTemp(string id)
-        {
-            return dataManager.GetAllPartyPercentage(id);
-        }
+        //public IndexVM[] IndexTemp(string id)
+        //{
+        //    return dataManager.GetAllPartyPercentage(id);
+        //}
 
         public PersonVM[] Person()
         {

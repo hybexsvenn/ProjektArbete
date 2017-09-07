@@ -10,5 +10,6 @@ namespace ProjektArbete.Models.ViewModels
     {
         public string Party { get; set; }
         public decimal PercentageAbsence { get; set; }
+        public string Year { get; set; }
     }
 }
