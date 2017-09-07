@@ -44,12 +44,10 @@ app.controller("testController", function ($scope) {
 
             $scope.listOftodo = myArr;
             $scope.search = "";
-            $scope.showPer = !$scope.showPer;
         }
     //}
     $scope.listOftodo = myArr;
     $scope.search = "";
-    $scope.showPer = !$scope.showPer;
 
 });
 

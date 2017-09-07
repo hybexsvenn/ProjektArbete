@@ -35,6 +35,8 @@ namespace ProjektArbete.Models
                 sqlCommand.CommandText = "getPartyByYear";
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlCommand.Connection = sqlConnection;
+                sqlCommand.CommandTimeout = 90;
+
                 InParam(sqlCommand, "@startDate", fi[0], 12, SqlDbType.VarChar);
                 InParam(sqlCommand, "@endDate", fi[1], 12, SqlDbType.VarChar);
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();

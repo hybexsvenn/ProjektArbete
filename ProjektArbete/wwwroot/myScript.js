@@ -27,6 +27,14 @@ $(function () {
         $("#date").append("<span style='color:#00f;'>Mouse down.</span>");
     });
 
+    //$('li a').click(function (e) {
+    //    var $this = $(this);
+    //    if (!$this.hasClass('active')) {
+    //        $this.addClass('active');
+    //    }
+    //    e.preventDefault();
+    //});
+
 });
 
 $(document).ready(function () {
