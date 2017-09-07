@@ -16,7 +16,7 @@ namespace ProjektArbete.Models
 
         public DataManager(IConfiguration configuration)
         {
-            sqlConnection = new SqlConnection(configuration.GetConnectionString(""));
+            sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
 
         // string conString = @"Data Source=ACADEMY-7115T1S;Initial Catalog=ProjectFreedom;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
