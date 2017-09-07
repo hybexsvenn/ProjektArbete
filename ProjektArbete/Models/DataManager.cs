@@ -16,7 +16,7 @@ namespace ProjektArbete.Models
 
         public DataManager(IConfiguration configuration)
         {
-            sqlConnection = new SqlConnection(configuration.GetConnectionString("Server=tcp:teamgoteborg.database.windows.net,1433;Initial Catalog=Politik;Persist Security Info=False;User ID=gbgadminz;Password=Password1234_;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
+            sqlConnection = new SqlConnection(configuration.GetConnectionString(""));
         }
 
         // string conString = @"Data Source=ACADEMY-7115T1S;Initial Catalog=ProjectFreedom;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
