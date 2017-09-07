@@ -59,8 +59,6 @@ namespace ProjektArbete.Models
         {
             //var fi = id.Split(";");
 
-
-
             List<IndexVM> listOfIndexVm = new List<IndexVM>();
             try
             {
@@ -119,7 +117,5 @@ namespace ProjektArbete.Models
         {
             return TestData.listOfPartyPercentageTemp.ToArray();
         }
-
-
     }
 }
