@@ -13,14 +13,14 @@
                         label: 'Närvaro',
                         data: [r[0].percentageAbsence, r[1].percentageAbsence, r[2].percentageAbsence, r[3].percentageAbsence, r[4].percentageAbsence, r[5].percentageAbsence, r[6].percentageAbsence, r[7].percentageAbsence],
                         backgroundColor: [
-                            'rgba(237, 28, 36, 0.2)',
-                            'rgba(237, 27, 52, 0.2)',
-                            'rgba(83, 160, 69, 0.2)',
-                            'rgba(1, 106, 58, 0.2)',
-                            'rgba(0, 106, 179, 0.2)',
-                            'rgba(0, 93, 160, 0.2)',
-                            'rgba(13, 157, 219, 0.2)',
-                            'rgba(37, 34, 85, 0.2)'
+                            'rgba(237, 28, 36, 0.8)',
+                            'rgba(237, 27, 52, 0.8)',
+                            'rgba(83, 160, 69, 0.8)',
+                            'rgba(1, 106, 58, 0.8)',
+                            'rgba(0, 106, 179, 0.8)',
+                            'rgba(0, 93, 160, 0.8)',
+                            'rgba(13, 157, 219, 0.8)',
+                            'rgba(37, 34, 85, 0.8)'
                         ],
                         borderColor: [
                             'rgba(255,99,132,1)',

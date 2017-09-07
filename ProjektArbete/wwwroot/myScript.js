@@ -7,7 +7,6 @@
 });
 
 function fixNavBar() {
-   
     $(".navbar-nav").children('li').each(function () {
 
         var myHref = $(this).children('a').first().attr('href');
