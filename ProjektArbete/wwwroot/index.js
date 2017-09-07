@@ -1,9 +1,10 @@
 ﻿$(document).ready(function () {
     $.ajax({
-        url: "/Api/Index/2014;2017",
+        url: "/Api/Index",
         type: 'GET',
         dataType: 'json',
         success: function (r) {
+            console.log(r);
             var ctx = document.getElementById("myChart").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'bar',

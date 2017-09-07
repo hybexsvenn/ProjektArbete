@@ -16,14 +16,48 @@ namespace ProjektArbete.Models
 
         public DataManager(IConfiguration configuration)
         {
-            sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
+            sqlConnection = new SqlConnection(configuration.GetConnectionString("Server=tcp:teamgoteborg.database.windows.net,1433;Initial Catalog=Politik;Persist Security Info=False;User ID=gbgadminz;Password=Password1234_;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
         }
 
         // string conString = @"Data Source=ACADEMY-7115T1S;Initial Catalog=ProjectFreedom;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        public IndexVM[] GetAllPartyPercentage(string id)
+        //public IndexVM[] GetAllPartyPercentage(string id)
+        //{
+        //    var fi = id.Split(";");
+
+
+
+        //    List<IndexVM> listOfIndexVm = new List<IndexVM>();
+        //    try
+        //    {
+        //        sqlConnection.Open();
+        //        SqlCommand sqlCommand = new SqlCommand();
+        //        sqlCommand.CommandText = "getPartyByYear";
+        //        sqlCommand.CommandType = CommandType.StoredProcedure;
+        //        sqlCommand.Connection = sqlConnection;
+        //        sqlCommand.CommandTimeout = 90;
+
+        //        InParam(sqlCommand, "@startDate", fi[0], 12, SqlDbType.VarChar);
+        //        InParam(sqlCommand, "@endDate", fi[1], 12, SqlDbType.VarChar);
+        //        SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+        //        while (sqlDataReader.Read())
+        //        {
+        //            IndexVM indexVM = new IndexVM();
+        //            indexVM.Party = (string)sqlDataReader["Party"];
+        //            indexVM.PercentageAbsence = (decimal)sqlDataReader["Percentage"];
+        //            listOfIndexVm.Add(indexVM);
+        //        }
+        //    }
+        //    finally
+        //    {
+        //        sqlConnection.Close();
+        //    }
+        //    return listOfIndexVm.ToArray();
+        //}
+
+        public IndexVM[] GetAllPartyPercentage()
         {
-            var fi = id.Split(";");
+            //var fi = id.Split(";");
 
 
 
@@ -32,19 +66,19 @@ namespace ProjektArbete.Models
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.CommandText = "getPartyByYear";
-                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.CommandText = "select * from Partiprocent";
+                sqlCommand.CommandType = CommandType.Text;
                 sqlCommand.Connection = sqlConnection;
-                sqlCommand.CommandTimeout = 90;
+                // sqlCommand.CommandTimeout = 90;
 
-                InParam(sqlCommand, "@startDate", fi[0], 12, SqlDbType.VarChar);
-                InParam(sqlCommand, "@endDate", fi[1], 12, SqlDbType.VarChar);
+
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                 while (sqlDataReader.Read())
                 {
                     IndexVM indexVM = new IndexVM();
-                    indexVM.Party = (string)sqlDataReader["Party"];
-                    indexVM.PercentageAbsence = (decimal)sqlDataReader["Percentage"];
+                    indexVM.Party = (string)sqlDataReader["Parti"];
+                    indexVM.PercentageAbsence = (decimal)sqlDataReader["Procent frånvaro"];
+                    indexVM.Year = (string)sqlDataReader["Riksdagsår"];
                     listOfIndexVm.Add(indexVM);
                 }
             }
@@ -54,6 +88,8 @@ namespace ProjektArbete.Models
             }
             return listOfIndexVm.ToArray();
         }
+
+
 
         private void InParam(SqlCommand sqlCommand, string paramName, object value, int size, SqlDbType sqlDbType)
         {
