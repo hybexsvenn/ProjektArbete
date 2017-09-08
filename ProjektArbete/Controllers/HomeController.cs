@@ -10,42 +10,38 @@ namespace ProjektArbete.Controllers
 {
     public class HomeController : Controller
     {
-        //DataManager dataManager;
+        DataManager dataManager;
+
+        public HomeController(DataManager dataManager)
+        {
+            this.dataManager = dataManager;
+        }
 
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Person(PersonVM[] viewModel)
+        public IActionResult Person(string id)
         {
-            List<PersonVM> listOfPerson = new List<PersonVM>
+            if (id == null)
             {
-                new PersonVM { Id = "1", FirstName = "Mikael", LastName = "Svenn", Constituency = "Trollhättan", ConstituencyNumber = "2", ParliamentaryYear = "2016/2017", Party = "V", Status = "Upptagen", Abscense = 3, Vote="Ja" },
-                new PersonVM { Id = "2", FirstName = "Mikael", LastName = "Svenn", Constituency = "Trollhättan", ConstituencyNumber = "2", ParliamentaryYear = "2016/2017", Party = "V", Status = "Upptagen", Abscense = 3, Vote="Ja" },
+                return View();
+            }
 
-            };
-            viewModel = listOfPerson.ToArray();
-            return View(viewModel);
+            var x = dataManager.GetOnePerson(id);
+
+            return View(x);
         }
-
 
         public IActionResult Party()
         {
-            return View(/*DataManager.GetAllPartyPercentage()*/);
+            return View();
         }
 
         public IActionResult Constituency()
         {
             return View();
         }
-
-        //public IActionResult GetPartialView(int id)
-        //{
-        //    //var model = DataManager.GetCustomerbyId(id);
-
-
-        //    return PartialView("_DataBox", model);
-        //}
     }
 }

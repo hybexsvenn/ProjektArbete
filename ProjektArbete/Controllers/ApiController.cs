@@ -12,7 +12,7 @@ namespace ProjektArbete.Controllers
 {
     public class ApiController : Controller
     {
-        DataManager dataManager;
+        public DataManager dataManager;
 
         public ApiController(DataManager dataManager)
         {
@@ -23,12 +23,6 @@ namespace ProjektArbete.Controllers
         {
             return dataManager.GetAllPartyPercentage();
         }
-
-
-        //public IndexVM[] IndexTemp(string id)
-        //{
-        //    return dataManager.GetAllPartyPercentage(id);
-        //}
 
         public PersonVM[] Person()
         {

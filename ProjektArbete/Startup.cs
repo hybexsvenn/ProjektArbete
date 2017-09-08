@@ -22,8 +22,6 @@ namespace ProjektArbete
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //var connStri = configuration["ConnectionStrings"];
-            //Dependecyinjection
             services.AddScoped<DataManager>();
             services.AddSession();
             services.AddMvc();

@@ -20,7 +20,6 @@ namespace ProjektArbete.Models
         }
 
 
-
         // string conString = @"Data Source=ACADEMY-7115T1S;Initial Catalog=ProjectFreedom;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         //public IndexVM[] GetAllPartyPercentage(string id)
@@ -152,7 +151,7 @@ namespace ProjektArbete.Models
             sqlCommand.Parameters.Add(startDateParam);
         }
 
-        internal PersonVM[] GetOnePerson(string intressent_id)
+        public PersonVM[] GetOnePerson(string intressent_id)
         {
             List<PersonVM> listOfPersonVM = new List<PersonVM>();
             try
