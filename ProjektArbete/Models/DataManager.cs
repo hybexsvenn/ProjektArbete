@@ -93,8 +93,6 @@ namespace ProjektArbete.Models
                 sqlCommand.CommandText = "select * from Personprocent";
                 sqlCommand.CommandType = CommandType.Text;
                 sqlCommand.Connection = sqlConnection;
-                // sqlCommand.CommandTimeout = 90;
-
 
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                 while (sqlDataReader.Read())

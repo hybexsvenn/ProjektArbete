@@ -12,7 +12,7 @@
 
 <br /><br />
 <ul class="dropDownContent">
-    <li ng-repeat="item in listOfSearch | filter: search track by $index" @*ng-click="PersonSelected($event, this)*@"><a asp-controller="Home" asp-action="Person">{{item}}</a></li>
+    <li ng-repeat="item in listOfSearch | filter: search track by $index"><a asp-controller="Home" asp-action="Person">{{item}}</a></li>
 </ul>
 
 
