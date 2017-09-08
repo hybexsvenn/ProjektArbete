@@ -30,9 +30,9 @@ namespace ProjektArbete.Controllers
         //    return dataManager.GetAllPartyPercentage(id);
         //}
 
-        public PersonVM[] Person(string intressent_id)
+        public PersonVM[] Person()
         {
-            return dataManager.GetAllPersons(intressent_id);
+            return dataManager.GetAllPersons();
         }
 
         public PartyVM Party(string id)
