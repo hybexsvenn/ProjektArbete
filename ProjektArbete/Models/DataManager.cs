@@ -19,6 +19,8 @@ namespace ProjektArbete.Models
             sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
 
+
+
         // string conString = @"Data Source=ACADEMY-7115T1S;Initial Catalog=ProjectFreedom;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         //public IndexVM[] GetAllPartyPercentage(string id)
@@ -85,7 +87,7 @@ namespace ProjektArbete.Models
 
         public PersonVM[] GetAllPersons()
         {
-        List<PersonVM> listOfPersons = new List<PersonVM>();
+            List<PersonVM> listOfPersons = new List<PersonVM>();
             try
             {
                 sqlConnection.Open();
@@ -132,14 +134,12 @@ namespace ProjektArbete.Models
             return listOfPersons.ToArray();
         }
 
-        //public PersonVM[] GetFirstochDefaultIntressent_Id()
-        //{
-        //    //GetAllPersons();
-        //    //PersonVM personVM = new PersonVM();
-        //    //listOfPersons.FirstOrDefault
-        //    //listOfPersons.Add(personVM);
-        //    //return listOfPersons.ToArray();
-        //}
+        public PartyVM GetPartyPercentage(string id)
+        {
+
+            return TestData.listOfPartyData
+                .SingleOrDefault(p => p.Party == id);
+        }
 
         private void InParam(SqlCommand sqlCommand, string paramName, object value, int size, SqlDbType sqlDbType)
         {
@@ -152,16 +152,9 @@ namespace ProjektArbete.Models
             sqlCommand.Parameters.Add(startDateParam);
         }
 
-        public PartyVM GetPartyPercentage(string id)
+        internal PersonVM[] GetOnePerson(string intressent_id)
         {
-
-            return TestData.listOfPartyData
-                .SingleOrDefault(p => p.Party == id);
-        }
-
-        internal PersonVM[] GetAllPersons(string intressent_id)
-        {
-            List<PersonVM> listOfPersonVM = new List<PersonVM>(); 
+            List<PersonVM> listOfPersonVM = new List<PersonVM>();
             try
             {
                 sqlConnection.Open();
@@ -183,7 +176,7 @@ namespace ProjektArbete.Models
                     personVM.Constituency = (string)sqlDataReader["valkrets"];
                     personVM.Vote = (string)sqlDataReader["rost"];
                     personVM.ParliamentaryYear = (string)sqlDataReader["rm"];
-                    personVM.Abscense = (decimal)sqlDataReader["Procent"]; 
+                    personVM.Abscense = (decimal)sqlDataReader["Procent"];
                     listOfPersonVM.Add(personVM);
                 }
             }
@@ -193,15 +186,19 @@ namespace ProjektArbete.Models
             }
             return listOfPersonVM.ToArray();
         }
-        //internal PersonVM[] GetAllPersons()
+
+        //public PersonVM[] GetFirstochDefaultIntressent_Id()
         //{
-        //    return TestData.listOfPerson.ToArray();
-        //    //return TestData.GetPersons();
+        //    //GetAllPersons();
+        //    //PersonVM personVM = new PersonVM();
+        //    //listOfPersons.FirstOrDefault
+        //    //listOfPersons.Add(personVM);
+        //    //return listOfPersons.ToArray();
         //}
 
-        internal IndexVM[] GetAllPartyPercentageTemp()
-        {
-            return TestData.listOfPartyPercentageTemp.ToArray();
-        }
+        //internal IndexVM[] GetAllPartyPercentageTemp()
+        //{
+        //    return TestData.listOfPartyPercentageTemp.ToArray();
+        //}
     }
 }
