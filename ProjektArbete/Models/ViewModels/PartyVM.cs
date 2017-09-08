@@ -11,6 +11,7 @@ namespace ProjektArbete.Models.ViewModels
         public string Party { get; set; }
         public Vote Vote { get; set; }
     }
+
     public class Vote
     {
         public int Yes { get; set; }

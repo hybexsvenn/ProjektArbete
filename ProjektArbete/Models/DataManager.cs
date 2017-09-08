@@ -82,6 +82,9 @@ namespace ProjektArbete.Models
             }
             return listOfIndexVm.ToArray();
         }
+<<<<<<< HEAD
+        
+=======
 
         List<PersonVM> listOfPersons = new List<PersonVM>();
         public PersonVM[] GetAllPersons()
@@ -141,6 +144,7 @@ namespace ProjektArbete.Models
         //    //return listOfPersons.ToArray();
         //}
 
+>>>>>>> ae1a10ed556b93143138e0803c18afa1df39aa3a
         private void InParam(SqlCommand sqlCommand, string paramName, object value, int size, SqlDbType sqlDbType)
         {
             SqlParameter startDateParam = new SqlParameter();
@@ -159,11 +163,48 @@ namespace ProjektArbete.Models
                 .SingleOrDefault(p => p.Party == id);
         }
 
+<<<<<<< HEAD
+        internal PersonVM[] GetAllPersons(string intressent_id)
+        {
+            List<PersonVM> listOfPersonVM = new List<PersonVM>(); 
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.CommandText = "GetDataPerson";
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Connection = sqlConnection;
+
+                InParam(sqlCommand, "@intressent_id", intressent_id, 20, SqlDbType.NVarChar);
+
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                while (sqlDataReader.Read())
+                {
+                    PersonVM personVM = new PersonVM();
+                    personVM.Id = (string)sqlDataReader["intressent_id"];
+                    personVM.FirstName = (string)sqlDataReader["fornamn"];
+                    personVM.LastName = (string)sqlDataReader["efternamn"];
+                    personVM.Party = (string)sqlDataReader["parti"];
+                    personVM.Constituency = (string)sqlDataReader["valkrets"];
+                    personVM.Vote = (string)sqlDataReader["rost"];
+                    personVM.ParliamentaryYear = (string)sqlDataReader["rm"];
+                    personVM.Abscense = (decimal)sqlDataReader["Procent"]; 
+                    listOfPersonVM.Add(personVM);
+                }
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return listOfPersonVM.ToArray();
+        }
+=======
         //internal PersonVM[] GetAllPersons()
         //{
         //    return TestData.listOfPerson.ToArray();
         //    //return TestData.GetPersons();
         //}
+>>>>>>> ae1a10ed556b93143138e0803c18afa1df39aa3a
 
         internal IndexVM[] GetAllPartyPercentageTemp()
         {
