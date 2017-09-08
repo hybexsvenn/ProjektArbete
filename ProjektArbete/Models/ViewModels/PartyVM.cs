@@ -9,7 +9,10 @@ namespace ProjektArbete.Models.ViewModels
     public class PartyVM
     {
         public string Party { get; set; }
-        public Vote Vote { get; set; }
+        public string Vote { get; set; }
+        public decimal PercentageAbsence { get; set; }
+        public string Year { get; set; }
+
     }
 
     public class Vote

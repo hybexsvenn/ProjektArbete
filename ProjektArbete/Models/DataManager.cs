@@ -19,6 +19,38 @@ namespace ProjektArbete.Models
             sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
 
+        internal PartyVM[] GetOneParty(string id)
+        {
+            List<PartyVM> listOfparty = new List<PartyVM>();
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.CommandText = "GetDataParti";
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Connection = sqlConnection;
+
+                InParam(sqlCommand, "@parti", id, 5, SqlDbType.NVarChar);
+
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                while (sqlDataReader.Read())
+                {
+                    PartyVM party = new PartyVM();
+                    party.Party = (string)sqlDataReader["parti"];
+                    party.Vote = (string)sqlDataReader["rost"];
+                    party.Year = (string)sqlDataReader["rm"];
+                    party.PercentageAbsence = (decimal)sqlDataReader["Procent"];
+                    listOfparty.Add(party);
+                }
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return listOfparty.ToArray();
+
+        }
+
 
         // string conString = @"Data Source=ACADEMY-7115T1S;Initial Catalog=ProjectFreedom;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 

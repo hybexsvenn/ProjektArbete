@@ -46,14 +46,14 @@ namespace ProjektArbete.Models
 
         public static List<PartyVM> listOfPartyData = new List<PartyVM>
         {
-            new PartyVM {Party = "V", Vote = new Vote {Yes = 50, No = 3, Abscense = 4, Refrain = 4 } },
-            new PartyVM {Party = "S", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
-            new PartyVM {Party = "MP", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
-            new PartyVM {Party = "C", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
-            new PartyVM {Party = "L", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
-            new PartyVM {Party = "KD", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
-            new PartyVM {Party = "M", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
-            new PartyVM {Party = "SD", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+            //new PartyVM {Party = "V", Vote = new Vote {Yes = 50, No = 3, Abscense = 4, Refrain = 4 } },
+            //new PartyVM {Party = "S", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+            //new PartyVM {Party = "MP", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+            //new PartyVM {Party = "C", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+            //new PartyVM {Party = "L", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+            //new PartyVM {Party = "KD", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+            //new PartyVM {Party = "M", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
+            //new PartyVM {Party = "SD", Vote = new Vote {Yes = 5, No = 3, Abscense = 4, Refrain = 4 } },
         };
     }
 }

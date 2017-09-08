@@ -34,9 +34,9 @@ namespace ProjektArbete.Controllers
             return dataManager.GetOnePerson(id);
         }
 
-        public PartyVM Party(string id)
+        public PartyVM[] Party(string id)
         {
-            return dataManager.GetPartyPercentage(id);
+            return dataManager.GetOneParty(id);
         }
 
         public IActionResult Constituency()
