@@ -6,18 +6,6 @@ using System.Threading.Tasks;
 
 namespace ProjektArbete.Models.ViewModels
 {
-    public enum Party
-    {
-        V,
-        S,
-        MP,
-        L,
-        M,
-        SD,
-        KD,
-        C,
-        FP
-    }
 
     public class PersonVM
     {
@@ -27,9 +15,10 @@ namespace ProjektArbete.Models.ViewModels
         public string Party { get; set; }
         public string Constituency { get; set; }
         public string ConstituencyNumber { get; set; }
-        public int Abscense { get; set; }
+        public decimal Abscense { get; set; }
+        public string Vote { get; set; }
         public string ParliamentaryYear { get; set; }
         public string Status { get; set; }
-
+        
     }
 }

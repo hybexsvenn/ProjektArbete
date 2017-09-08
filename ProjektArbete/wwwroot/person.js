@@ -1,9 +1,4 @@
-﻿//$(document).ready(function () {
-//    foo();
-//});
-var myArr;
-
-//$(document).ready(
+﻿var myArr;
 function foo() {
     $.ajax({
         url: "/Api/Person",
@@ -13,13 +8,14 @@ function foo() {
         success: function (p) {
             var getName = [];
 
-            for (var i = 0; i < 3; i++) {
-                //getName = p[i].firstName + " " + getName;
-                getName.push(p[i].firstName);
-            }
+            for (var i = 0; i < p.length; i++) {
+                getName.push({
+                    person:
+                    (p[i].firstName + " " + p[i].lastName + " [" + p[i].party.toUpperCase() + "]"),
+                    Id: p[i].id
+                });
 
-            //console.log(getName);
-            //getName.split(" ");
+            }
 
             myArr = getName;
             console.log(getName);
@@ -27,26 +23,24 @@ function foo() {
     });
 }
 
-//foo();
-//});
+function selectedPerson(id) {
+    console.log(id);
+};
+
 
 app.controller("testController", function ($scope) {
 
-    //console.log(myArr);
-    //while (myArr === undefined) {
-
-        if (myArr === undefined) {
-            console.log(myArr);
-            foo();
-            //$scope.listOftodo = myArr;
-        }
-        else {
-            $scope.listOfSearch = myArr;
-            $scope.search = "";
-        }
-    //}
+    if (myArr === undefined) {
+        console.log(myArr);
+        foo();
+    }
+    else {
         $scope.listOfSearch = myArr;
+        $scope.search = "";
+    }
+    $scope.listOfSearch = myArr;
     $scope.search = "";
+
 
 });
 

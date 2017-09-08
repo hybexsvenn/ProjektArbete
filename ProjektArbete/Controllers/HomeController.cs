@@ -10,15 +10,25 @@ namespace ProjektArbete.Controllers
 {
     public class HomeController : Controller
     {
+        //DataManager dataManager;
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Person()
+        public IActionResult Person(PersonVM[] viewModel)
         {
-            return View(TestData.GetPersons());
+            List<PersonVM> listOfPerson = new List<PersonVM>
+            {
+                new PersonVM { Id = "1", FirstName = "Mikael", LastName = "Svenn", Constituency = "Trollhättan", ConstituencyNumber = "2", ParliamentaryYear = "2016/2017", Party = "V", Status = "Upptagen", Abscense = 3, Vote="Ja" },
+                new PersonVM { Id = "2", FirstName = "Mikael", LastName = "Svenn", Constituency = "Trollhättan", ConstituencyNumber = "2", ParliamentaryYear = "2016/2017", Party = "V", Status = "Upptagen", Abscense = 3, Vote="Ja" },
+
+            };
+            viewModel = listOfPerson.ToArray();
+            return View(viewModel);
         }
+
 
         public IActionResult Party()
         {
