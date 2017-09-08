@@ -9,14 +9,14 @@
 </div>
 
     <div id="divPersonCanvas" ng-show="showPersonBarChart">
-        <h1>HEj</h1>
-        @*<canvas id="pieJChart" width="400" height="200"></canvas>*@
+        
+        <canvas id="pieJChart" width="400" height="200"></canvas>
     </div>
 
 <br /><br />
 <ul class="dropDownContent">
     <li ng-repeat="item in listOfSearch | filter: search track by $index">
-        <a  onclick="chartChoosenPerson(item.Id)" @*href="/home/Person/{{item.Id}}"*@ ng-click="selectedPerson(item.Id)">{{item.person}}</a>
+        <p ng-click="selectedPerson(item.Id)">{{item.person}}</p>
     </li>
 </ul>
 
