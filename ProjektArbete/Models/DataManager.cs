@@ -82,13 +82,10 @@ namespace ProjektArbete.Models
             }
             return listOfIndexVm.ToArray();
         }
-<<<<<<< HEAD
-        
-=======
 
-        List<PersonVM> listOfPersons = new List<PersonVM>();
         public PersonVM[] GetAllPersons()
         {
+        List<PersonVM> listOfPersons = new List<PersonVM>();
             try
             {
                 sqlConnection.Open();
@@ -146,7 +143,6 @@ namespace ProjektArbete.Models
         //    //return listOfPersons.ToArray();
         //}
 
->>>>>>> ae1a10ed556b93143138e0803c18afa1df39aa3a
         private void InParam(SqlCommand sqlCommand, string paramName, object value, int size, SqlDbType sqlDbType)
         {
             SqlParameter startDateParam = new SqlParameter();
@@ -165,7 +161,6 @@ namespace ProjektArbete.Models
                 .SingleOrDefault(p => p.Party == id);
         }
 
-<<<<<<< HEAD
         internal PersonVM[] GetAllPersons(string intressent_id)
         {
             List<PersonVM> listOfPersonVM = new List<PersonVM>(); 
@@ -200,13 +195,11 @@ namespace ProjektArbete.Models
             }
             return listOfPersonVM.ToArray();
         }
-=======
         //internal PersonVM[] GetAllPersons()
         //{
         //    return TestData.listOfPerson.ToArray();
         //    //return TestData.GetPersons();
         //}
->>>>>>> ae1a10ed556b93143138e0803c18afa1df39aa3a
 
         internal IndexVM[] GetAllPartyPercentageTemp()
         {
