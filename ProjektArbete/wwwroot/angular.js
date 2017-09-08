@@ -1,5 +1,4 @@
 ﻿var app = angular.module("myApp", []);
-//var navApp = angular.module("myApp", []);
 
 app.controller("testController", function ($scope) {
     $scope.testValue = 'Hej yada';
@@ -10,7 +9,7 @@ app.controller("testController", function ($scope) {
     };
     $scope.loadPartyData = function (id) {
         $scope.showPartyBarChart = true;
-        $scope.value = chartChoosenParty(id);
+        chartChoosenParty(id);
     };
 
     $scope.showPer = false;
@@ -18,15 +17,13 @@ app.controller("testController", function ($scope) {
     $scope.showPerson = function () {
         $scope.showPer = !$scope.showPer;
     };
+
+
 });
 
 
 
 
-//navApp.controller("navController", function ($scope) {
-
-
-//});
 
 
 
