@@ -32,6 +32,7 @@ var chartChoosenPerson = function (id) {
         type: 'GET',
         dataType: 'json',
         success: function (r) {
+            console.log(r);
             var thisParty = r;
             $('#pieJChart').remove();
             $('#divPersonCanvas').append('<canvas id="pieJChart" width="400" height="200"></canvas>');
@@ -44,7 +45,7 @@ var chartChoosenPerson = function (id) {
                         {
                             label: "Population (millions)",
                             backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9"],
-                            data: [thisParty.vote.yes, thisParty.vote.no, thisParty.vote.refrain, thisParty.vote.abscense]
+                            data: [12, 13, 14, 15]
                         }
                     ]
                 },
