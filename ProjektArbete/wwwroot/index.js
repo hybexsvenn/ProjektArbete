@@ -15,7 +15,7 @@ $(document).ready(function () {
 
                 }
                 else {
-                    re[i].year = re[i].year.substring(0, re[i].year.length - 3)
+                    re[i].year = re[i].year.substring(0, re[i].year.length - 3);
                     r.push(re[i]);
                 }
             }
@@ -71,6 +71,7 @@ function GetProcentByParty(ret) {
         }
     }
 }
+
 function ifExist(inValu) {
     if (listofPartForX.length === 0) {
         return false;
