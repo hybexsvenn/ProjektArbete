@@ -16,7 +16,7 @@
 <br /><br />
 <ul class="dropDownContent">
     <li ng-repeat="item in listOfSearch | filter: search track by $index">
-        <a href="/Home/Person/{{item.Id}}" ng-click="selectedPerson(item.Id)">{{item.person}}</a>
+        <a  onclick="chartChoosenPerson(item.Id)" @*href="/home/Person/{{item.Id}}"*@ ng-click="selectedPerson(item.Id)">{{item.person}}</a>
     </li>
 </ul>
 
