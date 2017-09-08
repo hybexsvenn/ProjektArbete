@@ -57,18 +57,14 @@ namespace ProjektArbete.Models
 
         public IndexVM[] GetAllPartyPercentage()
         {
-            //var fi = id.Split(";");
-
             List<IndexVM> listOfIndexVm = new List<IndexVM>();
             try
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.CommandText = "select * from Partiprocent";
+                sqlCommand.CommandText = "select * from PartiProcent";
                 sqlCommand.CommandType = CommandType.Text;
                 sqlCommand.Connection = sqlConnection;
-                // sqlCommand.CommandTimeout = 90;
-
 
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                 while (sqlDataReader.Read())
@@ -87,7 +83,65 @@ namespace ProjektArbete.Models
             return listOfIndexVm.ToArray();
         }
 
+        List<PersonVM> listOfPersons = new List<PersonVM>();
+        public PersonVM[] GetAllPersons()
+        {
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.CommandText = "select * from Personprocent";
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.Connection = sqlConnection;
+                // sqlCommand.CommandTimeout = 90;
 
+
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                while (sqlDataReader.Read())
+                {
+                    PersonVM personVM = new PersonVM();
+                    personVM.Id = (string)sqlDataReader["intressent_id"];
+                    personVM.FirstName = (string)sqlDataReader["fornamn"];
+                    personVM.LastName = (string)sqlDataReader["efternamn"];
+                    personVM.Party = (string)sqlDataReader["parti"];
+                    personVM.ParliamentaryYear = (string)sqlDataReader["rm"];
+                    personVM.Constituency = (string)sqlDataReader["valkrets"];
+                    personVM.Abscense = (decimal)sqlDataReader["Procent"];
+                    personVM.Vote = (string)sqlDataReader["rost"];
+
+                    var x = listOfPersons.FirstOrDefault(c => c.Id == personVM.Id);
+
+                    if (x == null)
+                    {
+                        listOfPersons.Add(personVM);
+                    }
+                    else
+                    {
+
+                        if (personVM.Id != x.Id)
+                        {
+                            listOfPersons.Add(personVM);
+
+                        }
+                    }
+                }
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+
+            return listOfPersons.ToArray();
+        }
+
+        //public PersonVM[] GetFirstochDefaultIntressent_Id()
+        //{
+        //    //GetAllPersons();
+        //    //PersonVM personVM = new PersonVM();
+        //    //listOfPersons.FirstOrDefault
+        //    //listOfPersons.Add(personVM);
+        //    //return listOfPersons.ToArray();
+        //}
 
         private void InParam(SqlCommand sqlCommand, string paramName, object value, int size, SqlDbType sqlDbType)
         {
@@ -107,11 +161,11 @@ namespace ProjektArbete.Models
                 .SingleOrDefault(p => p.Party == id);
         }
 
-        internal PersonVM[] GetAllPersons()
-        {
-            return TestData.listOfPerson.ToArray();
-            //return TestData.GetPersons();
-        }
+        //internal PersonVM[] GetAllPersons()
+        //{
+        //    return TestData.listOfPerson.ToArray();
+        //    //return TestData.GetPersons();
+        //}
 
         internal IndexVM[] GetAllPartyPercentageTemp()
         {

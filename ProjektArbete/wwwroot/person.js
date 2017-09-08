@@ -13,9 +13,9 @@ function foo() {
         success: function (p) {
             var getName = [];
 
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < p.length; i++) {
                 //getName = p[i].firstName + " " + getName;
-                getName.push(p[i].firstName);
+                getName.push(p[i].firstName + " " + p[i].lastName + " [" + p[i].party.toUpperCase() + "]");
             }
 
             //console.log(getName);

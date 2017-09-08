@@ -10,6 +10,8 @@ namespace ProjektArbete.Controllers
 {
     public class HomeController : Controller
     {
+        //DataManager dataManager;
+
         public IActionResult Index()
         {
             return View();
@@ -17,7 +19,7 @@ namespace ProjektArbete.Controllers
 
         public IActionResult Person()
         {
-            return View(TestData.GetPersons());
+            return View();
         }
 
         public IActionResult Party()
