@@ -48,3 +48,26 @@ function functiontofindIndexByKeyValue(arraytosearch, key, valuetosearch) {
     }
     return null;
 }
+
+// Pontus funktion för att fulla partinamn baserat på deras initialer
+
+function GetFullPartyName(key) {
+    key = key.toUpperCase();
+    if (key === "S") {
+        return "Socialdemokraterna";
+    } else if (key === "V") {
+        return "Vänsterpartiet";
+    } else if (key === "MP") {
+        return "Miljöpartiet";
+    } else if (key === "C") {
+        return "Centerpartiet";
+    } else if (key === "L") {
+        return "Liberalerna";
+    } else if (key === "M") {
+        return "Moderaterna";
+    } else if (key === "KD") {
+        return "Kristdemokraterna";
+    } else if (key === "SD") {
+        return "Sverigedemokraterna";
+    } 
+}

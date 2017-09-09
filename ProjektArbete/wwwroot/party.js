@@ -37,7 +37,7 @@
                 options: {
                     title: {
                         display: true,
-                        text: r[0].party + ' röstning'
+                        text: GetFullPartyName(r[0].party) + 's röstning'
                     }
                 }
             });
