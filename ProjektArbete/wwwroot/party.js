@@ -5,7 +5,7 @@
         dataType: 'json',
         success: function (r) {
             for (var i = 0; i < r.length; i++) {
-                if (ifExist(r[i].vote)) {
+                if (ifExist(r[i].vote, listofPartForX , "rost")) {
                     var a = functiontofindIndexByKeyValue(listofPartForX, "rost", r[i].vote);
                     var t = listofPartForX[a].pro;
                     listofPartForX[a].pro = ((t + r[i].percentageAbsence) / 2)
@@ -46,26 +46,3 @@
 };
 
 var listofPartForX = [];
-
-function ifExist(inValu) {
-    if (listofPartForX.length === 0) {
-        return false;
-    }
-    else {
-        for (var i = 0; i < listofPartForX.length; i++) {
-            if (inValu === listofPartForX[i].rost) { return true; }
-        }
-        return false;
-    }
-}
-
-function functiontofindIndexByKeyValue(arraytosearch, key, valuetosearch) {
-
-    for (var i = 0; i < arraytosearch.length; i++) {
-
-        if (arraytosearch[i][key] === valuetosearch) {
-            return i;
-        }
-    }
-    return null;
-}

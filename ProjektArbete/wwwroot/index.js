@@ -2,7 +2,7 @@
 var sliderStart;
 var sliderEnd;
 var listOfPartbetweenStartAndEndYear = [];
-var listofPartForX = [];
+var listofPartForX;
 
 $(document).ready(function () {
     $.ajax({
@@ -10,6 +10,7 @@ $(document).ready(function () {
         type: 'GET',
         dataType: 'json',
         success: function (re) {
+            listofPartForX = [];
             for (var i = 0; i < re.length; i++) {
                 if (re[i].party === "-") {
 
@@ -47,21 +48,10 @@ function ByYear(start, end) {
     }
 }
 
-function functiontofindIndexByKeyValue(arraytosearch, key, valuetosearch) {
-
-    for (var i = 0; i < arraytosearch.length; i++) {
-
-        if (arraytosearch[i][key] == valuetosearch) {
-            return i;
-        }
-    }
-    return null;
-}
-
 function GetProcentByParty(ret) {
 
     for (var i = 0; i < ret.length; i++) {
-        if (ifExist(ret[i].party)) {
+        if (ifExist(ret[i].party, listofPartForX, "party")) {
             var a = functiontofindIndexByKeyValue(listofPartForX, "party", ret[i].party);
             var t = listofPartForX[a].partyA;
             listofPartForX[a].partyA = ((t + ret[i].percentageAbsence) / 2)
@@ -69,18 +59,6 @@ function GetProcentByParty(ret) {
         else {
             listofPartForX.push({ party: ret[i].party, partyA: ret[i].percentageAbsence });
         }
-    }
-}
-
-function ifExist(inValu) {
-    if (listofPartForX.length === 0) {
-        return false;
-    }
-    else {
-        for (var i = 0; i < listofPartForX.length; i++) {
-            if (inValu === listofPartForX[i].party) { return true; }
-        }
-        return false;
     }
 }
 
