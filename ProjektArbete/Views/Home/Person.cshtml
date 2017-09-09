@@ -15,7 +15,7 @@
 
 <br /><br />
 <ul class="dropDownContent">
-    <li ng-repeat="item in listOfSearch | filter: search track by $index">
+    <li ng-cloak ng-repeat="item in listOfSearch | filter: search track by $index">
         <p ng-click="selectedPerson(item.Id)">{{item.person}}</p>
     </li>
 </ul>
