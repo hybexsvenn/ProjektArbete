@@ -1,8 +1,8 @@
-﻿var r = [];
+﻿var r =[];
 var sliderStart;
 var sliderEnd;
 var listOfPartbetweenStartAndEndYear = [];
-var listofPartForX;
+var listofPartForX =[];
 
 $(document).ready(function () {
     $.ajax({
@@ -10,17 +10,10 @@ $(document).ready(function () {
         type: 'GET',
         dataType: 'json',
         success: function (re) {
-            listofPartForX = [];
             for (var i = 0; i < re.length; i++) {
-                if (re[i].party === "-") {
-
-                }
-                else {
-                    re[i].year = re[i].year.substring(0, re[i].year.length - 3);
-                    r.push(re[i]);
-                }
-            }
-            ByYear("2014", "2017");
+                if (re[i].party !== "-") {r.push(re[i]);}}
+            r = ChangeTheFormatOfYear(r, "year");
+            listOfPartbetweenStartAndEndYear = ByYear("2014", "2017", r, "year");
             GetProcentByParty(listOfPartbetweenStartAndEndYear);
             GenerateChartIndex(listofPartForX);
         }
@@ -32,21 +25,13 @@ $(document).ready(function () {
     });
     $("body").mouseup(function () {
         if (temp === true) {
-            ByYear(sliderStart, sliderEnd);
+            listOfPartbetweenStartAndEndYear = ByYear(sliderStart, sliderEnd, r, "year");
             GetProcentByParty(listOfPartbetweenStartAndEndYear);
             GenerateChartIndex(listofPartForX);
             temp = false;
         }
     });
 });
-
-function ByYear(start, end) {
-    for (var i = 0; i < r.length; i++) {
-        if (r[i].year >= start && r[i].year <= end) {
-            listOfPartbetweenStartAndEndYear.push({ party: r[i].party, percentageAbsence: r[i].percentageAbsence })
-        }
-    }
-}
 
 function GetProcentByParty(ret) {
 
@@ -69,7 +54,7 @@ $(function () {
         max: 2017,
         values: [2013, 2015],
         slide: function (event, ui) {
-            $("#date").val(ui.values[0] + "/" + ((ui.values[0] % 100) + 1) + " - " + ui.values[1] + "/" + ((ui.values[1] % 100) + 1));         
+            $("#date").val(ChangeTheBackFormatOfYear(ui.values[0]) + " - " + ChangeTheBackFormatOfYear(ui.values[1]));         
             sliderStart = ui.values[0];
             sliderEnd = ui.values[1];
         }

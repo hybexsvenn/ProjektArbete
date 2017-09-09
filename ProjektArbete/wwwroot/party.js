@@ -15,10 +15,6 @@
                 }
             }
 
-
-            console.log(listofPartForX);
-            console.log(r);
-            var thisParty = r;
             $('#pieChart').remove();
             $('#divCanvas').append(' <canvas id="pieChart" width="400" height="200"></canvas>');
             var ctx = document.getElementById("pieChart");
