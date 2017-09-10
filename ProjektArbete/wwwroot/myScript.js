@@ -23,6 +23,12 @@ function fixNavBar() {
 //Används av index och party
 //Vid frågor, kontakta Pontus
 
+// Allmäna variabler
+
+var sliderStart;
+var sliderEnd;
+var listOfPartyVotes
+
 // Funktion för att kolla om ett värde finns i listan
 // Ut: true ifall värdet finns eller false om värdet inte finns
 function ifExist(valuetosearch, arraytosearch, key) {
@@ -121,3 +127,36 @@ function GetPersonFromDataRiksdagen(intresent_id) {
     p = p.personlista.person.bild_url_192;
     return p;
 }
+
+// Funktion för slider
+
+$(function () {
+    $("#slider-range").slider({
+        range: true,
+        min: 2003,
+        max: 2017,
+        values: [sliderStart, sliderEnd],
+        slide: function (event, ui) {
+            $("#date").val(ChangeTheBackFormatOfYear(ui.values[0]) + " - " + ChangeTheBackFormatOfYear(ui.values[1]));
+            sliderStart = ui.values[0];
+            sliderEnd = ui.values[1];
+        }
+    });
+
+    $("#slider-range").mousedown(function () {
+        $("#date").append("<span style='color:#00f;'>Mouse down.</span>");
+    });
+});
+
+$(document).ready(function () {
+    if (sliderStart === undefined) {
+        sliderStart = 2014;
+        sliderEnd = 2016;
+    }
+    $("#date").val(ChangeTheBackFormatOfYear(sliderStart) + " - " + ChangeTheBackFormatOfYear(sliderEnd));
+
+    var temp = false;
+    $("#slider-range").mousedown(function () {
+        temp = true;
+    });
+})

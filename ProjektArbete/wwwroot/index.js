@@ -1,6 +1,6 @@
 ﻿var r =[];
-var sliderStart;
-var sliderEnd;
+//var sliderStart;
+//var sliderEnd;
 var listOfPartbetweenStartAndEndYear = [];
 var listofPartForX =[];
 
@@ -18,7 +18,12 @@ $(document).ready(function () {
             GenerateChartIndex(listofPartForX);
         }
     });
-    $("#date").val("2014/15 - 2016/17");
+    if (sliderStart === undefined) {
+        sliderStart = 2014;
+        sliderEnd = 2016;
+    }
+    $("#date").val(ChangeTheBackFormatOfYear(sliderStart) + " - " + ChangeTheBackFormatOfYear(sliderEnd));
+
     var temp = false;
     $("#slider-range").mousedown(function () {
         temp = true;
@@ -47,23 +52,23 @@ function GetProcentByParty(ret) {
     }
 }
 
-$(function () {
-    $("#slider-range").slider({
-        range: true,
-        min: 2003,
-        max: 2017,
-        values: [2013, 2015],
-        slide: function (event, ui) {
-            $("#date").val(ChangeTheBackFormatOfYear(ui.values[0]) + " - " + ChangeTheBackFormatOfYear(ui.values[1]));         
-            sliderStart = ui.values[0];
-            sliderEnd = ui.values[1];
-        }
-    });
+//$(function () {
+//    $("#slider-range").slider({
+//        range: true,
+//        min: 2003,
+//        max: 2017,
+//        values: [2013, 2015],
+//        slide: function (event, ui) {
+//            $("#date").val(ChangeTheBackFormatOfYear(ui.values[0]) + " - " + ChangeTheBackFormatOfYear(ui.values[1]));         
+//            sliderStart = ui.values[0];
+//            sliderEnd = ui.values[1];
+//        }
+//    });
 
-    $("#slider-range").mousedown(function () {
-        $("#date").append("<span style='color:#00f;'>Mouse down.</span>");
-    });
-});
+//    $("#slider-range").mousedown(function () {
+//        $("#date").append("<span style='color:#00f;'>Mouse down.</span>");
+//    });
+//});
 
 function GenerateChartIndex(indata) {
      $('#myChart').remove();

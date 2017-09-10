@@ -1,9 +1,17 @@
 ﻿@{
     ViewBag.Title = "Parti";
 }
-<div class="logos">
+<div>
     <div id="divCanvas" ng-show="showPartyBarChart">
         <canvas id="pieChart" width="400" height="200"></canvas>
+    </div>
+    <div ng-show="showPartyBarChart">
+        <p>
+            <label for="date">Mellan:</label>
+            <input type="text" id="date" readonly style="border:0; color:#f6931f; font-weight:bold;">
+        </p>
+
+        <div id="slider-range"></div>
     </div>
     <div class="logos">
         <ul>
