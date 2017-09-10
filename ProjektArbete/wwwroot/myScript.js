@@ -102,3 +102,22 @@ function ByYear(start, end, array, key) {
     }
     return newArray;
 }
+
+// Funktion för att hämta api information från riksdagens hemsida
+// Ut: arraye med propar
+
+
+var p;
+function GetPersonFromDataRiksdagen(intresent_id) {
+    $.ajax({
+        url: "http://data.riksdagen.se/personlista/?iid=" + intresent_id + "&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&termlista=",
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        success: function (pp) {
+            p = pp;
+        }
+    });
+    p = p.personlista.person.bild_url_192;
+    return p;
+}

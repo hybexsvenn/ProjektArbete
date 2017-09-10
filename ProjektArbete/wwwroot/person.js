@@ -27,6 +27,7 @@ function foo() {
 
 
 var chartChoosenPerson = function (id) {
+    GetPicture(id);
     $.ajax({
         url: "/Api/Party/V",
         type: 'GET',
@@ -78,6 +79,14 @@ app.controller("testController", function ($scope) {
     }
 
 });
+
+// funktion för att få bild med hjälp av intressent id
+function GetPicture(id) {
+    var pictureIt = GetPersonFromDataRiksdagen(id);
+    $('#theImg').remove();
+    $('#forImg').append('<img id="theImg"; src="' + pictureIt + '" alt="" style="width:200px;height:200px;">');
+}
+
 
 //$(document).ready(function () {
 //    $.ajax({
