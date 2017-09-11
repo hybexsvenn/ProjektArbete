@@ -6,10 +6,21 @@
 /*.navbar {
 }*/
 
-#yada {
+#wrapper{
+    margin-top:10px;
+}
+
+.yada {
     background-color: #ffffff;
     border-radius: 30px;
 }
+
+.contH1 {
+     
+    font-family: Times New Roman, Times, serif;
+    font-size:60px;
+}
+
 .marginFooter{
     margin:15px;
 }

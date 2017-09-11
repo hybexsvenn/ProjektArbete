@@ -68,7 +68,7 @@ $(document).ready(function () {
             temp = false;
         }
     });
-})
+});
 
 function CountingTogether(r) {
     listofPartForX = [];
@@ -83,7 +83,7 @@ function CountingTogether(r) {
             listofPartForX.push({ rost: r[i].vote, pro: r[i].abscense, divNum: 1 });
         }
     }
-    for (var i = 0; i < listofPartForX.length; i++) {
+    for (i = 0; i < listofPartForX.length; i++) {
         listofPartForX[i].pro = listofPartForX[i].pro / listofPartForX[i].divNum;
     }
 }
