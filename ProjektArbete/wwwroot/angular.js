@@ -12,7 +12,7 @@ app.controller("testController", function ($scope) {
         chartChoosenParty(id);
     };
 
-    $scope.showPer = false;
+    $scope.showPer = true;
 
     $scope.showPerson = function () {
         $scope.showPer = !$scope.showPer;

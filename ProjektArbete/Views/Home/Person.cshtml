@@ -1,7 +1,6 @@
 ﻿@model PersonVM[]
-<div id="forImg">
-    <img id="theImg" />
-</div>
+
+
 
 <div class="input-group">
     <input ng-model="search" type="text" class="form-control" placeholder="Sök politiker...">
@@ -10,19 +9,28 @@
             <i class="glyphicon glyphicon-search"></i>
         </button>
     </div>
-</div>
 
+</div>
+<div id="rightContent" class="col-sm-6">
+    <div id="forImg">
+        <img id="theImg" />
+    </div>
+</div>
+<div id="leftContent" class="col-sm-6">
     <div id="divPersonCanvas" ng-show="showPersonBarChart">
-        
         <canvas id="pieJChart" width="400" height="200"></canvas>
     </div>
+</div>
 
 <br /><br />
+    
+
 <ul class="dropDownContent">
     <li ng-cloak ng-repeat="item in listOfSearch | filter: search track by $index">
-        <p ng-click="selectedPerson(item.Id)">{{item.person}}</p>
+        <p ng-click="selectedPerson(item.Id); showPerson()">{{item.person}}</p>
     </li>
 </ul>
+
 
 
 
