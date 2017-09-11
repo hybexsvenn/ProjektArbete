@@ -1,5 +1,5 @@
 ﻿var listofPartForX = [];
-var r;
+var ret;
 
 var chartChoosenParty = function (id) {
     $.ajax({
@@ -8,8 +8,8 @@ var chartChoosenParty = function (id) {
         async: false,
         dataType: 'json',
         success: function (re) {
-            r = ChangeTheFormatOfYear(re, "year");
-            listOfPartyVotes = ByYear("2014", "2017", r, "year");
+            ret = ChangeTheFormatOfYear(re, "year");
+            listOfPartyVotes = ByYear("2014", "2017", ret, "year");
             CountingTogether(listOfPartyVotes)
         }
     });
@@ -17,21 +17,27 @@ var chartChoosenParty = function (id) {
 };
 
 function CountingTogether(r) {
+    listofPartForX = [];
     for (var i = 0; i < r.length; i++) {
         if (ifExist(r[i].vote, listofPartForX, "rost")) {
             var a = functiontofindIndexByKeyValue(listofPartForX, "rost", r[i].vote);
             var t = listofPartForX[a].pro;
-            listofPartForX[a].pro = ((t + r[i].percentageAbsence) / 2)
+            listofPartForX[a].pro = t + r[i].percentageAbsence;
+            listofPartForX[a].divNum += 1;
         }
         else {
-            listofPartForX.push({ rost: r[i].vote, pro: r[i].percentageAbsence });
+            listofPartForX.push({ rost: r[i].vote, pro: r[i].percentageAbsence, divNum:  1});
         }
+    }
+    for (var i = 0; i < listofPartForX.length; i++) {
+        listofPartForX[i].pro = listofPartForX[i].pro / listofPartForX[i].divNum;
     }
 }
 
 
 function GenerateChartParty(ar) {
-    console.log(ar);
+    console.log(sliderStart);
+    console.log(sliderEnd);
     $('#pieChart').remove();
     $('#divCanvas').append(' <canvas id="pieChart" width="400" height="200"></canvas>');
     var ctx = document.getElementById("pieChart");
@@ -50,7 +56,7 @@ function GenerateChartParty(ar) {
         options: {
             title: {
                 display: true,
-                text: GetFullPartyName(r[0].party) + 's röstning'
+                text: GetFullPartyName(ret[0].party) + 's röstning'
             }
         }
     });
@@ -70,7 +76,7 @@ $(document).ready(function () {
     });
     $("body").mouseup(function () {
         if (temp === true) {
-            listOfPartyVotes = ByYear(sliderStart, sliderEnd, r, "year");
+            listOfPartyVotes = ByYear(sliderStart, sliderEnd, ret, "year");
             CountingTogether(listOfPartyVotes)
             GenerateChartParty(listofPartForX);
             temp = false;
