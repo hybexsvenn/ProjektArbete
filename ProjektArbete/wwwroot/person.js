@@ -76,6 +76,8 @@ app.controller("testController", function ($scope) {
     $scope.selectedPerson = function (id) {
         $scope.showPersonBarChart = true;
         chartChoosenPerson(id);
+        $scope.searchBar = false;
+
     }
 
     $scope.change = function (search) {
