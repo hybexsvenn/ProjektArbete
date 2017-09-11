@@ -43,7 +43,7 @@ function GenerateChartParty(ar) {
                 {
                     label: "Population (millions)",
                     backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9"],
-                    data: [ar[0].pro, ar[1].pro, ar[2].pro, ar[3].pro]
+                    data: [ar[0].pro.toFixed(2), ar[1].pro.toFixed(2), ar[2].pro.toFixed(2), ar[3].pro.toFixed(2)]
                 }
             ]
         },

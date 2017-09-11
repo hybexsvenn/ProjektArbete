@@ -80,7 +80,7 @@ function GenerateChartIndex(indata) {
             labels: [indata[0].party, indata[1].party, indata[2].party, indata[3].party, indata[4].party, indata[5].party, indata[6].party, indata[7].party],
             datasets: [{
                 label: 'Närvaro',
-                data: [100 - indata[0].partyA, 100 - indata[1].partyA, 100 - indata[2].partyA, 100 - indata[3].partyA, 100 - indata[4].partyA, 100 - indata[5].partyA, 100 - indata[6].partyA, 100 - indata[7].partyA],
+                data: [(100 - indata[0].partyA).toFixed(2), (100 - indata[1].partyA).toFixed(2), (100 - indata[2].partyA).toFixed(2), (100 - indata[3].partyA).toFixed(2), (100 - indata[4].partyA).toFixed(2), (100 - indata[5].partyA).toFixed(2), (100 - indata[6].partyA).toFixed(2), (100 - indata[7].partyA).toFixed(2)],
                 backgroundColor: [
                     'rgba(237, 28, 36, 0.8)',
                     'rgba(237, 27, 52, 0.8)',
