@@ -78,6 +78,13 @@ app.controller("testController", function ($scope) {
         chartChoosenPerson(id);
     }
 
+    $scope.change = function (search) {
+        if (search.length > 1) {
+            $scope.searchBar = true;
+        } else {
+            $scope.searchBar = false;
+        }
+    };
 });
 
 // funktion för att få bild med hjälp av intressent id
