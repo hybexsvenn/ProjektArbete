@@ -160,3 +160,12 @@ $(document).ready(function () {
         temp = true;
     });
 })
+
+// Funktion för att kunna vissa grafer där inte alla värden finns
+
+function ReturnNull(input) {
+    if (input === undefined) {
+        return null;
+    }
+    return input;
+}
