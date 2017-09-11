@@ -123,7 +123,7 @@ namespace ProjektArbete.Models
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.CommandText = "select * from Personprocent";
+                sqlCommand.CommandText = "select intressent_id,fornamn,efternamn,parti from Personprocent";
                 sqlCommand.CommandType = CommandType.Text;
                 sqlCommand.Connection = sqlConnection;
 
@@ -135,10 +135,6 @@ namespace ProjektArbete.Models
                     personVM.FirstName = (string)sqlDataReader["fornamn"];
                     personVM.LastName = (string)sqlDataReader["efternamn"];
                     personVM.Party = (string)sqlDataReader["parti"];
-                    personVM.ParliamentaryYear = (string)sqlDataReader["rm"];
-                    personVM.Constituency = (string)sqlDataReader["valkrets"];
-                    personVM.Abscense = (decimal)sqlDataReader["Procent"];
-                    personVM.Vote = (string)sqlDataReader["rost"];
 
                     var x = listOfPersons.FirstOrDefault(c => c.Id == personVM.Id);
 
