@@ -45,10 +45,12 @@ function GenerateChartParty(ar) {
         type: 'doughnut',
         data: {
             labels: [ar[0].rost, ar[1].rost, ar[2].rost, ar[3].rost],
+            //labels: [ar[0].rost, ar[1].rost, ar[2].rost, ar[3].rost],
             datasets: [
                 {
                     label: "Population (millions)",
-                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9"],
+                    //backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9"],
+                    backgroundColor: ["#FFBC50", "#572B65", "#41B24E", "#B23933"],
                     data: [ar[0].pro.toFixed(2), ar[1].pro.toFixed(2), ar[2].pro.toFixed(2), ar[3].pro.toFixed(2)]
                 }
             ]

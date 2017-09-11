@@ -147,7 +147,7 @@ namespace ProjektArbete.Models
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.CommandText = "select * from PartiProcent";
+                sqlCommand.CommandText = "select * from partiprocent order by(case parti when 'v' then 1 when 's' then 2 when 'mp' then 3 when 'c' then 4 when 'l' then 5 when 'kd' then 6 when 'm' then 7 when 'sd' then 8 else 100 end)";
                 sqlCommand.CommandType = CommandType.Text;
                 sqlCommand.Connection = sqlConnection;
 

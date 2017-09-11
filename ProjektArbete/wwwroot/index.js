@@ -1,8 +1,8 @@
-﻿var r =[];
+﻿var r = [];
 //var sliderStart;
 //var sliderEnd;
 var listOfPartbetweenStartAndEndYear = [];
-var listofPartForX =[];
+var listofPartForX = [];
 
 $(document).ready(function () {
     $.ajax({
@@ -11,7 +11,8 @@ $(document).ready(function () {
         dataType: 'json',
         success: function (re) {
             for (var i = 0; i < re.length; i++) {
-                if (re[i].party !== "-") {r.push(re[i]);}}
+                if (re[i].party !== "-") { r.push(re[i]); }
+            }
             r = ChangeTheFormatOfYear(r, "year");
             listOfPartbetweenStartAndEndYear = ByYear("2014", "2017", r, "year");
             GetProcentByParty(listOfPartbetweenStartAndEndYear);
@@ -44,7 +45,7 @@ function GetProcentByParty(ret) {
         if (ifExist(ret[i].party, listofPartForX, "party")) {
             var a = functiontofindIndexByKeyValue(listofPartForX, "party", ret[i].party);
             var t = listofPartForX[a].partyA;
-            listofPartForX[a].partyA = ((t + ret[i].percentageAbsence) / 2)
+            listofPartForX[a].partyA = (t + ret[i].percentageAbsence) / 2;
         }
         else {
             listofPartForX.push({ party: ret[i].party, partyA: ret[i].percentageAbsence });
@@ -71,8 +72,8 @@ function GetProcentByParty(ret) {
 //});
 
 function GenerateChartIndex(indata) {
-     $('#myChart').remove();
-     $('#indexDivCanvas').append(' <canvas id="myChart" width="400" height="200"></canvas>');
+    $('#myChart').remove();
+    $('#indexDivCanvas').append(' <canvas id="myChart" width="400" height="200"></canvas>');
     var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -108,11 +109,11 @@ function GenerateChartIndex(indata) {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        max: 100
                     }
                 }]
             }
         }
     });
 }
-  
