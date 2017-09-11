@@ -29,7 +29,7 @@ function CountingTogether(r) {
             listofPartForX.push({ rost: r[i].vote, pro: r[i].percentageAbsence, divNum:  1});
         }
     }
-    for (var i = 0; i < listofPartForX.length; i++) {
+    for (var j = 0; j < listofPartForX.length; j++) {
         listofPartForX[i].pro = listofPartForX[i].pro / listofPartForX[i].divNum;
     }
 }

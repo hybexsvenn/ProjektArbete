@@ -39,7 +39,7 @@ namespace ProjektArbete.Controllers
             return dataManager.GetOneParty(id);
         }
 
-        public IActionResult Constituency()
+        public IActionResult Constituency(string id)
         {
             return Json(null);
         }
