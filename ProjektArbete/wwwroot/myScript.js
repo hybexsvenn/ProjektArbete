@@ -76,7 +76,7 @@ function GetFullPartyName(key) {
         return "Kristdemokraterna";
     } else if (key === "SD") {
         return "Sverigedemokraterna";
-    } 
+    }
 }
 
 // Funktion för att ändra datum till ett hanterbart format. Ex: in 2016/17 ut 2016
@@ -120,13 +120,25 @@ function GetPersonFromDataRiksdagen(intresent_id) {
         type: 'GET',
         async: false,
         dataType: 'json',
-        success: function (pp) {
-            p = pp;
+        success: function (r) {
+            var getApiInfo = [];
+            getApiInfo.push({
+                person: r.personlista.person
+            
+                });
+            p = getApiInfo;
         }
     });
-    p = p.personlista.person.bild_url_192;
+    //p = p.personlista.person.bild_url_192;
     return p;
 }
+
+
+
+
+
+
+
 
 // Funktion för slider
 

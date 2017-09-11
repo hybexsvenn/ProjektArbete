@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="~/myStyleSheet.css" rel="stylesheet" />
     @*<style>
-        a.actives {
-            color: red;  
-        }
-    </style>*@
+            a.actives {
+                color: red;
+            }
+        </style>*@
 </head>
 <body ng-app="myApp" ng-controller="testController">
     <div id="wrapper" class="center-block">
@@ -54,17 +54,20 @@
         </nav>
         <div>
             @*<div ng-bind="testValue" ng-show="foo">
-                {{testValue}}
-            </div>
-            <input value="Click me" type="button" ng-click="onClickValuekk()" />*@
+                    {{testValue}}
+                </div>
+                <input value="Click me" type="button" ng-click="onClickValuekk()" />*@
 
             <div class="container body-content">
                 @RenderBody()
-                <hr />
-                <footer>
-                    <p>&copy; 2017 - Team Göteborg</p>
-                </footer>
+                
             </div>
+
+                <hr />
+                    <footer>
+                        <p>&copy; 2017 - Team Göteborg</p>
+                    </footer>
+                
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -75,7 +78,7 @@
 
         @RenderSection("Scripts", false)
         <script src="~/myScript.js"></script>
-        
+
     </div>
 </body>
 </html>

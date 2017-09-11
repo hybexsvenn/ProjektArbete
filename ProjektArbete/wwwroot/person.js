@@ -11,8 +11,9 @@ function foo() {
             for (var i = 0; i < p.length; i++) {
                 getName.push({
                     person:
-                    (p[i].firstName + " " + p[i].lastName + " [" + p[i].party.toUpperCase() + "]"),
-                    Id: p[i].id
+                        p[i].firstName + " " + p[i].lastName + " [" + p[i].party.toUpperCase() + "]",
+                    Id:
+                        p[i].id
                 });
 
             }
@@ -78,7 +79,7 @@ app.controller("testController", function ($scope) {
         chartChoosenPerson(id);
         $scope.searchBar = false;
 
-    }
+    };
 
     $scope.change = function (search) {
         if (search.length > 1) {
@@ -92,8 +93,23 @@ app.controller("testController", function ($scope) {
 // funktion för att få bild med hjälp av intressent id
 function GetPicture(id) {
     var pictureIt = GetPersonFromDataRiksdagen(id);
-    $('#theImg').remove();
-    $('#forImg').append('<img id="theImg"; src="' + pictureIt + '" alt="" style="width:200px;height:200px;">');
+    
+    var foreft = pictureIt[0].person.tilltalsnamn + ' ' + pictureIt[0].person.efternamn;
+    $('#personInfo').remove();
+    var content = '<div id="personInfo" class="center">';
+    content += '<h1>' + foreft + '</h1>';
+    content += '<img id="theImg"; src="' + pictureIt[0].person.bild_url_192 + '" alt="' + foreft +'" >';
+    content += '<div id="infoContent">';
+    content += '<label>Namn:</label>' + ' ' + foreft;
+    content += '<br /><label>Parti:</label>' + ' ' + GetFullPartyName(pictureIt[0].person.parti);
+    content += '<br /><label>Valkrets:</label>' + ' ' + pictureIt[0].person.valkrets;
+    content += '<br /><label>Status:</label>' + ' ' + pictureIt[0].person.status;
+    content += '</div>';
+    content += '</div>';
+
+
+    $('#personAPI').append(content);
+    
 }
 
 

@@ -15,24 +15,35 @@
         <p ng-click="selectedPerson(item.Id)">{{item.person}}</p>
     </li>
 </ul>
-<div id="rightContent" class="col-sm-6">
-    <div id="forImg">
-        <img id="theImg" />
+<div id="content">
+
+    <div id="rightContent" class="col-sm-6" ng-show="showPersonBarChart">
+
+        
+            <div id="personAPI">
+                <div id="personInfo">
+
+                    @*<img id="theImg" />*@
+                </div>
+            </div>
+
+
+        
     </div>
-</div>
 
-<div id="leftContent" class="col-sm-6">
-    <div id="divPersonCanvas" ng-show="showPersonBarChart">
-        <canvas id="pieJChart" width="400" height="200"></canvas>
-    </div>
-    <div ng-show="showPersonBarChart">
+    <div id="leftContent" class="col-sm-6">
+        <div id="divPersonCanvas" ng-show="showPersonBarChart">
+            <canvas id="pieJChart" width="400" height="200"></canvas>
+        </div>
+        <div ng-show="showPersonBarChart">
 
-        <p>
-            <label for="date">Mellan:</label>
-            <input type="text" id="date" readonly style="border:0; color:#f6931f; font-weight:bold;">
-        </p>
+            <p>
+                <label for="date">Mellan:</label>
+                <input type="text" id="date" readonly style="border:0; color:#f6931f; font-weight:bold;">
+            </p>
 
-    <div id="slider-range"></div>
+            <div id="slider-range"></div>
+        </div>
     </div>
 </div>
 
