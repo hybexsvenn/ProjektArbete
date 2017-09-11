@@ -29,7 +29,7 @@ function foo() {
 var chartChoosenPerson = function (id) {
     GetPicture(id);
     $.ajax({
-        url: "/Api/Party/V",
+        url: "/Api/SinglePerson/" + id,
         type: 'GET',
         dataType: 'json',
         success: function (r) {
