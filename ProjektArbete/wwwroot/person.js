@@ -146,27 +146,27 @@ function GenerateChartPerson(ar) {
         var alt = [{ vote: "Ja", pro: 0 }, { vote: "Nej", pro: 0 }, { vote: "Avstår", pro: 0 }, { vote: "Frånvarande",pro :0 }];
         var num = [];
         for (var i = 0; i < ar.length; i++) {
-            if (ar[i].vote = alt[0].vote) {
+            if (ar[i].rost === alt[0].vote) {
                 alt[0].pro = ar[i].pro;
             }
-            else if (ar[i].vote = alt[1].vote) {
+            else if (ar[i].rost === alt[1].vote) {
                 alt[1].pro = ar[i].pro;
             }
-            else if (ar[i].vote = alt[2].vote) {
+            else if (ar[i].rost === alt[2].vote) {
                 alt[2].pro = ar[i].pro;
             }
-            else if (ar[i].vote = alt[3].vote) {
+            else if (ar[i].rost === alt[3].vote) {
                 alt[3].pro = ar[i].pro;
             }
         }
-        console.log(alt[0].pro);
+        console.log(alt);
         $('#pieJChart').remove();
         $('#divPersonCanvas').append('<canvas id="pieJChart" width="400" height="200"></canvas>');
         var ctx = document.getElementById("pieJChart");
         var myChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ["Ja", "Nej", "Frånvarande", "Avstår"],
+                labels: [alt[0].vote, alt[1].vote, alt[2].vote, alt[3].vote],
                 datasets: [
                     {
                         label: "Population (millions)",
