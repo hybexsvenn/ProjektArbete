@@ -35,13 +35,13 @@ var chartChoosenPerson = function (id) {
         type: 'GET',
         dataType: 'json',
         success: function (re) {
-            console.log(re);
+            //console.log(re);
             r = ChangeTheFormatOfYear(re, "parliamentaryYear");
             console.log(r);
             listOfPartyVotes = ByYear("2014", "2017", r, "parliamentaryYear");
-            console.log(listOfPartyVotes);
+            //console.log(listOfPartyVotes);
             CountingTogether(listOfPartyVotes);
-            console.log(listofPartForX);
+            //console.log(listofPartForX);
             GenerateChartPerson(listofPartForX);
         }
     });
@@ -60,8 +60,9 @@ $(document).ready(function () {
     });
     $("body").mouseup(function () {
         if (temp === true) {
+            console.log(r);
             listOfPartyVotes = ByYear(sliderStart, sliderEnd, r, "parliamentaryYear");
-            CountingTogether(listOfPartyVotes)
+            CountingTogether(listOfPartyVotes);
             GenerateChartPerson(listofPartForX);
 
             temp = false;
@@ -90,7 +91,7 @@ function CountingTogether(r) {
 app.controller("testController", function ($scope) {
 
     if (myArr === undefined) {
-        console.log(myArr);
+        //console.log(myArr);
         foo();
     }
     else {
@@ -158,27 +159,27 @@ function GenerateChartPerson(ar) {
                 alt[3].pro = ar[i].pro;
             }
         }
-        var index = 0;
-        var index2 = 0;
+        console.log(alt[0].pro);
         $('#pieJChart').remove();
         $('#divPersonCanvas').append('<canvas id="pieJChart" width="400" height="200"></canvas>');
         var ctx = document.getElementById("pieJChart");
         var myChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: [alt[index++].vote, alt[index++].vote, alt[index++].vote, alt[index++].vote],
+                labels: ["Ja", "Nej", "Frånvarande", "Avstår"],
                 datasets: [
                     {
                         label: "Population (millions)",
-                        backgroundColor: ["#3e95cd", "#8e5ea2", "#8e5ea2", "#8e5ea2"],
-                        data: [alt[index2++].pro, alt[index2++].pro, alt[index2++].pro, alt[index2++].pro]
+                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9"],                       
+                        data: [alt[0].pro, alt[1].pro, alt[2].pro, alt[3].pro]
                     }
                 ]
             },
             options: {
+                responsive: false,
                 title: {
                     display: true,
-                    text: 's röstning'
+                    text: GetFullPartyName(r[0].party) + 's röstning'
                 }
             }
         });

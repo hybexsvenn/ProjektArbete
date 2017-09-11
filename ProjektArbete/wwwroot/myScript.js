@@ -76,6 +76,8 @@ function GetFullPartyName(key) {
         return "Kristdemokraterna";
     } else if (key === "SD") {
         return "Sverigedemokraterna";
+    } else if (key === "-") {
+        return "Övriga";
     }
 }
 
