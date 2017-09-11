@@ -43,5 +43,28 @@ namespace ProjektArbete.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult ContactUs(MailVM modelView)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            dataManager.SendEmail(modelView);
+
+            //var temp = "Ditt meddelande har skickats!";
+
+            //TempData["Mess"] = temp;
+
+            //modelView.TempData = (string)TempData["Mess"];
+
+            return View(modelView);
+        }
+
+        [HttpGet]
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
     }
 }

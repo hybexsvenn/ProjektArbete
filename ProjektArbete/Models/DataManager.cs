@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ProjektArbete.Models
@@ -52,41 +56,89 @@ namespace ProjektArbete.Models
         }
 
 
-        // string conString = @"Data Source=ACADEMY-7115T1S;Initial Catalog=ProjectFreedom;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public void SendEmail(MailVM mailVM)
+        {
+            string toAddress = "test@svenn.se";
+            string fromAddress = "test@svenn.se";
+            string subject = mailVM.Subject;
+            //string message = mailVM.Message + "\nAnkommande epost: "+ mailVM.Email;
+            var message = new StringBuilder();
+            message.Append($"Name: {mailVM.Name}\n");
+            message.Append($"Email: {mailVM.Email}\n");
+            message.Append($"Message:  {mailVM.Message} \n\n");
+            message.Append(mailVM.Message);
 
-        //public IndexVM[] GetAllPartyPercentage(string id)
-        //{
-        //    var fi = id.Split(";");
+
+            try
+            {
+                using (var mail = new MailMessage())
+                {
+                    const string email = "test@svenn.se";
+                    const string password = "Password1234_";
+
+                    var loginInfo = new NetworkCredential(email, password);
 
 
+                    mail.From = new MailAddress(fromAddress);
+                    mail.To.Add(new MailAddress(toAddress));
+                    mail.Subject = subject;
+                    mail.Body = message.ToString();
+                    mail.IsBodyHtml = true;
 
-        //    List<IndexVM> listOfIndexVm = new List<IndexVM>();
-        //    try
-        //    {
-        //        sqlConnection.Open();
-        //        SqlCommand sqlCommand = new SqlCommand();
-        //        sqlCommand.CommandText = "getPartyByYear";
-        //        sqlCommand.CommandType = CommandType.StoredProcedure;
-        //        sqlCommand.Connection = sqlConnection;
-        //        sqlCommand.CommandTimeout = 90;
+                    try
+                    {
+                        using (var smtpClient = new SmtpClient("send.one.com", 587))
+                        {
+                            smtpClient.EnableSsl = true;
+                            smtpClient.UseDefaultCredentials = false;
+                            smtpClient.Credentials = loginInfo;
+                            smtpClient.Send(mail);
 
-        //        InParam(sqlCommand, "@startDate", fi[0], 12, SqlDbType.VarChar);
-        //        InParam(sqlCommand, "@endDate", fi[1], 12, SqlDbType.VarChar);
-        //        SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-        //        while (sqlDataReader.Read())
-        //        {
-        //            IndexVM indexVM = new IndexVM();
-        //            indexVM.Party = (string)sqlDataReader["Party"];
-        //            indexVM.PercentageAbsence = (decimal)sqlDataReader["Percentage"];
-        //            listOfIndexVm.Add(indexVM);
-        //        }
-        //    }
-        //    finally
-        //    {
-        //        sqlConnection.Close();
-        //    }
-        //    return listOfIndexVm.ToArray();
-        //}
+                            //var tEmail = new Thread(() => smtpClient.Send(mail));
+                            //tEmail.Start();
+
+
+                        }
+                    }
+
+                    finally
+                    {
+                        mail.Dispose();
+                    }
+
+                }
+            }
+            catch (SmtpFailedRecipientsException ex)
+            {
+                foreach (SmtpFailedRecipientException t in ex.InnerExceptions)
+                {
+                    var status = t.StatusCode;
+                    if (status == SmtpStatusCode.MailboxBusy ||
+                        status == SmtpStatusCode.MailboxUnavailable)
+                    {
+                        //Response.Write("Delivery failed - retrying in 5 seconds.");
+                        System.Threading.Thread.Sleep(5000);
+                        //resend
+                        //smtpClient.Send(message);
+                    }
+                    else
+                    {
+                        //Response.Write("Failed to deliver message to {0}", t.FailedRecipient);
+                    }
+                }
+            }
+            //catch (SmtpException)
+            //{
+            //    // handle exception here
+            //    //Response.Write(Se.ToString());
+            //}
+
+            //catch (Exception)
+            //{
+            //    //Response.Write(ex.ToString());
+            //}
+
+        }
 
         public IndexVM[] GetAllPartyPercentage()
         {

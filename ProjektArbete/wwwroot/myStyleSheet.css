@@ -10,6 +10,10 @@
     margin-top:10px;
 }
 
+#success_message {
+    display: none;
+}
+
 .yada {
     background-color: #ffffff;
     border-radius: 30px;
