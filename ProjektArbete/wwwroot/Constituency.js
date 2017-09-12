@@ -29,13 +29,13 @@ function geoToC(toC) {
 function geo(lat, long) {
     var ret = "";
     $.ajax({
-        url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + 59.378667 + ", " + 12.373370 + "&key=AIzaSyARnEQlD02wVjT3Vs-kKEmEyT_jR5ymZcA",
+        //url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + 59.378667 + ", " + 12.373370 + "&key=AIzaSyARnEQlD02wVjT3Vs-kKEmEyT_jR5ymZcA",
+        url: "/API/ConstituencyAsync/" + lat + ";"+ long,
         type: 'GET',
         success: function (re) {
             //console.log(re);
             //for (var i = 0; i < re.results.length; i++) {
-                var r = re.results[0].address_components[3].long_name;
-                console.log(r);
+                console.log(re);
             //    for (var j = 0; j < r.length; j++) {
             //        //console.log(r[j].formatted_address);
             //        ret +="," + r[j].formatted_address;

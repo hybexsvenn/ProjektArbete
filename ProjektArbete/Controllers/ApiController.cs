@@ -39,9 +39,17 @@ namespace ProjektArbete.Controllers
             return dataManager.GetOneParty(id);
         }
 
-        public IActionResult Constituency(string id)
+        public async Task<IActionResult> ConstituencyAsync(string id)
         {
-            return Json(null);
+            ConstituencyWrapper constituencyWrapper = new ConstituencyWrapper();
+            var constituency = await dataManager.GetGoeLocAsync(id);
+            if (constituency != null)
+            {
+                constituencyWrapper.constituencyVM = dataManager.GetConstituency(constituency);
+            }
+            constituencyWrapper.ConstituencyList = dataManager.GetConstituencys();
+
+            return Json(constituencyWrapper);
         }
     }
 }
