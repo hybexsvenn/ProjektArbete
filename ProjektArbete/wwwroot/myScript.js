@@ -12,10 +12,10 @@ function fixNavBar() {
         var myHref = $(this).children('a').first().attr('href');
 
         if (window.location.href.endsWith(myHref)) {
-            $(this).addClass('active');
+            $(this).addClass('active-nav');
         }
         else {
-            $(this).removeClass('active');
+            $(this).removeClass('active-nav');
         }
     });
 }
