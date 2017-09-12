@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Protocols;
 using ProjektArbete.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -18,10 +20,12 @@ namespace ProjektArbete.Models
 
     public class DataManager
     {
+        IConfiguration configuration;
         SqlConnection sqlConnection;
 
         public DataManager(IConfiguration configuration)
         {
+            this.configuration = configuration;
             sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
 
@@ -58,8 +62,8 @@ namespace ProjektArbete.Models
 
         public void SendEmail(MailVM mailVM)
         {
-            string toAddress = "test@svenn.se";
-            string fromAddress = "test@svenn.se";
+            string toAddress = configuration["epost"];
+            string fromAddress = configuration["epost"];
             string subject = mailVM.Subject;
             //string message = mailVM.Message + "\nAnkommande epost: "+ mailVM.Email;
             var message = new StringBuilder();
@@ -68,15 +72,18 @@ namespace ProjektArbete.Models
             message.Append($"Message:  {mailVM.Message} \n\n");
             message.Append(mailVM.Message);
 
+
             var mail = new MailMessage();
-            var smtpClient = new SmtpClient("send.one.com", 587);
+            var smtpClient = new SmtpClient(configuration["smtpserver"], int.Parse(configuration["port"]));
+
+         
 
             try
             {
                 using (mail)
                 {
-                    const string email = "test@svenn.se";
-                    const string password = "Password1234_";
+                    string email = configuration["epost"];
+                    string password = configuration["password"];
 
                     var loginInfo = new NetworkCredential(email, password);
 
