@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using ProjektArbete.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -52,9 +54,7 @@ namespace ProjektArbete.Models
                 sqlConnection.Close();
             }
             return listOfparty.ToArray();
-
         }
-
 
         public void SendEmail(MailVM mailVM)
         {
@@ -68,16 +68,17 @@ namespace ProjektArbete.Models
             message.Append($"Message:  {mailVM.Message} \n\n");
             message.Append(mailVM.Message);
 
+            var mail = new MailMessage();
+            var smtpClient = new SmtpClient("send.one.com", 587);
 
             try
             {
-                using (var mail = new MailMessage())
+                using (mail)
                 {
                     const string email = "test@svenn.se";
                     const string password = "Password1234_";
 
                     var loginInfo = new NetworkCredential(email, password);
-
 
                     mail.From = new MailAddress(fromAddress);
                     mail.To.Add(new MailAddress(toAddress));
@@ -87,25 +88,18 @@ namespace ProjektArbete.Models
 
                     try
                     {
-                        using (var smtpClient = new SmtpClient("send.one.com", 587))
+                        using (smtpClient)
                         {
                             smtpClient.EnableSsl = true;
                             smtpClient.UseDefaultCredentials = false;
                             smtpClient.Credentials = loginInfo;
                             smtpClient.Send(mail);
-
-                            //var tEmail = new Thread(() => smtpClient.Send(mail));
-                            //tEmail.Start();
-
-
                         }
                     }
-
                     finally
                     {
                         mail.Dispose();
                     }
-
                 }
             }
             catch (SmtpFailedRecipientsException ex)
@@ -116,27 +110,20 @@ namespace ProjektArbete.Models
                     if (status == SmtpStatusCode.MailboxBusy ||
                         status == SmtpStatusCode.MailboxUnavailable)
                     {
-                        //Response.Write("Delivery failed - retrying in 5 seconds.");
-                        System.Threading.Thread.Sleep(5000);
-                        //resend
-                        //smtpClient.Send(message);
+                        Thread.Sleep(5000);
+                        smtpClient.Send(mail);
                     }
-                    else
-                    {
-                        //Response.Write("Failed to deliver message to {0}", t.FailedRecipient);
-                    }
+
                 }
             }
-            //catch (SmtpException)
-            //{
-            //    // handle exception here
-            //    //Response.Write(Se.ToString());
-            //}
+        }
 
-            //catch (Exception)
-            //{
-            //    //Response.Write(ex.ToString());
-            //}
+        internal MailVM RandomTwoNumbers(MailVM mailVM)
+        {
+            mailVM.CatchpaNumber[0] = RandomCatchpa()[0];
+            mailVM.CatchpaNumber[1] = RandomCatchpa()[1];
+
+            return mailVM;
 
         }
 
@@ -266,18 +253,27 @@ namespace ProjektArbete.Models
             return listOfPersonVM.ToArray();
         }
 
-        //public PersonVM[] GetFirstochDefaultIntressent_Id()
+        //public bool CatchpaRandom(MailVM mailVM)
         //{
-        //    //GetAllPersons();
-        //    //PersonVM personVM = new PersonVM();
-        //    //listOfPersons.FirstOrDefault
-        //    //listOfPersons.Add(personVM);
-        //    //return listOfPersons.ToArray();
+        //    var temp = RandomCatchpa()[0] + RandomCatchpa()[1];
+
+        //    if (temp == mailVM.Catchpa)
+        //        return true;
+        //    else
+        //        return false;
         //}
 
-        //internal IndexVM[] GetAllPartyPercentageTemp()
-        //{
-        //    return TestData.listOfPartyPercentageTemp.ToArray();
-        //}
+        public int[] RandomCatchpa()
+        {
+            var randomOne = random.Next(1, 100);
+            var randomTwo = random.Next(1, 100);
+            var amount = randomOne + randomTwo;
+            int[] randomNumbers = { randomOne, randomTwo };
+
+            return randomNumbers;
+        }
+
+        static Random random = new Random();
+
     }
 }
