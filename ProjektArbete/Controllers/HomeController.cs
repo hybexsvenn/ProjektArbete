@@ -58,13 +58,16 @@ namespace ProjektArbete.Controllers
                 testValid = true;
             if (!testValid)
             {
-                TempData["FailMessage"] = "Ditt värde stämmer inte...";
+                TempData[modelView.TempDataFail] = "Räkna om... Hallå eller...";
+                //ModelState.AddModelError(nameof(MailVM.Catchpa), "Lär dig räkna...");
+                //ModelState.ClearValidationState(nameof(MailVM.Catchpa));
+                //modelView.Catchpa = null;
                 return View(modelView);
             }
             else
             {
                 dataManager.SendEmail(modelView);
-                TempData["MessageSuccess"] = "Ditt mail har skickats!";
+                TempData[modelView.TempDataSuccess] = "Ditt mail har skickats!";
             }
 
             return RedirectToAction(nameof(ContactUs));
