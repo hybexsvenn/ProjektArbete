@@ -1,29 +1,31 @@
-﻿using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Protocols;
 using ProjektArbete.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Net.Mail;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using static ProjektArbete.Models.Constituency;
 
 namespace ProjektArbete.Models
 {
 
     public class DataManager
     {
+        IConfiguration configuration;
         SqlConnection sqlConnection;
 
         public DataManager(IConfiguration configuration)
         {
+            this.configuration = configuration;
             sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
 
@@ -56,38 +58,12 @@ namespace ProjektArbete.Models
                 sqlConnection.Close();
             }
             return listOfparty.ToArray();
-
-        }
-
-        internal string[] GetConstituencys()
-        {
-            List<string> c = new List<string>();
-            try
-            {
-                sqlConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.CommandText = "SELECT DISTINCT valkrets from Constituencyprocent order by valkrets";
-                sqlCommand.CommandType = CommandType.Text;
-                sqlCommand.Connection = sqlConnection;
-
-                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-                while (sqlDataReader.Read())
-                {
-                    string t = (string)sqlDataReader["valkrets"];
-                    c.Add(t);
-                }
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-            return c.ToArray();
         }
 
         public void SendEmail(MailVM mailVM)
         {
-            string toAddress = "test@svenn.se";
-            string fromAddress = "test@svenn.se";
+            string toAddress = configuration["epost"];
+            string fromAddress = configuration["epost"];
             string subject = mailVM.Subject;
             //string message = mailVM.Message + "\nAnkommande epost: "+ mailVM.Email;
             var message = new StringBuilder();
@@ -97,15 +73,19 @@ namespace ProjektArbete.Models
             message.Append(mailVM.Message);
 
 
+            var mail = new MailMessage();
+            var smtpClient = new SmtpClient(configuration["smtpserver"], int.Parse(configuration["port"]));
+
+         
+
             try
             {
-                using (var mail = new MailMessage())
+                using (mail)
                 {
-                    const string email = "test@svenn.se";
-                    const string password = "Password1234_";
+                    string email = configuration["epost"];
+                    string password = configuration["password"];
 
                     var loginInfo = new NetworkCredential(email, password);
-
 
                     mail.From = new MailAddress(fromAddress);
                     mail.To.Add(new MailAddress(toAddress));
@@ -115,25 +95,18 @@ namespace ProjektArbete.Models
 
                     try
                     {
-                        using (var smtpClient = new SmtpClient("send.one.com", 587))
+                        using (smtpClient)
                         {
                             smtpClient.EnableSsl = true;
                             smtpClient.UseDefaultCredentials = false;
                             smtpClient.Credentials = loginInfo;
                             smtpClient.Send(mail);
-
-                            //var tEmail = new Thread(() => smtpClient.Send(mail));
-                            //tEmail.Start();
-
-
                         }
                     }
-
                     finally
                     {
                         mail.Dispose();
                     }
-
                 }
             }
             catch (SmtpFailedRecipientsException ex)
@@ -144,27 +117,20 @@ namespace ProjektArbete.Models
                     if (status == SmtpStatusCode.MailboxBusy ||
                         status == SmtpStatusCode.MailboxUnavailable)
                     {
-                        //Response.Write("Delivery failed - retrying in 5 seconds.");
-                        System.Threading.Thread.Sleep(5000);
-                        //resend
-                        //smtpClient.Send(message);
+                        Thread.Sleep(5000);
+                        smtpClient.Send(mail);
                     }
-                    else
-                    {
-                        //Response.Write("Failed to deliver message to {0}", t.FailedRecipient);
-                    }
+
                 }
             }
-            //catch (SmtpException)
-            //{
-            //    // handle exception here
-            //    //Response.Write(Se.ToString());
-            //}
+        }
 
-            //catch (Exception)
-            //{
-            //    //Response.Write(ex.ToString());
-            //}
+        internal MailVM RandomTwoNumbers(MailVM mailVM)
+        {
+            mailVM.CatchpaNumber[0] = RandomCatchpa()[0];
+            mailVM.CatchpaNumber[1] = RandomCatchpa()[1];
+
+            return mailVM;
 
         }
 
@@ -294,161 +260,27 @@ namespace ProjektArbete.Models
             return listOfPersonVM.ToArray();
         }
 
-        static List<string> länList = new List<string> { "Blekinge län", "Dalarnas län", "Gotlands län", "Gävleborgs län", "Hallands län", "Jämtlands län", "Jönköpings län", "Kalmar län", "Kronobergs län", "Norrbottens län", "Södermanlands län", "Uppsala län", "Värmlands län", "Västerbottens län", "Västernorrlands län", "Västmanlands län", "Örebro län", "Östergötlands län", "Stockholms län" };
-        internal async Task<string> GetGoeLocAsync(string latlong)
-        {
-            RootObject respons;
-            string latitud;
-            string longitud;
-            var array = latlong.Split(';');
-            if (array.Length == 2)
-            {
-                latitud = array[0];
-                longitud = array[1];
-                string URL = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitud + ", " + longitud + "&key=AIzaSyARnEQlD02wVjT3Vs-kKEmEyT_jR5ymZcA";
-                HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri(URL);
-                var request = await client.GetAsync(URL);
-                var content = await request.Content.ReadAsStringAsync();
-                respons = JsonConvert.DeserializeObject<RootObject>(content);
-                if (respons.status.ToLower() == "ok")
-                {
-                    for (int i = 0; i < respons.results[0].address_components.Count - 1; i++)
-                    {
-                        string str = respons.results[0].address_components[i].long_name.ToLower();
-                        for (int j = 0; j < länList.Count; j++)
-                        {
-                            if (str == länList[j].ToLower())
-                            {
-                                return länList[j];
-                            }
-                        }
-                    }
-
-                    
-                }
-            }
-            return null;
-        }
-
-        internal ConstituencyVM[] GetConstituency(string Constituency)
-        {
-            List<ConstituencyVM> constituencyVM = new List<ConstituencyVM>();
-            try
-            {
-                sqlConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.CommandText = "GetDataConstituency";
-                sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Connection = sqlConnection;
-
-                InParam(sqlCommand, "@constituency", Constituency, 100, SqlDbType.NVarChar);
-
-                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-                while (sqlDataReader.Read())
-                {
-                    ConstituencyVM constituency = new ConstituencyVM();
-                    constituency.Constituency = (string)sqlDataReader["valkrets"];
-                    constituency.PercentageAbsence = (decimal)sqlDataReader["Procent"];
-                    constituency.Vote = (string)sqlDataReader["rost"];
-                    constituency.Year = (string)sqlDataReader["rm"];
-                    constituencyVM.Add(constituency);
-                }
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-            return constituencyVM.ToArray();
-        } 
-
-        //public PersonVM[] GetFirstochDefaultIntressent_Id()
+        //public bool CatchpaRandom(MailVM mailVM)
         //{
-        //    //GetAllPersons();
-        //    //PersonVM personVM = new PersonVM();
-        //    //listOfPersons.FirstOrDefault
-        //    //listOfPersons.Add(personVM);
-        //    //return listOfPersons.ToArray();
+        //    var temp = RandomCatchpa()[0] + RandomCatchpa()[1];
+
+        //    if (temp == mailVM.Catchpa)
+        //        return true;
+        //    else
+        //        return false;
         //}
 
-        //internal IndexVM[] GetAllPartyPercentageTemp()
-        //{
-        //    return TestData.listOfPartyPercentageTemp.ToArray();
-        //}
-    }
-
-    internal class Constituency
-    {
-        public class AddressComponent
+        public int[] RandomCatchpa()
         {
-            public string long_name { get; set; }
-            public string short_name { get; set; }
-            public List<string> types { get; set; }
+            var randomOne = random.Next(1, 100);
+            var randomTwo = random.Next(1, 100);
+            var amount = randomOne + randomTwo;
+            int[] randomNumbers = { randomOne, randomTwo };
+
+            return randomNumbers;
         }
 
-        public class Northeast
-        {
-            public double lat { get; set; }
-            public double lng { get; set; }
-        }
+        static Random random = new Random();
 
-        public class Southwest
-        {
-            public double lat { get; set; }
-            public double lng { get; set; }
-        }
-
-        public class Bounds
-        {
-            public Northeast northeast { get; set; }
-            public Southwest southwest { get; set; }
-        }
-
-        public class Location
-        {
-            public double lat { get; set; }
-            public double lng { get; set; }
-        }
-
-        public class Northeast2
-        {
-            public double lat { get; set; }
-            public double lng { get; set; }
-        }
-
-        public class Southwest2
-        {
-            public double lat { get; set; }
-            public double lng { get; set; }
-        }
-
-        public class Viewport
-        {
-            public Northeast2 northeast { get; set; }
-            public Southwest2 southwest { get; set; }
-        }
-
-        public class Geometry
-        {
-            public Bounds bounds { get; set; }
-            public Location location { get; set; }
-            public string location_type { get; set; }
-            public Viewport viewport { get; set; }
-        }
-
-        public class Result
-        {
-            public List<AddressComponent> address_components { get; set; }
-            public string formatted_address { get; set; }
-            public Geometry geometry { get; set; }
-            public string place_id { get; set; }
-            public List<string> types { get; set; }
-        }
-
-        public class RootObject
-        {
-            public List<Result> results { get; set; }
-            public string status { get; set; }
-        }
     }
 }

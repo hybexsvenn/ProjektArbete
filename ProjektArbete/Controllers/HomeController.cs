@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjektArbete.Models;
 using ProjektArbete.Models.ViewModels;
+using System.Drawing;
+using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ProjektArbete.Controllers
 {
@@ -47,24 +50,40 @@ namespace ProjektArbete.Controllers
         [HttpPost]
         public IActionResult ContactUs(MailVM modelView)
         {
-            if (!ModelState.IsValid)
-                return View();
+            var amount = modelView.CatchpaNumber[0] + modelView.CatchpaNumber[1];
+            var testValid = !ModelState.IsValid;
+            if (amount != modelView.Catchpa)
+                testValid = false;
+            else
+                testValid = true;
+            if (!testValid)
+            {
+                TempData[modelView.TempDataFail] = "Räkna om... Hallå eller...";
+                //ModelState.AddModelError(nameof(MailVM.Catchpa), "Lär dig räkna...");
+                //ModelState.ClearValidationState(nameof(MailVM.Catchpa));
+                //modelView.Catchpa = null;
+                return View(modelView);
+            }
+            else
+            {
+                dataManager.SendEmail(modelView);
+                TempData[modelView.TempDataSuccess] = "Ditt mail har skickats!";
+            }
 
-            dataManager.SendEmail(modelView);
-
-            //var temp = "Ditt meddelande har skickats!";
-
-            //TempData["Mess"] = temp;
-
-            //modelView.TempData = (string)TempData["Mess"];
-
-            return View(modelView);
+            return RedirectToAction(nameof(ContactUs));
         }
 
         [HttpGet]
         public IActionResult ContactUs()
         {
-            return View();
+            MailVM mailVM = new MailVM();
+            mailVM.CatchpaNumber[0] = dataManager.RandomCatchpa()[0];
+            mailVM.CatchpaNumber[1] = dataManager.RandomCatchpa()[1];
+
+            //x = mailVM.CatchpaNumber;
+
+            return View(mailVM);
         }
+
     }
 }
