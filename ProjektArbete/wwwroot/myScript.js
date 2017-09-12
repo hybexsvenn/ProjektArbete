@@ -28,6 +28,10 @@ function fixNavBar() {
 var sliderStart;
 var sliderEnd;
 var listOfPartyVotes;
+var sliderFirstDateSet = 2003;
+var sliderLastDateSet = 2017;
+
+
 
 // Funktion för att kolla om ett värde finns i listan
 // Ut: true ifall värdet finns eller false om värdet inte finns
@@ -111,6 +115,26 @@ function ByYear(start, end, array, key) {
     return newArray;
 }
 
+// Funktion för att hitta första
+// Ut: Lägsta datum
+function FirstDate(array, key) {
+    var tempArray = [];
+    for (var i = 0; i < array.length; i++) {
+        tempArray.push(array[i][key]);
+    }
+    return Math.min.apply(Math, tempArray);
+}
+
+// Funktion för att hitta första
+// Ut: Lägsta datum
+function LastDate(array, key) {
+    var tempArray = [];
+    for (var i = 0; i < array.length; i++) {
+        tempArray.push(array[i][key]);
+    }
+    return Math.max.apply(Math, tempArray);
+}
+
 // Funktion för att hämta api information från riksdagens hemsida
 // Ut: arraye med propar
 
@@ -147,8 +171,8 @@ function GetPersonFromDataRiksdagen(intresent_id) {
 $(function () {
     $("#slider-range").slider({
         range: true,
-        min: 2003,
-        max: 2017,
+        min: sliderFirstDateSet,
+        max: sliderLastDateSet,
         values: [sliderStart, sliderEnd],
         slide: function (event, ui) {
             $("#date").val(ChangeTheBackFormatOfYear(ui.values[0]) + " - " + ChangeTheBackFormatOfYear(ui.values[1]));
