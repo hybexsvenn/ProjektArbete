@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Protocols;
+using Newtonsoft.Json;
 using ProjektArbete.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,12 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Mail;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static ProjektArbete.Models.Constituency;
 
 namespace ProjektArbete.Models
 {
@@ -76,7 +79,7 @@ namespace ProjektArbete.Models
             var mail = new MailMessage();
             var smtpClient = new SmtpClient(configuration["smtpserver"], int.Parse(configuration["port"]));
 
-         
+
 
             try
             {
@@ -260,16 +263,6 @@ namespace ProjektArbete.Models
             return listOfPersonVM.ToArray();
         }
 
-        //public bool CatchpaRandom(MailVM mailVM)
-        //{
-        //    var temp = RandomCatchpa()[0] + RandomCatchpa()[1];
-
-        //    if (temp == mailVM.Catchpa)
-        //        return true;
-        //    else
-        //        return false;
-        //}
-
         public int[] RandomCatchpa()
         {
             var randomOne = random.Next(1, 100);
@@ -282,5 +275,178 @@ namespace ProjektArbete.Models
 
         static Random random = new Random();
 
+        internal string[] GetConstituencys()
+        {
+            List<string> c = new List<string>();
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.CommandText = "SELECT DISTINCT valkrets from Constituencyprocent order by valkrets";
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.Connection = sqlConnection;
+
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                while (sqlDataReader.Read())
+                {
+                    string t = (string)sqlDataReader["valkrets"];
+                    c.Add(t);
+                }
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return c.ToArray();
+        }
+
+
+
+        static List<string> länList = new List<string> { "Blekinge län", "Dalarnas län", "Gotlands län", "Gävleborgs län", "Hallands län", "Jämtlands län", "Jönköpings län", "Kalmar län", "Kronobergs län", "Norrbottens län", "Södermanlands län", "Uppsala län", "Värmlands län", "Västerbottens län", "Västernorrlands län", "Västmanlands län", "Örebro län", "Östergötlands län", "Stockholms län" };
+        internal async Task<string> GetGoeLocAsync(string latlong)
+        {
+            RootObject respons;
+            string latitud;
+            string longitud;
+            var array = latlong.Split(';');
+            if (array.Length == 2)
+            {
+                latitud = array[0];
+                longitud = array[1];
+                string URL = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitud + ", " + longitud + "&key=AIzaSyARnEQlD02wVjT3Vs-kKEmEyT_jR5ymZcA";
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(URL);
+                var request = await client.GetAsync(URL);
+                var content = await request.Content.ReadAsStringAsync();
+                respons = JsonConvert.DeserializeObject<RootObject>(content);
+                if (respons.status.ToLower() == "ok")
+                {
+                    for (int i = 0; i < respons.results[0].address_components.Count - 1; i++)
+                    {
+                        string str = respons.results[0].address_components[i].long_name.ToLower();
+                        for (int j = 0; j < länList.Count; j++)
+                        {
+                            if (str == länList[j].ToLower())
+                            {
+                                return länList[j];
+                            }
+                        }
+                    }
+
+
+                }
+            }
+            return null;
+        }
+
+        internal ConstituencyVM[] GetConstituency(string Constituency)
+        {
+            List<ConstituencyVM> constituencyVM = new List<ConstituencyVM>();
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.CommandText = "GetDataConstituency";
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Connection = sqlConnection;
+
+                InParam(sqlCommand, "@constituency", Constituency, 100, SqlDbType.NVarChar);
+
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                while (sqlDataReader.Read())
+                {
+                    ConstituencyVM constituency = new ConstituencyVM();
+                    constituency.Constituency = (string)sqlDataReader["valkrets"];
+                    constituency.PercentageAbsence = (decimal)sqlDataReader["Procent"];
+                    constituency.Vote = (string)sqlDataReader["rost"];
+                    constituency.Year = (string)sqlDataReader["rm"];
+                    constituencyVM.Add(constituency);
+                }
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return constituencyVM.ToArray();
+        }
+
+    }
+
+    internal class Constituency
+    {
+        public class AddressComponent
+        {
+            public string long_name { get; set; }
+            public string short_name { get; set; }
+            public List<string> types { get; set; }
+        }
+
+        public class Northeast
+        {
+            public double lat { get; set; }
+            public double lng { get; set; }
+        }
+
+        public class Southwest
+        {
+            public double lat { get; set; }
+            public double lng { get; set; }
+        }
+
+        public class Bounds
+        {
+            public Northeast northeast { get; set; }
+            public Southwest southwest { get; set; }
+        }
+
+        public class Location
+        {
+            public double lat { get; set; }
+            public double lng { get; set; }
+        }
+
+        public class Northeast2
+        {
+            public double lat { get; set; }
+            public double lng { get; set; }
+        }
+
+        public class Southwest2
+        {
+            public double lat { get; set; }
+            public double lng { get; set; }
+        }
+
+        public class Viewport
+        {
+            public Northeast2 northeast { get; set; }
+            public Southwest2 southwest { get; set; }
+        }
+
+        public class Geometry
+        {
+            public Bounds bounds { get; set; }
+            public Location location { get; set; }
+            public string location_type { get; set; }
+            public Viewport viewport { get; set; }
+        }
+
+        public class Result
+        {
+            public List<AddressComponent> address_components { get; set; }
+            public string formatted_address { get; set; }
+            public Geometry geometry { get; set; }
+            public string place_id { get; set; }
+            public List<string> types { get; set; }
+        }
+
+        public class RootObject
+        {
+            public List<Result> results { get; set; }
+            public string status { get; set; }
+        }
     }
 }
+
+
+
