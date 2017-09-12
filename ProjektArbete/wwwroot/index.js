@@ -10,12 +10,17 @@ $(document).ready(function () {
         type: 'GET',
         dataType: 'json',
         success: function (re) {
+            console.log(re);
             for (var i = 0; i < re.length; i++) {
                 if (re[i].party !== "-") { r.push(re[i]); }
             }
+            console.log(r);
             r = ChangeTheFormatOfYear(r, "year");
+            console.log(r);
             listOfPartbetweenStartAndEndYear = ByYear("2014", "2017", r, "year");
+            console.log(listOfPartbetweenStartAndEndYear);
             GetProcentByParty(listOfPartbetweenStartAndEndYear);
+            console.log(listofPartForX);
             GenerateChartIndex(listofPartForX);
         }
     });
@@ -31,8 +36,12 @@ $(document).ready(function () {
     });
     $("body").mouseup(function () {
         if (temp === true) {
+            listOfPartbetweenStartAndEndYear = [];
+            console.log(r);
             listOfPartbetweenStartAndEndYear = ByYear(sliderStart, sliderEnd, r, "year");
+            console.log(listOfPartbetweenStartAndEndYear);
             GetProcentByParty(listOfPartbetweenStartAndEndYear);
+            console.log(listofPartForX);
             GenerateChartIndex(listofPartForX);
             temp = false;
         }
@@ -40,7 +49,7 @@ $(document).ready(function () {
 });
 
 function GetProcentByParty(ret) {
-
+    listofPartForX = [];
     for (var i = 0; i < ret.length; i++) {
         if (ifExist(ret[i].party, listofPartForX, "party")) {
             var a = functiontofindIndexByKeyValue(listofPartForX, "party", ret[i].party);
@@ -72,6 +81,10 @@ function GetProcentByParty(ret) {
 //});
 
 function GenerateChartIndex(indata) {
+    console.log(indata);
+    if (indata.length === 7) {
+        indata.push({ party: "SD", partyA: 100 });
+    }
     $('#myChart').remove();
     $('#indexDivCanvas').append(' <canvas id="myChart" width="400" height="200"></canvas>');
     var ctx = document.getElementById("myChart").getContext('2d');
@@ -90,7 +103,7 @@ function GenerateChartIndex(indata) {
                     'rgba(0, 106, 179, 0.8)',
                     'rgba(0, 93, 160, 0.8)',
                     'rgba(13, 157, 219, 0.8)',
-                    'rgba(37, 34, 85, 0.8)'
+                    'rgba(255, 216, 0, 0.8)'
                 ],
                 borderColor: [
                     'rgba(237, 28, 36, 1)',
@@ -100,7 +113,7 @@ function GenerateChartIndex(indata) {
                     'rgba(0, 106, 179, 1)',
                     'rgba(0, 93, 160, 1)',
                     'rgba(13, 157, 219, 1)',
-                    'rgba(37, 34, 85, 1)'
+                    'rgba(255, 216, 0, 1)'
                 ],
                 borderWidth: 1
             }]
