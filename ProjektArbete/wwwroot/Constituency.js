@@ -89,9 +89,13 @@ app.controller("testController", function ($scope) {
                 listOfConstituency = response.constituencyList;
                 SetList();
                 specificConstituency = response.constituencyVM;
-                if (specificConstituency !== undefined) {
+                if (specificConstituency !== null) {
                     doStuffe();
-                    $scope.showSpecificConstituency = true;
+                    $scope.$apply(function () {
+                        $scope.showSpecificConstituency = true;
+                    });
+                    //$scope.showSpecificConstituency = true;
+                    console.log($scope.showSpecificConstituency);
                 }
             }
         });
@@ -166,7 +170,7 @@ function GenerateChartConstituency(ar) {
                     {
                         label: "Population (millions)",
                         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9"],
-                        data: [alt[0].pro, alt[1].pro, alt[2].pro, alt[3].pro]
+                        data: [alt[0].pro.toFixed(2), alt[1].pro.toFixed(2), alt[2].pro.toFixed(2), alt[3].pro.toFixed(2)]
                     }
                 ]
             },

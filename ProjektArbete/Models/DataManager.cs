@@ -351,6 +351,10 @@ namespace ProjektArbete.Models
                                 {
                                     return ManagerData.Stockholm(respons);
                                 }
+                                if (länList[j].ToLower() == "Västra Götalands län".ToLower())
+                                {
+                                    return ManagerData.Goteborg(respons);
+                                }
                             }
                         }
                     }

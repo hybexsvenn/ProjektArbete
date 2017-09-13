@@ -15,10 +15,10 @@
         <p ng-click="selectedConstituency(item)">{{item}}</p>
     </li>
 </ul>
-<div id="content">
-        <div id="divPersonCanvas" ng-show="showSpecificConstituency">
+<div id="content" ng-show="showSpecificConstituency">
+        <div id="divPersonCanvas">
             <canvas id="pieJChart" width="400" height="200"></canvas>
-        <div ng-show="showSpecificConstituency">
+        <div>
 
             <p>
                 <label for="date">Riksdagsår:</label>
