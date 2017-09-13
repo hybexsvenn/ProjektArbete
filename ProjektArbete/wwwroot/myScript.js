@@ -31,8 +31,6 @@ var listOfPartyVotes;
 var sliderFirstDateSet = 2003;
 var sliderLastDateSet = 2017;
 
-
-
 // Funktion för att kolla om ett värde finns i listan
 // Ut: true ifall värdet finns eller false om värdet inte finns
 function ifExist(valuetosearch, arraytosearch, key) {
@@ -136,9 +134,7 @@ function LastDate(array, key) {
 }
 
 // Funktion för att hämta api information från riksdagens hemsida
-// Ut: arraye med propar
-
-
+// Ut: array med propar
 var p;
 function GetPersonFromDataRiksdagen(intresent_id) {
     $.ajax({
@@ -159,15 +155,7 @@ function GetPersonFromDataRiksdagen(intresent_id) {
     return p;
 }
 
-
-
-
-
-
-
-
 // Funktion för slider
-
 $(function () {
     $("#slider-range").slider({
         range: true,
@@ -200,7 +188,6 @@ $(document).ready(function () {
 });
 
 // Funktion för att kunna vissa grafer där inte alla värden finns
-
 function ReturnNull(input) {
     if (input === undefined) {
         return null;

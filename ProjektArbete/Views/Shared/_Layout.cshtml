@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Närvarokollen - @ViewBag.Title</title>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One|Comfortaa" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="~/myStyleSheet.css" rel="stylesheet" />
@@ -14,7 +15,7 @@
         <div class="yada">
             <div class="container">
                 <div class="header">
-                    <img src="~/Images/logo.png" style="width:auto;height:60px;float:left" /><h1>Voteringskollen</h1>
+                    <img src="~/Images/logo.png" id="ourLogo"/><h1>Riksdagskollen</h1>
                 </div>
             </div>
 
@@ -49,9 +50,11 @@
                     @RenderBody()
                 </div>
                 <hr />
-                <footer>
-                    <p class="marginFooter">&copy; 2017 - Team Göteborg</p>
-                </footer>
+                <div class="container">
+                    <footer>
+                        <p>&copy; 2017 - Team Göteborg</p>
+                    </footer>
+                </div>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

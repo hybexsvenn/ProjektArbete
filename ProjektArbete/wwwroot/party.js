@@ -12,7 +12,7 @@ var chartChoosenParty = function (id) {
             sliderFirstDateSet = FirstDate(ret, "year");
             sliderLastDateSet = LastDate(ret, "year");
             listOfPartyVotes = ByYear("2014", "2017", ret, "year");
-            CountingTogether(listOfPartyVotes)
+            CountingTogether(listOfPartyVotes);
         }
     });
     GenerateChartParty(listofPartForX);
@@ -66,7 +66,7 @@ function GenerateChartParty(ar) {
         });
     } else {
         $('#divCanvas').append(' <canvas id="pieChart" width="400" height="200"></canvas>');
-        var ctx = document.getElementById("pieChart");
+        ctx = document.getElementById("pieChart");
     }
 }
 
@@ -85,10 +85,10 @@ $(document).ready(function () {
     $("body").mouseup(function () {
         if (temp === true) {
             listOfPartyVotes = ByYear(sliderStart, sliderEnd, ret, "year");
-            CountingTogether(listOfPartyVotes)
+            CountingTogether(listOfPartyVotes);
             console.log(listOfPartyVotes);
             GenerateChartParty(listofPartForX);
             temp = false;
         }
     });
-})
+});
