@@ -40,19 +40,42 @@ app.controller("testController", function ($scope) {
     $scope.ShowAnswere = function () {
         
         $scope.ans = !$scope.ans;
-        //console.log(id);
-        //switch (id) {
-        //    case 1:
-        //        $scope.id = !$scope.id;
-        //        break;
-        //    case 2:
-        //        $scope.ans = !$scope.ans;
-        //        break;
-        //    default:
-        //        $scope.ans = !$scope.ans;
-        //}
-        
+
     };
 
+
+    $(document).ready(function () {
+
+
+
+        $('.faq_question').click(function () {
+
+
+
+            if ($(this).parent().is('.open')) {
+
+                $(this).closest('.faq').find('.faq_answer_container').animate({ 'height': '0' }, 500);
+
+                $(this).closest('.faq').removeClass('open');
+
+
+
+            } else {
+
+                var newHeight = $(this).closest('.faq').find('.faq_answer').height() + 'px';
+
+                $(this).closest('.faq').find('.faq_answer_container').animate({ 'height': newHeight }, 500);
+
+                $(this).closest('.faq').addClass('open');
+
+            }
+
+
+
+        });
+
+
+
+    });
 
 });
