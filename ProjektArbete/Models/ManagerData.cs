@@ -8,10 +8,8 @@ namespace ProjektArbete.Models
     public class ManagerData
     {
         internal string Stockholm (string latitude, string longitude)
-        {
-            
+        {         
             return "Stockholms län";
-
         }
     }
 }

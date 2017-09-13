@@ -138,6 +138,8 @@ function GetPicture(id) {
 
 // Funktion för graf
 function GenerateChartPerson(ar) {
+    $('#pieJChart').remove();
+    $('#divPersonCanvas').append('<canvas id="pieJChart" width="400" height="200"></canvas>');
     if (ar.length > 0) {
         var alt = [{ vote: "Ja", pro: 0 }, { vote: "Nej", pro: 0 }, { vote: "Avstår", pro: 0 }, { vote: "Frånvarande",pro :0 }];
         var num = [];
@@ -156,8 +158,6 @@ function GenerateChartPerson(ar) {
             }
         }
         console.log(alt);
-        $('#pieJChart').remove();
-        $('#divPersonCanvas').append('<canvas id="pieJChart" width="400" height="200"></canvas>');
         var ctx = document.getElementById("pieJChart");
         var myChart = new Chart(ctx, {
             type: 'doughnut',
@@ -167,7 +167,7 @@ function GenerateChartPerson(ar) {
                     {
                         label: "Population (millions)",
                         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9"],                       
-                        data: [alt[0].pro, alt[1].pro, alt[2].pro, alt[3].pro]
+                        data: [alt[0].pro.toFixed(2), alt[1].pro.toFixed(2), alt[2].pro.toFixed(2), alt[3].pro.toFixed(2)]
                     }
                 ]
             },
