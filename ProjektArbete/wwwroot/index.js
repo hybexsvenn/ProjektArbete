@@ -62,24 +62,6 @@ function GetProcentByParty(ret) {
     }
 }
 
-//$(function () {
-//    $("#slider-range").slider({
-//        range: true,
-//        min: 2003,
-//        max: 2017,
-//        values: [2013, 2015],
-//        slide: function (event, ui) {
-//            $("#date").val(ChangeTheBackFormatOfYear(ui.values[0]) + " - " + ChangeTheBackFormatOfYear(ui.values[1]));         
-//            sliderStart = ui.values[0];
-//            sliderEnd = ui.values[1];
-//        }
-//    });
-
-//    $("#slider-range").mousedown(function () {
-//        $("#date").append("<span style='color:#00f;'>Mouse down.</span>");
-//    });
-//});
-
 function GenerateChartIndex(indata) {
     console.log(indata);
     if (indata.length === 7) {
@@ -124,6 +106,10 @@ function GenerateChartIndex(indata) {
                     ticks: {
                         beginAtZero: true,
                         max: 100
+                        // För att få %-tecken när man hovrar?? 
+                        //callback: function (value, index, values) {
+                        //    return value + '%';
+                        //}
                     }
                 }]
             }

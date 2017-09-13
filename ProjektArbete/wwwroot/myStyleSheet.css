@@ -7,17 +7,6 @@ body {
     background-color: #302E26;
 }
 
-.clickedClass {
-    display:none;
-}
-
-.ch0re {
-    display:inline;
-}
-.ch{
-    display:none;
-}
-
 .navbar {
     background-color: #FC4E1E;
     border: transparent;
@@ -25,7 +14,7 @@ body {
 
 .active-nav {
     background-color: #FE7F2D;
-    border-radius: 100%;
+    border-radius: 45%;
     opacity: 0.7;
 }
 
@@ -34,26 +23,49 @@ body {
     font-style: normal;
 }
 
-/*.navbar-nav > li > a {
-    color: green;
-}*/
-
-.navbar-nav .active li a {
-    color: red;
-}
-
 .navbar-nav a:active {
     font-size: 150%;
 }
 
-/*.header {
-}*/
+.header {
+padding: 1%;
+}
 
+/*Todo: Gör responsiv*/
     .header h1 {
         color: #302E26;
-        font-family: 'Quicksand', sans-serif;
-        font-size: 60px;
+        font-family: 'Comfortaa', cursive;
+        font-size: 45px;
+        /*font-weight: bold;*/
     }
+
+.sliderHeadline {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#slider-range {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px dotted grey;
+}
+
+.ui-widget-header {
+    background-color: #FC4E1E;
+} 
+
+#date {
+    border: 0;
+    font-weight: bold;
+}
+
+#indexDivCanvas {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 #wrapper {
     margin-top: 10px;
@@ -68,10 +80,9 @@ body {
     border-radius: 30px;
 }
 
-
-.marginFooter {
-    margin: 15px;
-}
+footer {
+    padding: 1%;
+    }
 
 .logos li {
     display: inline-block;
@@ -103,12 +114,15 @@ body {
             background-color: lightgrey;
         }
 
-/*.show {
-    display: block;
-}*/
-
 @media (min-width: 1200px) {
     #wrapper {
         max-width: 1200px;
     }
+}
+
+#ourLogo {
+    width: auto;
+    height:50px;
+    float:left;
+    margin:1%;
 }

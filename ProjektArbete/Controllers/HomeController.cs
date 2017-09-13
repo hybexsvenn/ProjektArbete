@@ -87,6 +87,5 @@ namespace ProjektArbete.Controllers
 
             return View(mailVM);
         }
-
     }
 }

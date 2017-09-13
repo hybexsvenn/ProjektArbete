@@ -44,7 +44,7 @@ namespace ProjektArbete.Controllers
             return dataManager.GetOneParty(id);
         }
 
-        public async Task<IActionResult> ConstituencyAsync(string id)
+        public async Task<ConstituencyWrapper> ConstituencyAsync(string id)
         {
             ConstituencyWrapper constituencyWrapper = new ConstituencyWrapper();
             var constituency = await dataManager.GetGoeLocAsync(id);
@@ -54,7 +54,12 @@ namespace ProjektArbete.Controllers
             }
             constituencyWrapper.ConstituencyList = dataManager.GetConstituencys();
 
-            return Json(constituencyWrapper);
+            return constituencyWrapper;
         }
+        public ConstituencyVM[] Constituency(string id)
+        {
+            return dataManager.GetConstituency(id);
+        }
+
     }
 }
