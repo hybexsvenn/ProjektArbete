@@ -355,6 +355,7 @@ namespace ProjektArbete.Models
                                 {
                                     return ManagerData.Goteborg(respons);
                                 }
+                                return länList[j];
                             }
                         }
                     }
