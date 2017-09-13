@@ -3,14 +3,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Närvarokollen - @ViewBag.Title</title>
+    <title>Riksdagskollen - @ViewBag.Title</title>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Poiret+One|Comfortaa" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="~/myStyleSheet.css" rel="stylesheet" />
+    <link href="~/cookieSheet.css" rel="stylesheet" />
 </head>
-<body ng-app="myApp" ng-controller="testController">
+<body ng-app="myApp" ng-controller="testController" class="eupopup eupopup-top">
     <div id="wrapper" class="center-block">
         <div class="yada">
             <div class="container">
@@ -52,7 +53,7 @@
                 <hr />
                 <div class="container">
                     <footer>
-                        <p>&copy; 2017 - Team Göteborg</p>
+                        <p>Senast uppdaterad: 2017-09-13 <br />Epost: info[a]riksdagskollen.se</p>
                     </footer>
                 </div>
             </div>
@@ -66,7 +67,7 @@
 
         @RenderSection("Scripts", false)
         <script src="~/myScript.js"></script>
-
+        @*<script src="~/cookie.js"></script>*@
     </div>
 </body>
 </html>

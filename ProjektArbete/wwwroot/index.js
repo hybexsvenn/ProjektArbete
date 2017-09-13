@@ -10,17 +10,12 @@ $(document).ready(function () {
         type: 'GET',
         dataType: 'json',
         success: function (re) {
-            console.log(re);
             for (var i = 0; i < re.length; i++) {
                 if (re[i].party !== "-") { r.push(re[i]); }
             }
-            console.log(r);
             r = ChangeTheFormatOfYear(r, "year");
-            console.log(r);
             listOfPartbetweenStartAndEndYear = ByYear("2014", "2017", r, "year");
-            console.log(listOfPartbetweenStartAndEndYear);
             GetProcentByParty(listOfPartbetweenStartAndEndYear);
-            console.log(listofPartForX);
             GenerateChartIndex(listofPartForX);
         }
     });
@@ -63,13 +58,13 @@ function GetProcentByParty(ret) {
 }
 
 function GenerateChartIndex(indata) {
-    console.log(indata);
     if (indata.length === 7) {
         indata.push({ party: "SD", partyA: 100 });
     }
     $('#myChart').remove();
     $('#indexDivCanvas').append(' <canvas id="myChart" width="500" height="200"></canvas>');
     var ctx = document.getElementById("myChart").getContext('2d');
+
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -106,12 +101,23 @@ function GenerateChartIndex(indata) {
                     ticks: {
                         beginAtZero: true,
                         max: 100
-                        // För att få %-tecken när man hovrar?? 
-                        //callback: function (value, index, values) {
-                        //    return value + '%';
-                        //}
                     }
                 }]
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        return tooltipItem.yLabel + ' %';
+                    },
+                    title: function (tooltipItem, data) {
+                        tooltipItem[0].xLabel = GetFullPartyName(tooltipItem[0].xLabel);
+
+                        return 'Närvaro för ' + tooltipItem[0].xLabel;
+                    }
+                }
             }
         }
     });

@@ -70,11 +70,11 @@ namespace ProjektArbete.Models
                 new QuestionsVM {Question="Varför hittar jag inte Stefan Löfven?", Answere="Stefan Löfven är ledig ifrån riksdagen för att vara statsminister. Han satt heller inte i riksdagen innan han blev statsminister varpå det inte finns någon statistik innan han blev statsminister.", Source="https://www.riksdagen.se/sv/ledamoter-partier/ledamot/stefan-lofven_0218878014918"},
                 new QuestionsVM {Question="Vad är syftet med sidan?", Answere="Syftet är att synliggöra riksdagsledamöternas närvaro i riksdagen. Informationen skall vara lättillgänglig för alla."},
                 new QuestionsVM {Question="Hur har ni fått fram siffrorna?", Answere="All data kommer ifrån riksdagen. Närvaron räknas ut från voteringar i riksdagen. En riksdagsledamot kan rösta ja, nej eller avstå, är man inte på plats så får man frånvaro.", Source="http://data.riksdagen.se"},
-                new QuestionsVM {Question="Vad innebär kvittning?", Answere="Kvittning är en överenskommelse mellan vissa partier där en eller flera ledamöter avstår röstning. Tanken är att upprätthålla procentfördelningen ifrån valdagen.", Source="http://http://www.riksdagen.se/sv/sa-funkar-riksdagen/arbetet-i-riksdagen/sa-arbetar-partierna/"},
+                new QuestionsVM {Question="Vad innebär kvittning?", Answere="Kvittning är en överenskommelse mellan vissa partier där en eller flera ledamöter avstår röstning. Tanken är att upprätthålla procentfördelningen ifrån valdagen.", Source="http://www.riksdagen.se/sv/sa-funkar-riksdagen/arbetet-i-riksdagen/sa-arbetar-partierna/"},
                 new QuestionsVM {Question="Vad innebär övriga partier som finns på några ledmöter?", Answere="Det är ledamöter som aktivt har lämnat partiet de tillhörde när de blev inröstade."},
                 new QuestionsVM {Question="Hur ofta uppdaterar ni hemsidan?", Answere="Sidan kommer att uppdateras med jämna mellanrum, fram till valet 2018, så fort riksdagen uppdaterar sin databas. Längst ner på sidan kan ni se när den senast uppdaterades."},
-                new QuestionsVM {Question="Varför saknas det data för vissa ledamöter?", Answere="All data kommer ifrån riksdagen, saknas det data beror det på att ledamoten inte satt i riksdagen under den valda perioden.", Source=""},
-
+                new QuestionsVM {Question="Varför saknas det data för vissa ledamöter?", Answere="All data kommer ifrån riksdagen, saknas det data beror det på att ledamoten inte satt i riksdagen under den valda perioden."},
+                new QuestionsVM {Question="Varför finns inte Folkpartiet med?", Answere="Folkpartiet har bytt namn till Liberalerna och vi har hanterat det genom att uppdatera all data om Folkpartiet till Liberalerna" }
             };
 
             return quest.ToArray();
