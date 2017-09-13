@@ -7,6 +7,22 @@ body {
     background-color: #302E26;
 }
 
+.header {
+    padding: 1%;
+}
+
+    /*Todo: Gör responsiv*/
+    .header h1 {
+        color: #302E26;
+        font-family: 'Comfortaa', cursive;
+        font-size: 45px;
+        /*font-weight: bold;*/
+    }
+
+.ui-widget-header {
+    background-color: #FC4E1E;
+}
+
 .navbar {
     background-color: #FC4E1E;
     border: transparent;
@@ -24,19 +40,17 @@ body {
 }
 
 .navbar-nav a:active {
-    font-size: 150%;
+    font-size: 110%;
 }
 
-.header {
-padding: 1%;
+.content {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/*Todo: Gör responsiv*/
-    .header h1 {
-        color: #302E26;
-        font-family: 'Comfortaa', cursive;
-        font-size: 45px;
-        /*font-weight: bold;*/
+    .content h2 {
+        text-align: center;
     }
 
 .sliderHeadline {
@@ -51,10 +65,6 @@ padding: 1%;
     margin-right: auto;
     border: 1px dotted grey;
 }
-
-.ui-widget-header {
-    background-color: #FC4E1E;
-} 
 
 #date {
     border: 0;
@@ -82,16 +92,30 @@ padding: 1%;
 
 footer {
     padding: 1%;
+}
+
+.logosParty {
+    font-size: 0px;
+}
+
+    .logosParty ul {
+        width: 100%;
     }
 
-.logos li {
-    display: inline-block;
-}
+    .logosParty li {
+        display: inline-block;
+    }
 
-.logos img {
-    height: 80px;
-    margin: 10px;
-}
+        .logosParty li .partyLogo img {
+            height: 100px;
+            margin: 10px;
+        }
+
+/*Todo: gör responsiv*/
+/*.logosParty li:nth-child(4):after {
+            content: "\A";
+            white-space: pre;
+        }*/
 
 .opacityLogos {
     opacity: 0.3;
@@ -122,7 +146,7 @@ footer {
 
 #ourLogo {
     width: auto;
-    height:50px;
-    float:left;
-    margin:1%;
+    height: 50px;
+    float: left;
+    margin: 1%;
 }

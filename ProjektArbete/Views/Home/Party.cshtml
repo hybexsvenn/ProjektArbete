@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.Title = "Parti";
 }
-<div>
+<div class="content">
+    <h2>Välj parti: </h2>
     <div id="divCanvas" ng-show="showPartyBarChart">
         <canvas id="pieChart" width="400" height="200"></canvas>
     </div>
@@ -14,31 +15,31 @@
         </div>
         <div id="slider-range"></div>
     </div>
-    <div class="logos">
+    <div class="logosParty">
         <ul>
             <li>
-                <div class="partyLogo" ng-click="loadPartyData('V')"><img src="~/Images/Logos/Vansterpartiet_logo_sRGB.jpg" /></div>
+                <div class="partyLogo" ng-click="loadPartyData('V')"><img src="~/Images/Logos/Small_V.jpg" /></div>
             </li>
             <li>
-                <div class="partyLogo" ng-click="loadPartyData('S')"><img src="~/Images/Logos/Socialdemokraterna_logo_liggande.png" /></div>
+                <div class="partyLogo" ng-click="loadPartyData('S')"><img src="~/Images/Logos/Small_S.jpg" /></div>
             </li>
             <li>
-                <div class="partyLogo" ng-click="loadPartyData('MP')"><img src="~/Images/Logos/Miljopartiet_logo_original_gron.png" /></div>
+                <div class="partyLogo" ng-click="loadPartyData('MP')"><img src="~/Images/Logos/Small_MP.jpg" /></div>
             </li>
             <li>
-                <div class="partyLogo" ng-click="loadPartyData('C')"><img src="~/Images/Logos/Centerpartiet_Logo_Narodlad_Liggande_RGB.jpg" /></div>
+                <div class="partyLogo" ng-click="loadPartyData('C')"><img src="~/Images/Logos/Small_C.jpg" /></div>
             </li>
             <li>
-                <div class="partyLogo" ng-click="loadPartyData('L')"><img src="~/Images/Logos/Liberalerna_logo_liggande.png" /></div>
+                <div class="partyLogo" ng-click="loadPartyData('L')"><img src="~/Images/Logos/Small_L.jpg" /></div>
             </li>
             <li>
-                <div class="partyLogo" ng-click="loadPartyData('KD')"><img src="~/Images/Logos/Kristdemokraterna_logo_CMYK.jpg" /></div>
+                <div class="partyLogo" ng-click="loadPartyData('KD')"><img src="~/Images/Logos/Small_KD.jpg" /></div>
             </li>
             <li>
-                <div class="partyLogo" ng-click="loadPartyData('M')"><img src="~/Images/Logos/Moderaterna_logo_utan_text.png" /></div>
+                <div class="partyLogo" ng-click="loadPartyData('M')"><img src="~/Images/Logos/Small_M.jpg" /></div>
             </li>
             <li>
-                <div class="partyLogo" ng-click="loadPartyData('SD')"><img src="~/Images/Logos/Sverigedemokraterna_logo_RGB.jpg" /></div>
+                <div class="partyLogo" ng-click="loadPartyData('SD')"><img src="~/Images/Logos/Small_SD.jpg" /></div>
             </li>
         </ul>
     </div>
