@@ -17,8 +17,6 @@ app.controller("testController", function ($scope) {
     $scope.showPerson = function () {
         $scope.showPer = !$scope.showPer;
     };
-
-
 });
 
 

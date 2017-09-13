@@ -89,7 +89,6 @@ function CountingTogether(r) {
 }
 
 app.controller("testController", function ($scope) {
-
     if (myArr === undefined) {
         //console.log(myArr);
         foo();
@@ -134,13 +133,10 @@ function GetPicture(id) {
     content += '</div>';
     content += '</div>';
 
-
     $('#personAPI').append(content);
-    
 }
 
 // Funktion för graf
-
 function GenerateChartPerson(ar) {
     if (ar.length > 0) {
         var alt = [{ vote: "Ja", pro: 0 }, { vote: "Nej", pro: 0 }, { vote: "Avstår", pro: 0 }, { vote: "Frånvarande",pro :0 }];
