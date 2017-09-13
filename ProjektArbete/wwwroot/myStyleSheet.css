@@ -7,6 +7,17 @@ body {
     background-color: #302E26;
 }
 
+.clickedClass {
+    display:none;
+}
+
+.ch0re {
+    display:inline;
+}
+.ch{
+    display:none;
+}
+
 .navbar {
     background-color: #FC4E1E;
     border: transparent;
@@ -35,8 +46,8 @@ body {
     font-size: 150%;
 }
 
-.header {
-}
+/*.header {
+}*/
 
     .header h1 {
         color: #302E26;

@@ -1,0 +1,19 @@
+﻿
+
+<div>
+  
+
+    <ul class="dropDownContent">
+        <li ng-repeat="item in listOfSearch | filter: search track by $index">
+            <p>{{item.question}}</p>
+            <input type="checkbox" ng-model="line" /><p ng-class="[ch0re, ch]" value="false">{{item.answere}}</p>
+        </li>
+    </ul>
+   
+</div>
+
+@section Scripts
+    {
+    <script src="~/faq.js"></script>
+
+}

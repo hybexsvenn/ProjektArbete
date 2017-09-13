@@ -19,6 +19,11 @@ namespace ProjektArbete.Controllers
             this.dataManager = dataManager;
         }
 
+        public QuestionsVM[] Faq()
+        {
+            return dataManager.Questions();
+        }
+
         public IndexVM[] Index()
         {
             return dataManager.GetAllPartyPercentage();

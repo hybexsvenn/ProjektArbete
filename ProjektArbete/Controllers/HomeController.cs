@@ -59,9 +59,6 @@ namespace ProjektArbete.Controllers
             if (!testValid)
             {
                 TempData[modelView.TempDataFail] = "Räkna om... Hallå eller...";
-                //ModelState.AddModelError(nameof(MailVM.Catchpa), "Lär dig räkna...");
-                //ModelState.ClearValidationState(nameof(MailVM.Catchpa));
-                //modelView.Catchpa = null;
                 return View(modelView);
             }
             else
@@ -71,6 +68,12 @@ namespace ProjektArbete.Controllers
             }
 
             return RedirectToAction(nameof(ContactUs));
+        }
+
+        public IActionResult Faq()
+        {
+            
+            return View();
         }
 
         [HttpGet]
