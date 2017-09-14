@@ -11,9 +11,9 @@ function foo() {
             for (var i = 0; i < p.length; i++) {
                 getName.push({
                     person:
-                        p[i].firstName + " " + p[i].lastName + " [" + p[i].party.toUpperCase() + "]",
+                    p[i].firstName + " " + p[i].lastName + " [" + p[i].party.toUpperCase() + "]",
                     Id:
-                        p[i].id
+                    p[i].id
                 });
 
             }
@@ -64,7 +64,7 @@ $(document).ready(function () {
     });
 
 
-    
+
 
 });
 
@@ -122,7 +122,7 @@ function GetPicture(id) {
     $('#personInfo').remove();
     var content = '<div id="personInfo" class="center">';
     content += '<h1>' + foreft + '</h1>';
-    content += '<img id="theImg"; src="' + pictureIt[0].person.bild_url_192 + '" alt="' + foreft +'" >';
+    content += '<img id="theImg"; src="' + pictureIt[0].person.bild_url_192 + '" alt="' + foreft + '" >';
     content += '<div id="infoContent">';
     content += '<label>Namn:</label>' + ' ' + foreft;
     content += '<br /><label>Parti:</label>' + ' ' + GetFullPartyName(pictureIt[0].person.parti);
@@ -136,9 +136,9 @@ function GetPicture(id) {
 
 // Funktion för graf
 function GenerateChartPerson(ar) {
-        $('#pieJChart').remove();
+    $('#pieJChart').remove();
     if (ar.length > 0) {
-        var alt = [{ vote: "Ja", pro: 0 }, { vote: "Nej", pro: 0 }, { vote: "Avstår", pro: 0 }, { vote: "Frånvarande",pro :0 }];
+        var alt = [{ vote: "Ja", pro: 0 }, { vote: "Nej", pro: 0 }, { vote: "Avstår", pro: 0 }, { vote: "Frånvarande", pro: 0 }];
         var num = [];
         for (var i = 0; i < ar.length; i++) {
             if (ar[i].rost === alt[0].vote) {
@@ -177,8 +177,7 @@ function GenerateChartPerson(ar) {
             }
         });
     } else {
-        $("#divPersonCanvas").prepend('<p>Det finns ingen data. Testa att ändra årtal.</p>');
-        console.log(document.getElementById("divPersonCanvas"));
+        $('#pieJChart').remove();
+        $("#divPersonCanvas").append('<p id="pieJChart">Det finns ingen data. Testa att ändra årtal.</p>');
     }
-
 }
