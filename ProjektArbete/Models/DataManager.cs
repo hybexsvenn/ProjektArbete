@@ -320,7 +320,6 @@ namespace ProjektArbete.Models
         }
 
 
-
         static List<string> länList = new List<string> { "Stockholms län", "Västra Götalands län", "Blekinge län", "Dalarnas län", "Gotlands län", "Gävleborgs län", "Hallands län", "Jämtlands län", "Jönköpings län", "Kalmar län", "Kronobergs län", "Norrbottens län", "Södermanlands län", "Uppsala län", "Värmlands län", "Västerbottens län", "Västernorrlands län", "Västmanlands län", "Örebro län", "Östergötlands län"};
         internal async Task<string> GetGoeLocAsync(string latlong)
         {
