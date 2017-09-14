@@ -38,7 +38,6 @@ function CountingTogether(r) {
 
 
 function GenerateChartParty(ar) {
-    console.log(ar);
     $('#pieChart').remove();
     if (ar.length === 4) {
         $('#divCanvas').append(' <canvas id="pieChart" width="400" height="200"></canvas>');
@@ -86,7 +85,6 @@ $(document).ready(function () {
         if (temp === true) {
             listOfPartyVotes = ByYear(sliderStart, sliderEnd, ret, "year");
             CountingTogether(listOfPartyVotes);
-            console.log(listOfPartyVotes);
             GenerateChartParty(listofPartForX);
             temp = false;
         }

@@ -15,7 +15,6 @@ function GetConstituency(name) {
         url: "/API/Constituency/" + name,
         type: 'GET',
         success: function (response) {
-            console.log(response);
             specificConstituency = response;
             if (specificConstituency !== undefined) {
                 doStuffe();
@@ -26,15 +25,10 @@ function GetConstituency(name) {
 }
 
 function doStuffe() {
-    //console.log($scope.showPersonBarChart);
     r = ChangeTheFormatOfYear(specificConstituency, "year");
-    console.log(r);
     listOfPartyVotes = ByYear("2014", "2017", r, "year");
-    console.log(listOfPartyVotes);
     CountingTogether(listOfPartyVotes);
-    console.log(listofPartForX);
     GenerateChartConstituency(listofPartForX);
-    //$scope.searchBar = false;
 }
 
 $(document).ready(function () {
@@ -50,7 +44,6 @@ $(document).ready(function () {
     });
     $("body").mouseup(function () {
         if (temp === true) {
-            console.log(r);
             listOfPartyVotes = ByYear(sliderStart, sliderEnd, r, "year");
             CountingTogether(listOfPartyVotes);
             GenerateChartConstituency(listofPartForX);
@@ -85,7 +78,6 @@ app.controller("testController", function ($scope) {
             url: "/API/ConstituencyAsync/" + lat + ";" + long,
             type: 'GET',
             success: function (response) {
-                console.log(response);
                 listOfConstituency = response.constituencyList;
                 SetList();
                 specificConstituency = response.constituencyVM;
@@ -95,7 +87,6 @@ app.controller("testController", function ($scope) {
                         $scope.showSpecificConstituency = true;
                     });
                     //$scope.showSpecificConstituency = true;
-                    console.log($scope.showSpecificConstituency);
                 }
             }
         });
@@ -122,7 +113,6 @@ app.controller("testController", function ($scope) {
 
     function SetList() {
         $scope.listOfSearch = listOfConstituency;
-        console.log(listOfConstituency);
     }
 
 
@@ -158,7 +148,6 @@ function GenerateChartConstituency(ar) {
                 alt[3].pro = ar[i].pro;
             }
         }
-        //console.log(specificConstituency);
         $('#pieJChart').remove();
         $('#divPersonCanvas').append('<canvas id="pieJChart" width="400" height="200"></canvas>');
         var ctx = document.getElementById("pieJChart");

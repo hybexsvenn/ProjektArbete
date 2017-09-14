@@ -34,9 +34,7 @@ $(document).ready(function () {
             listOfPartbetweenStartAndEndYear = [];
             console.log(r);
             listOfPartbetweenStartAndEndYear = ByYear(sliderStart, sliderEnd, r, "year");
-            console.log(listOfPartbetweenStartAndEndYear);
             GetProcentByParty(listOfPartbetweenStartAndEndYear);
-            console.log(listofPartForX);
             GenerateChartIndex(listofPartForX);
             temp = false;
         }

@@ -19,7 +19,6 @@ function foo() {
             }
 
             myArr = getName;
-            //console.log(getName);
         }
     });
 }
@@ -35,13 +34,9 @@ var chartChoosenPerson = function (id) {
         type: 'GET',
         dataType: 'json',
         success: function (re) {
-            //console.log(re);
             r = ChangeTheFormatOfYear(re, "parliamentaryYear");
-            console.log(r);
             listOfPartyVotes = ByYear("2014", "2017", r, "parliamentaryYear");
-            //console.log(listOfPartyVotes);
             CountingTogether(listOfPartyVotes);
-            //console.log(listofPartForX);
             GenerateChartPerson(listofPartForX);
         }
     });
@@ -60,7 +55,6 @@ $(document).ready(function () {
     });
     $("body").mouseup(function () {
         if (temp === true) {
-            console.log(r);
             listOfPartyVotes = ByYear(sliderStart, sliderEnd, r, "parliamentaryYear");
             CountingTogether(listOfPartyVotes);
             GenerateChartPerson(listofPartForX);
@@ -90,7 +84,6 @@ function CountingTogether(r) {
 
 app.controller("testController", function ($scope) {
     if (myArr === undefined) {
-        //console.log(myArr);
         foo();
     }
     else {
@@ -157,7 +150,6 @@ function GenerateChartPerson(ar) {
                 alt[3].pro = ar[i].pro;
             }
         }
-        console.log(alt);
         var ctx = document.getElementById("pieJChart");
         var myChart = new Chart(ctx, {
             type: 'doughnut',

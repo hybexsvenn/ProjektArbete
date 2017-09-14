@@ -21,7 +21,6 @@ function getQuestions() {
                 });
 
             }
-            console.log(getName);
 
             myArr = getName;
         }
@@ -32,7 +31,6 @@ app.controller("testController", function ($scope) {
     if (myArr === undefined) {
         getQuestions();
     }
-    console.log(myArr);
     $scope.listOfSearch = myArr;
     $scope.ans = false;
 
