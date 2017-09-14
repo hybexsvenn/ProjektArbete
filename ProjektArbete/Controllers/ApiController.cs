@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjektArbete.Models;
 using ProjektArbete.Models.ViewModels;
+using Microsoft.AspNetCore.Http;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -46,11 +47,26 @@ namespace ProjektArbete.Controllers
 
         public async Task<ConstituencyWrapper> ConstituencyAsync(string id)
         {
+            string settings = "Google";
+            string settingValue = "";
             ConstituencyWrapper constituencyWrapper = new ConstituencyWrapper();
-            var constituency = await dataManager.GetGoeLocAsync(id);
-            if (constituency != null)
+
+            if (Request.Cookies[settings] != null)
             {
-                constituencyWrapper.constituencyVM = dataManager.GetConstituency(constituency);
+                CookieOptions options = new CookieOptions();
+                options.Expires = DateTime.Now.AddDays(7);
+                constituencyWrapper.constituencyVM = dataManager.GetConstituency(Request.Cookies[settings]);
+
+            }
+            else
+            {
+                var constituency = await dataManager.GetGoeLocAsync(id);
+                if (constituency != null)
+                {
+                    constituencyWrapper.constituencyVM = dataManager.GetConstituency(constituency);
+                    settingValue = constituency;
+                }
+                Response.Cookies.Append(settings, settingValue);
             }
             constituencyWrapper.ConstituencyList = dataManager.GetConstituencys();
 

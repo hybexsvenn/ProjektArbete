@@ -18,7 +18,7 @@
 
         _self.params = {
 
-            cookiePolicyUrl: 'home/cookiepolicy',
+            cookiePolicyUrl: '/home/cookiepolicy',
 
             popupPosition: 'top',
 
@@ -30,9 +30,9 @@
 
             popupText: 'Vi använder dem för bästa upplevelse på hemsidan. Om du fortsätter att använda hemsidan så antar vi att du accepterar våra cookies.',
 
-            buttonContinueTitle: 'Continue',
+            buttonContinueTitle: 'Fortsätt',
 
-            buttonLearnmoreTitle: 'Learn&nbsp;more',
+            buttonLearnmoreTitle: 'Läs&nbsp;mer',
 
             buttonLearnmoreOpenInNewWindow: true,
 

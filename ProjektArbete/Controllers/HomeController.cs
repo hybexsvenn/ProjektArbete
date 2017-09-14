@@ -8,6 +8,7 @@ using ProjektArbete.Models.ViewModels;
 using System.Drawing;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
+using Microsoft.AspNetCore.Http;
 
 namespace ProjektArbete.Controllers
 {
@@ -26,9 +27,25 @@ namespace ProjektArbete.Controllers
         }
 
 
-        public IActionResult Index()
+        public IActionResult Index(/*string setting, string settingValue, bool isPersistent*/)
         {
+            //setting = "yada";
+            //settingValue = "man";
+
+            //if (isPersistent)
+            //{
+            //    CookieOptions options = new CookieOptions();
+            //    options.Expires = DateTime.Now.AddDays(1);
+            //    Response.Cookies.Append(setting, settingValue, options);
+            //}
+            //else
+            //{
+            //    Response.Cookies.Append(setting, settingValue);
+            //}
+
             return View();
+
+            
         }
 
         public IActionResult Person(string id)
@@ -50,6 +67,7 @@ namespace ProjektArbete.Controllers
 
         public IActionResult Constituency()
         {
+
             return View();
         }
 
@@ -88,8 +106,6 @@ namespace ProjektArbete.Controllers
             MailVM mailVM = new MailVM();
             mailVM.CatchpaNumber[0] = dataManager.RandomCatchpa()[0];
             mailVM.CatchpaNumber[1] = dataManager.RandomCatchpa()[1];
-
-            //x = mailVM.CatchpaNumber;
 
             return View(mailVM);
         }
