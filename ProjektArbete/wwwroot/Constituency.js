@@ -164,10 +164,17 @@ function GenerateChartConstituency(ar) {
                 ]
             },
             options: {
-                responsive: false,
                 title: {
                     display: true,
                     text: specificConstituency[0].constituency + 's röstning'
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function (tooltipItem, data) {
+                            var indice = tooltipItem.index;
+                            return data.labels[indice] + ': ' + data.datasets[0].data[indice] + '%';
+                        }
+                    }
                 }
             }
         });

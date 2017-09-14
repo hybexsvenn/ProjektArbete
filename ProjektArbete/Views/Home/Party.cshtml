@@ -2,7 +2,6 @@
     ViewBag.Title = "Parti";
 }
 <div class="content">
-    <h2>Välj parti: </h2>
     <div id="divCanvas" ng-show="showPartyBarChart">
         <canvas id="pieChart" width="400" height="200"></canvas>
     </div>
@@ -16,6 +15,7 @@
         <div id="slider-range"></div>
     </div>
     <div class="logosParty">
+        <h2>Välj parti: </h2>
         <ul>
             <li>
                 <div class="partyLogo" ng-click="loadPartyData('V')"><img src="~/Images/Logos/Small_t_V.png" /></div>

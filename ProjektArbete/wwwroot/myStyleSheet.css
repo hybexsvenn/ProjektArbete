@@ -12,6 +12,9 @@ body {
 .scroll {
     overflow-y: scroll;
 }
+#footerRight {
+    float:right;
+}
 
 .header {
     padding: 1%;

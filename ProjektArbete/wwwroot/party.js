@@ -60,6 +60,14 @@ function GenerateChartParty(ar) {
                 title: {
                     display: true,
                     text: GetFullPartyName(ret[0].party) + 's röstning'
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function (tooltipItem, data) {
+                            var indice = tooltipItem.index;
+                            return data.labels[indice] + ': ' + data.datasets[0].data[indice] + '%';
+                        }
+                    }
                 }
             }
         });
