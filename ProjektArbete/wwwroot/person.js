@@ -113,11 +113,12 @@ app.controller("testController", function ($scope) {
     };
 });
 
+var foreft;
+
 // funktion för att få bild med hjälp av intressent id
 function GetPicture(id) {
     var pictureIt = GetPersonFromDataRiksdagen(id);
-    
-    var foreft = pictureIt[0].person.tilltalsnamn + ' ' + pictureIt[0].person.efternamn;
+    foreft = pictureIt[0].person.tilltalsnamn + ' ' + pictureIt[0].person.efternamn;
     $('#personInfo').remove();
     var content = '<div id="personInfo" class="center">';
     content += '<h1>' + foreft + '</h1>';
@@ -171,12 +172,12 @@ function GenerateChartPerson(ar) {
                 responsive: false,
                 title: {
                     display: true,
-                    text: GetFullPartyName(r[0].party) + 's röstning'
+                    text: foreft + 's röstning'
                 }
             }
         });
     } else {
-        $("#divPersonCanvas").prepend('<img id="pieJChart" src="~/Images/sign-1642037_960_720.png" width="800" height="400"/>');
+        $("#divPersonCanvas").prepend('<p>Det finns ingen data. Testa att ändra årtal.</p>');
         console.log(document.getElementById("divPersonCanvas"));
     }
 

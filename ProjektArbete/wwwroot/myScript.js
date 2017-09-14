@@ -138,7 +138,7 @@ function LastDate(array, key) {
 var p;
 function GetPersonFromDataRiksdagen(intresent_id) {
     $.ajax({
-        url: "http://data.riksdagen.se/personlista/?iid=" + intresent_id + "&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&termlista=",
+        url: "https://data.riksdagen.se/personlista/?iid=" + intresent_id + "&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&termlista=",
         type: 'GET',
         async: false,
         dataType: 'json',
