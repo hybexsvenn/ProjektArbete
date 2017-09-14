@@ -27,26 +27,47 @@ namespace ProjektArbete.Models
             }
             return "Stockholms län";
         }
-        static List<string> VästraGötalandslänsöstra = new List<string>() { "Essunga", "Falköping", "Grästorp", "Gullspång", "Götene", "Hjo", "Karlsborg", "Lidköping", "Mariestad", "Skara", "Skövde", "Tibro", "Tidaholm", "Töreboda", "Vara" };
+
+        static string[] VästraGötalandslänsöstra = new string[] { "Essunga", "Falköping", "Grästorp", "Gullspång", "Götene", "Hjo", "Karlsborg", "Lidköping", "Mariestad", "Skara", "Skövde", "Tibro", "Tidaholm", "Töreboda", "Vara" };
+        static string[] VästraGötalandslänsnorra = new string[] { "Ale", "Alingsås", "Bengtsfors", "Dals - Ed", "Färgelanda", "Herrljunga", "Lerum", "Lilla Edet", "Mellerud", "Trollhättan", "Vårgårda", "Vänersborg", "Åmål" };
+        static string[] VästraGötalandslänssödra = new string[] { "Bollebygd", "Borås", "Mark", "Svenljunga", "Tranemo", "Ulricehamn" };
+        static string[] VästraGötalandslänsvästra = new string[] { "Härryda", "Kungälv", "Lysekil", "Munkedal", "Mölndal", "Orust", "Partille", "Sotenäs", "Stenungsund", "Strömstad", "Tanum", "Tjörn", "Uddevalla", "Öckerö" };
+
         internal static string Goteborg(RootObject respons)
         {
             for (int i = 0; i < respons.results[0].address_components.Count - 1; i++)
             {
-                string str = respons.results[0].address_components[i].long_name.ToLower();
-                for (int j = 0; j < VästraGötalandslänsöstra.Count; j++)
+                string str = respons.results[0].address_components[i].long_name;
+                for (int j = 0; j < VästraGötalandslänsöstra.Length; j++)
                 {
-
-                    if ("locality" == respons.results[0].address_components[i].types[0].ToLower())
+                    if (str == VästraGötalandslänsöstra[j])
                     {
-                        if ("Stockholm" == respons.results[0].address_components[i].long_name)
-                        {
-                            return "Stockholms kommun";
-                        }
+                        return "Västra Götalands läns östra";
+                    }
+                }
+                for (int j = 0; j < VästraGötalandslänsnorra.Length; j++)
+                {
+                    if (str == VästraGötalandslänsnorra[j])
+                    {
+                        return "Västra Götalands läns norra";
+                    }
+                }
+                for (int j = 0; j < VästraGötalandslänssödra.Length; j++)
+                {
+                    if (str == VästraGötalandslänssödra[j])
+                    {
+                        return "Västra Götalands läns södra";
+                    }
+                }
+                for (int j = 0; j < VästraGötalandslänsvästra.Length; j++)
+                {
+                    if (str == VästraGötalandslänsvästra[j])
+                    {
+                        return "Västra Götalands läns västra";
                     }
                 }
             }
-            return "Stockholms län";
+            return "Göteborgs kommun";
         }
-
     }
 }
