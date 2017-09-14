@@ -3,12 +3,7 @@ var specificConstituency;
 var listOfPartyVotes;
 var listofPartForX = [];
 var r;
-
 var x;
-
-
-
-
 
 function GetConstituency(name) {
     $.ajax({
@@ -19,7 +14,6 @@ function GetConstituency(name) {
             if (specificConstituency !== undefined) {
                 doStuffe();
             }
-
         }
     });
 }
@@ -37,7 +31,6 @@ $(document).ready(function () {
         sliderEnd = 2016;
     }
     $("#date").val(ChangeTheBackFormatOfYear(sliderStart) + " - " + ChangeTheBackFormatOfYear(sliderEnd));
-
     var temp = false;
     $("#slider-range").mousedown(function () {
         temp = true;
@@ -70,7 +63,6 @@ function CountingTogether(r) {
         listofPartForX[i].pro = listofPartForX[i].pro / listofPartForX[i].divNum;
     }
 }
-
 
 app.controller("testController", function ($scope) {
     function geo(lat, long) {
@@ -108,19 +100,18 @@ app.controller("testController", function ($scope) {
         geo(position.coords.latitude, position.coords.longitude);
     }
     $scope.listOfSearch = listOfConstituency;
-
     $scope.search = "";
 
     function SetList() {
         $scope.listOfSearch = listOfConstituency;
     }
 
-
     $scope.selectedConstituency = function (id) {
         $scope.showSpecificConstituency = true;
         GetConstituency(id);
         $scope.searchBar = false;
     };
+
     $scope.change = function (search) {
         if (search.length > 1) {
             $scope.searchBar = true;
@@ -149,7 +140,7 @@ function GenerateChartConstituency(ar) {
             }
         }
         $('#pieJChart').remove();
-        $('#divPersonCanvas').append('<canvas id="pieJChart" width="1000" height="500"></canvas>');
+        $('#divConstituencyCanvas').append('<canvas id="pieJChart" width="1000" height="500"></canvas>');
         var ctx = document.getElementById("pieJChart");
         var myChart = new Chart(ctx, {
             type: 'doughnut',
@@ -165,9 +156,9 @@ function GenerateChartConstituency(ar) {
             options: {
                 title: {
                     display: true,
-                    text: specificConstituency[0].constituency + 's röstning',
+                    text: specificConstituency[0].constituency + 's röster',
                     fontSize: 30,
-                    fontFamily: "'Open Sans', sans-serif"
+                    fontFamily: "'Comfortaa', cursive"
                 },
                 tooltips: {
                     callbacks: {
@@ -180,5 +171,4 @@ function GenerateChartConstituency(ar) {
             }
         });
     }
-
 }

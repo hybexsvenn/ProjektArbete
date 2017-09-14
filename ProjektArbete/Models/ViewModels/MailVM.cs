@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProjektArbete.Models.ViewModels
 {
-
     public class MailVM
     {
-
         [Required(ErrorMessage = "Skriv in ett namn!")]
         public string Name { get; set; }
 

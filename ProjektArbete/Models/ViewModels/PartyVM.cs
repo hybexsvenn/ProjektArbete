@@ -12,14 +12,5 @@ namespace ProjektArbete.Models.ViewModels
         public string Vote { get; set; }
         public decimal PercentageAbsence { get; set; }
         public string Year { get; set; }
-
-    }
-
-    public class Vote
-    {
-        public int Yes { get; set; }
-        public int No { get; set; }
-        public int Refrain { get; set; }
-        public int Abscense { get; set; }
     }
 }

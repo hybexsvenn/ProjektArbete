@@ -59,9 +59,9 @@ function GenerateChartParty(ar) {
             options: {
                 title: {
                     display: true,
-                    text: GetFullPartyName(ret[0].party) + 's röstning',
+                    text: GetFullPartyName(ret[0].party) + 's röster',
                     fontSize: 30,
-                    fontFamily: "'Open Sans', sans-serif"
+                    fontFamily: "'Comfortaa', cursive"
                 },
                 tooltips: {
                     callbacks: {

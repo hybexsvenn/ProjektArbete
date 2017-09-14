@@ -15,9 +15,7 @@ function foo() {
                     Id:
                     p[i].id
                 });
-
             }
-
             myArr = getName;
         }
     });
@@ -62,10 +60,6 @@ $(document).ready(function () {
             temp = false;
         }
     });
-
-
-
-
 });
 
 function CountingTogether(r) {
@@ -101,7 +95,6 @@ app.controller("testController", function ($scope) {
         $scope.showPersonBarChart = true;
         chartChoosenPerson(id);
         $scope.searchBar = false;
-
     };
 
     $scope.change = function (search) {
@@ -123,7 +116,8 @@ function GetPicture(id) {
     $('#personInfo').remove();
     var content = '<div id="personInfo" class="center">';
     content += '<h1>' + foreft + '</h1>';
-    content += '<img id="theImg"; src="' + pictureIt[0].person.bild_url_192 + '" alt="' + foreft + '" >';
+    content += '<img id="theImg" style="border: 1px solid grey"; src="' + pictureIt[0].person.bild_url_192 + '" alt="' + foreft + '" >';
+    content += '<p style="font-size: 10px">Foto: Riksdagsförvaltningen</p>';
     content += '<div id="infoContent">';
     content += '<label>Namn:</label>' + ' ' + foreft;
     content += '<br /><label>Parti:</label>' + ' ' + GetFullPartyName(pictureIt[0].person.parti);
@@ -171,10 +165,9 @@ function GenerateChartPerson(ar) {
             options: {
                 title: {
                     display: true,
-                    text: forN + 's röstning',
+                    text: forN + 's röster',
                     fontSize: 20,
-                    fontFamily: "'Open Sans', sans-serif"
-                    
+                    fontFamily: "'Comfortaa', cursive"                    
                 },
                 tooltips: {
                     callbacks: {
@@ -188,6 +181,6 @@ function GenerateChartPerson(ar) {
         });
     } else {
         $('#pieJChart').remove();
-        $("#divPersonCanvas").append('<p id="pieJChart">Det finns ingen data. Testa att ändra årtal.</p>');
+        $("#divPersonCanvas").append('<p id="pieJChart" style="text-align: center; margin: 15%;">Det finns ingen data. Testa byta år.</p>');
     }
 }

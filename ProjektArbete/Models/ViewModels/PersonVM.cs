@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace ProjektArbete.Models.ViewModels
 {
-
     public class PersonVM
     {
         public string Id { get; set; }
@@ -19,6 +18,5 @@ namespace ProjektArbete.Models.ViewModels
         public string Vote { get; set; }
         public string ParliamentaryYear { get; set; }
         public string Status { get; set; }
-        
     }
 }

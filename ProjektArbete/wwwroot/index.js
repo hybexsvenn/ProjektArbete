@@ -106,7 +106,7 @@ function GenerateChartIndex(indata) {
                 display: true,
                 text: "Partiernas närvaro",
                 fontSize: 30,
-                fontFamily: "'Open Sans', sans-serif"
+                fontFamily: "'Comfortaa', cursive"
             },
             legend: {
                 display: false

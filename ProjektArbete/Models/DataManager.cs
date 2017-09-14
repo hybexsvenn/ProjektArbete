@@ -20,7 +20,6 @@ using static ProjektArbete.Models.Constituency;
 
 namespace ProjektArbete.Models
 {
-
     public class DataManager
     {
         IConfiguration configuration;
@@ -80,9 +79,7 @@ namespace ProjektArbete.Models
             };
 
             return quest.ToArray();
-
         }
-
 
         public void SendEmail(MailVM mailVM)
         {
@@ -96,11 +93,8 @@ namespace ProjektArbete.Models
             message.Append($"Message:  {mailVM.Message} \n\n");
             message.Append(mailVM.Message);
 
-
             var mail = new MailMessage();
             var smtpClient = new SmtpClient(configuration["smtpserver"], int.Parse(configuration["port"]));
-
-
 
             try
             {
@@ -144,7 +138,6 @@ namespace ProjektArbete.Models
                         Thread.Sleep(5000);
                         smtpClient.Send(mail);
                     }
-
                 }
             }
         }
@@ -155,7 +148,6 @@ namespace ProjektArbete.Models
             mailVM.CatchpaNumber[1] = RandomCatchpa()[1];
 
             return mailVM;
-
         }
 
         public IndexVM[] GetAllPartyPercentage()
@@ -214,7 +206,6 @@ namespace ProjektArbete.Models
                     }
                     else
                     {
-
                         if (personVM.Id != x.Id)
                         {
                             listOfPersons.Add(personVM);
@@ -233,7 +224,6 @@ namespace ProjektArbete.Models
 
         public PartyVM GetPartyPercentage(string id)
         {
-
             return TestData.listOfPartyData
                 .SingleOrDefault(p => p.Party == id);
         }
@@ -321,8 +311,6 @@ namespace ProjektArbete.Models
             return c.ToArray();
         }
 
-
-
         static List<string> länList = new List<string> { "Västra Götalands län","Stockholms län","Skåne län", "Blekinge län", "Dalarnas län", "Gotlands län", "Gävleborgs län", "Hallands län", "Jämtlands län", "Jönköpings län", "Kalmar län", "Kronobergs län", "Norrbottens län", "Södermanlands län", "Uppsala län", "Värmlands län", "Västerbottens län", "Västernorrlands län", "Västmanlands län", "Örebro län", "Östergötlands län"};
         internal async Task<string> GetGoeLocAsync(string latlong)
         {
@@ -401,7 +389,6 @@ namespace ProjektArbete.Models
             }
             return constituencyVM.ToArray();
         }
-
     }
 
     internal class Constituency
@@ -479,6 +466,3 @@ namespace ProjektArbete.Models
         }
     }
 }
-
-
-
