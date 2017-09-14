@@ -169,7 +169,7 @@ function GenerateChartConstituency(ar) {
                 datasets: [
                     {
                         label: "Population (millions)",
-                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9"],
+                        backgroundColor: ["#ffd952", "#572B65", "#41B24E", "#B23933"],
                         data: [alt[0].pro.toFixed(2), alt[1].pro.toFixed(2), alt[2].pro.toFixed(2), alt[3].pro.toFixed(2)]
                     }
                 ]
