@@ -149,7 +149,7 @@ function GenerateChartConstituency(ar) {
             }
         }
         $('#pieJChart').remove();
-        $('#divPersonCanvas').append('<canvas id="pieJChart" width="400" height="200"></canvas>');
+        $('#divPersonCanvas').append('<canvas id="pieJChart" width="1000" height="500"></canvas>');
         var ctx = document.getElementById("pieJChart");
         var myChart = new Chart(ctx, {
             type: 'doughnut',
@@ -158,7 +158,7 @@ function GenerateChartConstituency(ar) {
                 datasets: [
                     {
                         label: "Population (millions)",
-                        backgroundColor: ["#ffd952", "#572B65", "#41B24E", "#B23933"],
+                        backgroundColor: ["#41B24E", "#B23933", "#ffd952", "#572B65"],
                         data: [alt[0].pro.toFixed(2), alt[1].pro.toFixed(2), alt[2].pro.toFixed(2), alt[3].pro.toFixed(2)]
                     }
                 ]
