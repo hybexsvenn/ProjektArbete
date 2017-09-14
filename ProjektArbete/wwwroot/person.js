@@ -62,6 +62,10 @@ $(document).ready(function () {
             temp = false;
         }
     });
+
+
+    
+
 });
 
 function CountingTogether(r) {

@@ -23,7 +23,7 @@ namespace ProjektArbete.Models.ViewModels
         [Required(ErrorMessage = "Skriv in ett meddelande")]
         public string Message { get; set; }
 
-        [Required   ]
+        [Required]
         public int? Catchpa { get; set; }
 
         public int[] CatchpaNumber { get; set; }

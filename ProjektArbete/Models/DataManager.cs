@@ -74,7 +74,9 @@ namespace ProjektArbete.Models
                 new QuestionsVM {Question="Vad innebär övriga partier som finns på några ledmöter?", Answere="Det är ledamöter som aktivt har lämnat partiet de tillhörde när de blev inröstade."},
                 new QuestionsVM {Question="Hur ofta uppdaterar ni hemsidan?", Answere="Sidan kommer att uppdateras med jämna mellanrum, fram till valet 2018, så fort riksdagen uppdaterar sin databas. Längst ner på sidan kan ni se när den senast uppdaterades."},
                 new QuestionsVM {Question="Varför saknas det data för vissa ledamöter?", Answere="All data kommer ifrån riksdagen, saknas det data beror det på att ledamoten inte satt i riksdagen under den valda perioden."},
-                new QuestionsVM {Question="Varför finns inte Folkpartiet med?", Answere="Folkpartiet har bytt namn till Liberalerna och vi har hanterat det genom att uppdatera all data om Folkpartiet till Liberalerna" }
+                new QuestionsVM {Question="Varför finns inte Folkpartiet med?", Answere="Folkpartiet har bytt namn till Liberalerna och vi har hanterat det genom att uppdatera all data om Folkpartiet till Liberalerna" },
+                new QuestionsVM {Question="Varför står det riksdagskollen.azurewebsites.net efter jag gått in på Riksdagskollen.se?", Answere="För närvarande har vi en gratisversion av Azure som inte stödjer domänpekning. Så fort vi löst finansieringen för hemsidan kommer detta justeras."},
+                new QuestionsVM {Question="Hur stort är ledamöternas arvode?", Answere="Ledamöterna får ett arvorde på 63 800 kr. Detta är inte en lön då de är folkvalda och inte anställda av riksdagen.", Source="http://www.riksdagen.se/sv/sa-funkar-riksdagen/arbetet-i-riksdagen/ledamoternas-ekonomiska-villkor/fragor--svar-om-ledamoternas-ekonomiska-villkor1/ledamoternas-arvoden/"}
             };
 
             return quest.ToArray();
