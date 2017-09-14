@@ -102,6 +102,12 @@ function GenerateChartIndex(indata) {
                     }
                 }]
             },
+            title: {
+                display: true,
+                text: "Partiernas närvaro",
+                fontSize: 30,
+                fontFamily: "'Open Sans', sans-serif"
+            },
             legend: {
                 display: false
             },

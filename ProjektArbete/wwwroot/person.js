@@ -113,12 +113,13 @@ app.controller("testController", function ($scope) {
     };
 });
 
-var foreft;
+var forN;
 
 // funktion för att få bild med hjälp av intressent id
 function GetPicture(id) {
     var pictureIt = GetPersonFromDataRiksdagen(id);
-    foreft = pictureIt[0].person.tilltalsnamn + ' ' + pictureIt[0].person.efternamn;
+    forN = pictureIt[0].person.tilltalsnamn;
+    var foreft = pictureIt[0].person.tilltalsnamn + ' ' + pictureIt[0].person.efternamn;
     $('#personInfo').remove();
     var content = '<div id="personInfo" class="center">';
     content += '<h1>' + foreft + '</h1>';
@@ -162,7 +163,6 @@ function GenerateChartPerson(ar) {
                 labels: [alt[0].vote, alt[1].vote, alt[2].vote, alt[3].vote],
                 datasets: [
                     {
-                        label: "Population (millions)",
                         backgroundColor: ["#41B24E", "#B23933", "#ffd952", "#572B65"],
                         data: [alt[0].pro.toFixed(2), alt[1].pro.toFixed(2), alt[2].pro.toFixed(2), alt[3].pro.toFixed(2)]
                     }
@@ -171,7 +171,10 @@ function GenerateChartPerson(ar) {
             options: {
                 title: {
                     display: true,
-                    text: foreft + 's röstning'
+                    text: forN + 's röstning',
+                    fontSize: 20,
+                    fontFamily: "'Open Sans', sans-serif"
+                    
                 },
                 tooltips: {
                     callbacks: {

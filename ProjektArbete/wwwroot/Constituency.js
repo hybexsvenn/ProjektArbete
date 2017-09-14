@@ -157,7 +157,6 @@ function GenerateChartConstituency(ar) {
                 labels: [alt[0].vote, alt[1].vote, alt[2].vote, alt[3].vote],
                 datasets: [
                     {
-                        label: "Population (millions)",
                         backgroundColor: ["#41B24E", "#B23933", "#ffd952", "#572B65"],
                         data: [alt[0].pro.toFixed(2), alt[1].pro.toFixed(2), alt[2].pro.toFixed(2), alt[3].pro.toFixed(2)]
                     }
@@ -166,7 +165,9 @@ function GenerateChartConstituency(ar) {
             options: {
                 title: {
                     display: true,
-                    text: specificConstituency[0].constituency + 's röstning'
+                    text: specificConstituency[0].constituency + 's röstning',
+                    fontSize: 30,
+                    fontFamily: "'Open Sans', sans-serif"
                 },
                 tooltips: {
                     callbacks: {
