@@ -20,6 +20,12 @@ namespace ProjektArbete.Controllers
             this.dataManager = dataManager;
         }
 
+        public IActionResult Cookiepolicy()
+        {
+            return View();
+        }
+
+
         public IActionResult Index()
         {
             return View();
