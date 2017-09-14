@@ -321,7 +321,7 @@ namespace ProjektArbete.Models
 
 
 
-        static List<string> länList = new List<string> { "Stockholms län", "Västra Götalands län", "Blekinge län", "Dalarnas län", "Gotlands län", "Gävleborgs län", "Hallands län", "Jämtlands län", "Jönköpings län", "Kalmar län", "Kronobergs län", "Norrbottens län", "Södermanlands län", "Uppsala län", "Värmlands län", "Västerbottens län", "Västernorrlands län", "Västmanlands län", "Örebro län", "Östergötlands län"};
+        static List<string> länList = new List<string> { "Västra Götalands län","Stockholms län","Skåne län", "Blekinge län", "Dalarnas län", "Gotlands län", "Gävleborgs län", "Hallands län", "Jämtlands län", "Jönköpings län", "Kalmar län", "Kronobergs län", "Norrbottens län", "Södermanlands län", "Uppsala län", "Värmlands län", "Västerbottens län", "Västernorrlands län", "Västmanlands län", "Örebro län", "Östergötlands län"};
         internal async Task<string> GetGoeLocAsync(string latlong)
         {
             RootObject respons;
@@ -353,7 +353,11 @@ namespace ProjektArbete.Models
                                 }
                                 if (länList[j].ToLower() == "Västra Götalands län".ToLower())
                                 {
-                                    return ManagerData.Goteborg(respons);
+                                    return ManagerData.Göteborg(respons);
+                                }
+                                if (länList[j].ToLower() == "Skåne län".ToLower())
+                                {
+                                    return ManagerData.Malmö(respons);
                                 }
                                 return länList[j];
                             }

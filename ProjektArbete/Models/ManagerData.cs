@@ -33,7 +33,7 @@ namespace ProjektArbete.Models
         static string[] VästraGötalandslänssödra = new string[] { "Bollebygd", "Borås", "Mark", "Svenljunga", "Tranemo", "Ulricehamn" };
         static string[] VästraGötalandslänsvästra = new string[] { "Härryda", "Kungälv", "Lysekil", "Munkedal", "Mölndal", "Orust", "Partille", "Sotenäs", "Stenungsund", "Strömstad", "Tanum", "Tjörn", "Uddevalla", "Öckerö" };
 
-        internal static string Goteborg(RootObject respons)
+        internal static string Göteborg(RootObject respons)
         {
             for (int i = 0; i < respons.results[0].address_components.Count - 1; i++)
             {
@@ -68,6 +68,40 @@ namespace ProjektArbete.Models
                 }
             }
             return "Göteborgs kommun";
+        }
+
+        static string[] Skånelänsnorraochöstra = new string[] {"Bromölla","Båstad","Hässleholm","Klippan","Kristianstad","Osby","Perstorp","Simrishamn","Tomelilla","Åstorp","Ängelholm","Örkelljunga","Östra Göinge" };
+        static string[] Skånelänssödra = new string[] { "Burlöv", "Kävlinge", "Lomma", "Lund", "Sjöbo", "Skurup", "Staffanstorp", "Svedala", "Trelleborg", "Vellinge", "Ystad" };
+        static string[] Skånelänsvästra = new string[] { "Bjuv", "Eslöv", "Helsingborg", "Höganäs", "Hörby", "Höör", "Landskrona", "Svalöv" };
+
+        internal static string Malmö(RootObject respons)
+        {
+            for (int i = 0; i < respons.results[0].address_components.Count - 1; i++)
+            {
+                string str = respons.results[0].address_components[i].long_name;
+                for (int j = 0; j < Skånelänsnorraochöstra.Length; j++)
+                {
+                    if (str == Skånelänsnorraochöstra[j])
+                    {
+                        return "Skåne läns norra och östra";
+                    }
+                }
+                for (int j = 0; j < Skånelänssödra.Length; j++)
+                {
+                    if (str == Skånelänssödra[j])
+                    {
+                        return "Skåne läns södra";
+                    }
+                }
+                for (int j = 0; j < Skånelänsvästra.Length; j++)
+                {
+                    if (str == Skånelänsvästra[j])
+                    {
+                        return "Skåne läns västra";
+                    }
+                }
+            }
+            return "Malmö kommun";
         }
     }
 }
