@@ -12,13 +12,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="wwwroot\Images\Logos\Socialdemokraterna_logo_liggande.png" />
-    <None Include="wwwroot\Images\Logos\Socialdemokraterna_logo_staende.png" />
-    <None Include="wwwroot\Images\Logos\Sverigedemokraterna_logo_RGB.jpg" />
-    <None Include="wwwroot\Images\Logos\Sverigedemokraterna_logo_RGB_vertikal.jpg" />
-    <None Include="wwwroot\Images\Logos\Vansterpartiet_logo_sRGB.jpg" />
-    <None Include="wwwroot\Images\Logos\Vansterpartiet_logo_sRGB_transparent-bakgrund.gif" />
-  </ItemGroup>
-
 </Project>
