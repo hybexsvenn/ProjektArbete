@@ -13,14 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Images\Logos\Centerpartiet_Logo_Narodlad_Liggande_CMYK.jpg" />
-    <None Include="wwwroot\Images\Logos\Centerpartiet_Logo_Narodlad_Liggande_RGB.jpg" />
-    <None Include="wwwroot\Images\Logos\Kristdemokraterna_logo_CMYK.jpg" />
-    <None Include="wwwroot\Images\Logos\Liberalerna_logo_liggande.png" />
-    <None Include="wwwroot\Images\Logos\Miljopartiet_logo_2rader_gron_RGB.png" />
-    <None Include="wwwroot\Images\Logos\Miljopartiet_logo_original_gron.png" />
-    <None Include="wwwroot\Images\Logos\Moderaterna_logo_med_text.png" />
-    <None Include="wwwroot\Images\Logos\Moderaterna_logo_utan_text.png" />
     <None Include="wwwroot\Images\Logos\Socialdemokraterna_logo_liggande.png" />
     <None Include="wwwroot\Images\Logos\Socialdemokraterna_logo_staende.png" />
     <None Include="wwwroot\Images\Logos\Sverigedemokraterna_logo_RGB.jpg" />
