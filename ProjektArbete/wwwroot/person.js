@@ -131,8 +131,7 @@ function GetPicture(id) {
 
 // Funktion för graf
 function GenerateChartPerson(ar) {
-    $('#pieJChart').remove();
-    $('#divPersonCanvas').append('<canvas id="pieJChart" width="800" height="400"></canvas>');
+        $('#pieJChart').remove();
     if (ar.length > 0) {
         var alt = [{ vote: "Ja", pro: 0 }, { vote: "Nej", pro: 0 }, { vote: "Avstår", pro: 0 }, { vote: "Frånvarande",pro :0 }];
         var num = [];
@@ -150,6 +149,7 @@ function GenerateChartPerson(ar) {
                 alt[3].pro = ar[i].pro;
             }
         }
+        $('#divPersonCanvas').append('<canvas id="pieJChart" width="800" height="400"></canvas>');
         var ctx = document.getElementById("pieJChart");
         var myChart = new Chart(ctx, {
             type: 'doughnut',
@@ -171,6 +171,9 @@ function GenerateChartPerson(ar) {
                 }
             }
         });
+    } else {
+        $("#divPersonCanvas").prepend('<img id="pieJChart" src="~/Images/sign-1642037_960_720.png" width="800" height="400"/>');
+        console.log(document.getElementById("divPersonCanvas"));
     }
 
 }
