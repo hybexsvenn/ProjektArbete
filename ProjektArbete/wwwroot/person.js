@@ -132,7 +132,7 @@ function GetPicture(id) {
 // Funktion för graf
 function GenerateChartPerson(ar) {
     $('#pieJChart').remove();
-    $('#divPersonCanvas').append('<canvas id="pieJChart" width="400" height="200"></canvas>');
+    $('#divPersonCanvas').append('<canvas id="pieJChart" width="800" height="400"></canvas>');
     if (ar.length > 0) {
         var alt = [{ vote: "Ja", pro: 0 }, { vote: "Nej", pro: 0 }, { vote: "Avstår", pro: 0 }, { vote: "Frånvarande",pro :0 }];
         var num = [];
@@ -158,7 +158,7 @@ function GenerateChartPerson(ar) {
                 datasets: [
                     {
                         label: "Population (millions)",
-                        backgroundColor: ["#ffd952", "#572B65", "#41B24E", "#B23933"],                       
+                        backgroundColor: ["#41B24E", "#B23933", "#ffd952", "#572B65"],
                         data: [alt[0].pro.toFixed(2), alt[1].pro.toFixed(2), alt[2].pro.toFixed(2), alt[3].pro.toFixed(2)]
                     }
                 ]
