@@ -169,8 +169,10 @@ function GenerateChartPerson(ar) {
                 ]
             },
             options: {
+                responsive: false,
                 title: {
                     display: true,
+                    
                     text: forN + 's röstning',
                     fontSize: 20,
                     fontFamily: "'Open Sans', sans-serif"
@@ -187,7 +189,6 @@ function GenerateChartPerson(ar) {
             }
         });
     } else {
-        $('#pieJChart').remove();
         $("#divPersonCanvas").append('<p id="pieJChart">Det finns ingen data. Testa att ändra årtal.</p>');
     }
 }

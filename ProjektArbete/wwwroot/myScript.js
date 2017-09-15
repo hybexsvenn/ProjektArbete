@@ -70,7 +70,7 @@ function GetFullPartyName(key) {
         return "Miljöpartiet";
     } else if (key === "C") {
         return "Centerpartiet";
-    } else if (key === "L") {
+    } else if (key === "L" || "FP") {
         return "Liberalerna";
     } else if (key === "M") {
         return "Moderaterna";
