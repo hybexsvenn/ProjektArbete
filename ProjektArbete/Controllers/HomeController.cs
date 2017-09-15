@@ -26,7 +26,6 @@ namespace ProjektArbete.Controllers
             return View();
         }
 
-
         public IActionResult Index(/*string setting, string settingValue, bool isPersistent*/)
         {
             //setting = "yada";
@@ -44,8 +43,6 @@ namespace ProjektArbete.Controllers
             //}
 
             return View();
-
-            
         }
 
         public IActionResult Person(string id)
@@ -56,7 +53,6 @@ namespace ProjektArbete.Controllers
             }
 
             var x = dataManager.GetOnePerson(id);
-
             return View(x);
         }
 
@@ -67,7 +63,6 @@ namespace ProjektArbete.Controllers
 
         public IActionResult Constituency()
         {
-
             return View();
         }
 
@@ -96,7 +91,6 @@ namespace ProjektArbete.Controllers
 
         public IActionResult Faq()
         {
-            
             return View();
         }
 

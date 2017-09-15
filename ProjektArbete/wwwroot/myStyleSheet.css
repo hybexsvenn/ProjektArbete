@@ -1,6 +1,6 @@
-﻿/** {
+﻿* {
     font-family: 'Open Sans', sans-serif;
-}*/
+}
 
 body {
     /*background-image: url("bg2.png");*/
@@ -9,24 +9,24 @@ body {
     font-family: 'Open Sans', sans-serif;
     overflow-y: scroll;
 }
-.scroll {
-    overflow-y: scroll;
-}
-#footerRight {
-    float:right;
-}
-
 
 .header {
     padding: 1%;
 }
 
-    /*Todo: Gör responsiv*/
     .header h1 {
         color: #302E26;
         font-family: 'Comfortaa', cursive;
         font-size: 35px;
-        /*font-weight: bold;*/
+        font-weight: bold;
+        padding-top: 4px;
+        margin-bottom: 5px;
+        padding-bottom: 0;
+    }
+
+    .header h5 {
+        margin-top: 0;
+        padding-top: 0;
     }
 
 .ui-widget-header {
@@ -39,25 +39,9 @@ body {
     border: transparent;
 }
 
-.faq_question {
-    margin: 0;
-    padding: 0 0 5px 0;
-    display: inline-block;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-
-
-.faq_answer_container {
-    height: 0;
-    overflow: hidden;
-    padding: 0;
-}
-
 .active-nav {
     background-color: #FE7F2D;
-    border-radius: 45%;
+    border-radius: 1%;
     opacity: 0.7;
 }
 
@@ -76,8 +60,30 @@ body {
     margin-right: auto;
 }
 
-.content h2 {
+    .content h2 {
         text-align: center;
+    }
+
+#leftContent {
+    width: 55%;
+}
+
+#rightContent {
+    width: 35%;
+}
+
+.faq_question {
+    margin: 0;
+    padding: 0 0 5px 0;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.faq_answer_container {
+    height: 0;
+    overflow: hidden;
+    padding: 0;
 }
 
 .logga a {
@@ -85,24 +91,29 @@ body {
 }
 
 .sliderHeadline {
-    /*background-color:white;
-    background-color: rgba(255, 255, 255, 0.8);*/
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    font-style: normal;
 }
 
-
 #slider-range {
-    
     width: 90%;
     margin-left: auto;
     margin-right: auto;
     border: 1px dotted grey;
 }
 
+#divPersonCanvas {
+    padding-top: 5%;
+}
+
+#divConstituencyCanvas {
+    margin: 2%;
+}
+
 #date {
-    background-color:white;
+    background-color: white;
     background-color: rgba(255,255,255, 0.0);
     border: 0;
     font-weight: bold;
@@ -123,13 +134,21 @@ body {
 }
 
 .yada {
-    background-color:white;
+    background-color: white;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 30px;
 }
 
 footer {
     padding: 1%;
+}
+
+#footerRight {
+    float: right;
+}
+
+.scroll {
+    overflow-y: scroll;
 }
 
 .logosParty {
@@ -185,9 +204,8 @@ footer {
 #ourLogo {
     width: auto;
     height: 60px;
-    margin-top:2%;
+    margin-top: 2%;
     float: left;
-
-    margin-right:1%;
-    margin-bottom:1%;
+    margin-right: 1%;
+    margin-bottom: 1%;
 }

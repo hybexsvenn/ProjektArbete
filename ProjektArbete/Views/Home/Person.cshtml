@@ -1,55 +1,47 @@
 ﻿@model PersonVM[]
 
-
-<div class="input-group">
-    <input ng-change="change(search)" ng-model="search" type="text" class="form-control" placeholder="Sök politiker...">
-    <div class="input-group-btn">
-        <button class="btn btn-default" type="submit">
-            <i class="glyphicon glyphicon-search"></i>
-        </button>
-    </div>
-</div>
-
-<ul ng-show="searchBar" class="dropDownContent">
-    <li ng-cloak ng-repeat="item in listOfSearch | filter: search track by $index">
-        <p ng-click="selectedPerson(item.Id)">{{item.person}}</p>
-    </li>
-</ul>
 <div id="content" ng-cloak>
+    <div id="searchBar">
+        <div class="input-group">
+            <input ng-change="change(search)" ng-model="search" type="text" class="form-control" placeholder="Sök politiker...">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <ul ng-show="searchBar" class="dropDownContent">
+            <li ng-cloak ng-repeat="item in listOfSearch | filter: search track by $index">
+                <p ng-click="selectedPerson(item.Id)">{{item.person}}</p>
+            </li>
+        </ul>
+    </div>
 
     <div id="rightContent" class="col-sm-4" ng-show="showPersonBarChart">
-
-
         <div id="personAPI">
             <div id="personInfo">
             </div>
         </div>
-
-
-
     </div>
+
     <div id="leftContent" class="col-sm-8" ng-cloak>
         <div id="divPersonCanvas" ng-show="showPersonBarChart">
-                    <canvas id="pieJChart" width="400" height="200"></canvas>
+            <canvas id="pieJChart" width="400" height="200"></canvas>
         </div>
         <div ng-show="showPersonBarChart">
             <div class="sliderHeadline">
                 <p>
-
                     <label for="date">Riksdagsår:</label>
                     <input ng-disabled="true" type="text" id="date">
                 </p>
             </div>
-
-            <div id="slider-range"></div>
+            <div id="slider-range">
+            </div>
         </div>
     </div>
 </div>
-
 <br /><br />
-
-
-
 
 @section Scripts
     {

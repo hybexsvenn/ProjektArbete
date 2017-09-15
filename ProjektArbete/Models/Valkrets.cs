@@ -8,6 +8,5 @@ namespace ProjektArbete.Models
     public class Valkrets
     {
         public string Name { get; set; }
-
     }
 }

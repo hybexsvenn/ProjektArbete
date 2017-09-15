@@ -56,7 +56,6 @@ namespace ProjektArbete.Controllers
                 CookieOptions options = new CookieOptions();
                 options.Expires = DateTime.Now.AddDays(7);
                 constituencyWrapper.constituencyVM = dataManager.GetConstituency(Request.Cookies[settings]);
-
             }
             else
             {
@@ -76,6 +75,5 @@ namespace ProjektArbete.Controllers
         {
             return dataManager.GetConstituency(id);
         }
-
     }
 }
