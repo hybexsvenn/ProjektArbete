@@ -62,6 +62,9 @@ body {
 
     .content h2 {
         text-align: center;
+        font-family: 'Comfortaa', cursive;
+        color: dimgrey;
+        font-weight: bold;
     }
 
 #leftContent {
