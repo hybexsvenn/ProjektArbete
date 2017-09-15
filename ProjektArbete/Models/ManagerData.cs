@@ -38,28 +38,28 @@ namespace ProjektArbete.Models
             for (int i = 0; i < respons.results[0].address_components.Count - 1; i++)
             {
                 string str = respons.results[0].address_components[i].long_name;
-                for (int j = 0; j < VästraGötalandslänsöstra.Length; j++)
+                for (int j = 0; j < VästraGötalandslänsöstra.Length - 1; j++)
                 {
                     if (str == VästraGötalandslänsöstra[j])
                     {
                         return "Västra Götalands läns östra";
                     }
                 }
-                for (int j = 0; j < VästraGötalandslänsnorra.Length; j++)
+                for (int j = 0; j < VästraGötalandslänsnorra.Length - 1; j++)
                 {
                     if (str == VästraGötalandslänsnorra[j])
                     {
                         return "Västra Götalands läns norra";
                     }
                 }
-                for (int j = 0; j < VästraGötalandslänssödra.Length; j++)
+                for (int j = 0; j < VästraGötalandslänssödra.Length - 1; j++)
                 {
                     if (str == VästraGötalandslänssödra[j])
                     {
                         return "Västra Götalands läns södra";
                     }
                 }
-                for (int j = 0; j < VästraGötalandslänsvästra.Length; j++)
+                for (int j = 0; j < VästraGötalandslänsvästra.Length - 1; j++)
                 {
                     if (str == VästraGötalandslänsvästra[j])
                     {
@@ -79,21 +79,21 @@ namespace ProjektArbete.Models
             for (int i = 0; i < respons.results[0].address_components.Count - 1; i++)
             {
                 string str = respons.results[0].address_components[i].long_name;
-                for (int j = 0; j < Skånelänsnorraochöstra.Length; j++)
+                for (int j = 0; j < Skånelänsnorraochöstra.Length - 1; j++)
                 {
                     if (str == Skånelänsnorraochöstra[j])
                     {
                         return "Skåne läns norra och östra";
                     }
                 }
-                for (int j = 0; j < Skånelänssödra.Length; j++)
+                for (int j = 0; j < Skånelänssödra.Length - 1; j++)
                 {
                     if (str == Skånelänssödra[j])
                     {
                         return "Skåne läns södra";
                     }
                 }
-                for (int j = 0; j < Skånelänsvästra.Length; j++)
+                for (int j = 0; j < Skånelänsvästra.Length - 1; j++)
                 {
                     if (str == Skånelänsvästra[j])
                     {
