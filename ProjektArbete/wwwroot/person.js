@@ -163,6 +163,7 @@ function GenerateChartPerson(ar) {
                 ]
             },
             options: {
+                responsive: false,
                 title: {
                     display: true,
                     text: forN + 's röster',
@@ -180,7 +181,6 @@ function GenerateChartPerson(ar) {
             }
         });
     } else {
-        $('#pieJChart').remove();
         $("#divPersonCanvas").append('<p id="pieJChart" style="text-align: center; margin: 15%;">Det finns ingen data. Testa byta år.</p>');
     }
 }

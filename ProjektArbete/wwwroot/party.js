@@ -62,7 +62,7 @@ function GenerateChartParty(ar) {
                     resonsive: false,
                     text: GetFullPartyName(ret[0].party) + 's röstning',
                     fontSize: 30,
-                    fontFamily: "'Open Sans', sans-serif"
+                    fontFamily: "'Comfortaa', cursive"
                 },
                 tooltips: {
                     callbacks: {
